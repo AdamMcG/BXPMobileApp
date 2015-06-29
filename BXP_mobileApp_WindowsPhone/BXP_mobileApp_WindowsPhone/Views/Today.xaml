@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="BXP_mobileApp_WindowsPhone.Views.Login"
+    x:Class="BXP_mobileApp_WindowsPhone.Views.Today"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BXP_mobileApp_WindowsPhone.Views"
@@ -12,7 +12,8 @@
         <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
         </CommandBar>
     </Page.BottomAppBar>
-    <Grid x:Name="LayoutRoot" Margin="0,0.333,0,-0.333">
+    
+    <Grid x:Name="LayoutRoot">
 
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -28,28 +29,12 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="Login" Margin="0,-6.5,0,26.5" 
-                       Style="{ThemeResource HeaderTextBlockStyle}"
-                       CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="Today" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" Background="Yellow">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="47,122,52,122" Width="263">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="30" Foreground="Black">System</TextBlock>
-                    <TextBox Width="147"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="30" Foreground="Black">Username</TextBlock>
-                    <TextBox Width="104"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="30" Foreground="Black">Password</TextBlock>
-                    <PasswordBox Width="116"  ></PasswordBox>
-                </StackPanel>
-                <Button VerticalAlignment="Center" HorizontalAlignment="Center" Background="Blue">Login</Button>
-            </StackPanel>
+            <StackPanel></StackPanel>
         </Grid>
     </Grid>
 </Page>

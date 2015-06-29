@@ -1,31 +1,20 @@
 ﻿<Page
-    x:Class="BXP_mobileApp_WindowsPhone.Views.RSS_Feed"
+    x:Class="BXP_mobileApp_WindowsPhone.Views.Todo"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BXP_mobileApp_WindowsPhone.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-   
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="664.5">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.Resources>
-        <DataTemplate x:Name="RSS_Feed_Item_Template">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom"  Width="400" Margin="0,0,0,0" 
-                            DoubleTapped="backup_DoubleTapped" Tapped="backup_Tapped" Background="#0C0B15">
-            </StackPanel>
-        </DataTemplate>
-
-    </Page.Resources>
 
     <Page.BottomAppBar>
         <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
         </CommandBar>
     </Page.BottomAppBar>
-
     <Grid x:Name="LayoutRoot">
-        
+
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -40,15 +29,12 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="RSS Feed Main" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" SelectionChanged="TextBlock_SelectionChanged"/>
+            <TextBlock Text="To Do" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" SelectionChanged="TextBlock_SelectionChanged"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" Background="Yellow">
-            <StackPanel Margin="0,-9,0,9">
-                <ListView Name="RSS_Feed_ListView" SelectionChanged="RSS_Feed_ListView_SelectionChanged" Background="Azure"></ListView>
-            </StackPanel>
-          
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" Background="yellow">
+            <StackPanel></StackPanel>
         </Grid>
     </Grid>
 </Page>
