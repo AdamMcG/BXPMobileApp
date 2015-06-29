@@ -1,2 +1,2 @@
 # BXPMobileApp
-This is a repository for a BXP cross platform application using Xamarin
+This is a repository for a BXP mobile application- Windows version.
