@@ -33,8 +33,20 @@
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" Background="yellow">
-            <StackPanel></StackPanel>
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.833,19,0" Background="yellow">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                            Margin="10,10,10,10">
+                    <TextBox x:Name="Listee_Name_Here" Width="196" Margin="10,10,10,10"></TextBox>
+                    <Button x:Name="Insert_Listee" Background="CornflowerBlue" Width="30"> Insert</Button>
+                </StackPanel>
+                <ScrollViewer Height="392">
+                    <ListView Header="List Of Jobs To Do" Background="brown" 
+                          x:Name = "Listview_Of_Listees"  >
+
+                    </ListView>
+                </ScrollViewer>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

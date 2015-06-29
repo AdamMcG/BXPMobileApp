@@ -34,19 +34,19 @@
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" Background="Yellow">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="47,122,52,122" Width="263">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="30" Foreground="Black">System</TextBlock>
-                    <TextBox Width="147"></TextBox>
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" Background="">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="47,10,52,10" Width="263">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Margin="10,10,10,10" FontSize="30" HorizontalAlignment="Center" Foreground="white">System</TextBlock>
+                    <TextBox HorizontalAlignment="Stretch"></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="30" Foreground="Black">Username</TextBlock>
-                    <TextBox Width="104"></TextBox>
+                <StackPanel Orientation="Vertical"  >
+                    <TextBlock Margin="10,10,10,10" FontSize="30" Foreground="white" HorizontalAlignment="Center" Width="135">Username</TextBlock>
+                    <TextBox HorizontalAlignment="Stretch" ></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="30" Foreground="Black">Password</TextBlock>
-                    <PasswordBox Width="116"  ></PasswordBox>
+                <StackPanel Orientation="Vertical" >
+                    <TextBlock Margin="10,10,10,10" HorizontalAlignment="Center" FontSize="30" Foreground="white">Password</TextBlock>
+                    <PasswordBox HorizontalAlignment="Stretch" PasswordChanged="PasswordBox_PasswordChanged" ></PasswordBox>
                 </StackPanel>
                 <Button VerticalAlignment="Center" HorizontalAlignment="Center" Background="Blue">Login</Button>
             </StackPanel>

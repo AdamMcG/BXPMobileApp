@@ -33,7 +33,10 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" Background="Yellow">
-            <StackPanel></StackPanel>
+            <StackPanel>
+                <TextBox HorizontalAlignment="Stretch" x:Name="RSS_Item_Content" Height="359"  Margin="10,10,10,10" Text="Content of RSS Item goes here"/>
+                <Button x:Name="Return_To_RSS_Feed" Background="CornflowerBlue" HorizontalAlignment="Center">Return</Button>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

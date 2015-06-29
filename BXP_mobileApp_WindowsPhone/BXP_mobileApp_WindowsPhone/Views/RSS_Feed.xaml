@@ -25,7 +25,7 @@
     </Page.BottomAppBar>
 
     <Grid x:Name="LayoutRoot">
-        
+
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -45,10 +45,13 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" Background="Yellow">
-            <StackPanel Margin="0,-9,0,9">
-                <ListView Name="RSS_Feed_ListView" SelectionChanged="RSS_Feed_ListView_SelectionChanged" Background="Azure"></ListView>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <ListView Header="List of RSS items" Name="RSS_Feed_ListView" Margin="10,10,9.667,10" ItemTemplate="{ThemeResource RSS_Feed_Item_Template}" SelectionChanged="RSS_Feed_ListView_SelectionChanged" Background="brown" Height="350">
+
+                </ListView>
+                <Button HorizontalAlignment="Center" Background="CornflowerBlue">Login</Button>
             </StackPanel>
-          
+
         </Grid>
     </Grid>
 </Page>
