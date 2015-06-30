@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace BXP_mobileApp_WindowsPhone.Common
+namespace BXP_MobileApp_WindowsPhone.Common
 {
     /// <summary>
     /// A command whose sole purpose is to relay its functionality 

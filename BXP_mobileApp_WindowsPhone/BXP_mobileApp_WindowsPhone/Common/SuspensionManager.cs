@@ -11,7 +11,7 @@ using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace BXP_mobileApp_WindowsPhone.Common
+namespace BXP_MobileApp_WindowsPhone.Common
 {
     /// <summary>
     /// SuspensionManager captures global session state to simplify process lifetime management

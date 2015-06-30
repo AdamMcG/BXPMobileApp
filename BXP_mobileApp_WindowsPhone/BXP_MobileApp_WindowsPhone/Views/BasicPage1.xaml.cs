@@ -1,4 +1,4 @@
-﻿using BXP_mobileApp_WindowsPhone.Common;
+﻿using BXP_MobileApp_WindowsPhone.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,17 +18,17 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace BXP_mobileApp_WindowsPhone.Views
+namespace BXP_MobileApp_WindowsPhone.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Contacts : Page
+    public sealed partial class BasicPage1 : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public Contacts()
+        public BasicPage1()
         {
             this.InitializeComponent();
 

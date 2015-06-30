@@ -1,29 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="345b26ca-5f00-46fa-8f9c-31d9f7fed9f2" Publisher="CN=AllnOneInt4" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="345b26ca-5f00-46fa-8f9c-31d9f7fed9f2" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+
+  <Identity Name="b2791f67-9856-4f78-ae0f-8f6f7a9097df"
+            Publisher="CN=AllnOneInt4"
+            Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="b2791f67-9856-4f78-ae0f-8f6f7a9097df" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
   <Properties>
-    <DisplayName>BXP_mobileApp_WindowsPhone</DisplayName>
+    <DisplayName>BXP_MobileApp_WindowsPhone</DisplayName>
     <PublisherDisplayName>AllnOneInt4</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
+
   <Prerequisites>
     <OSMinVersion>6.3.1</OSMinVersion>
     <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
   </Prerequisites>
+  
   <Resources>
-    <Resource Language="x-generate" />
+    <Resource Language="x-generate"/>
   </Resources>
+
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="BXP_mobileApp_WindowsPhone.App">
-      <m3:VisualElements DisplayName="BXP_mobileApp_WindowsPhone" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Windows Store app for users of BXP Software. " ForegroundText="light" BackgroundColor="transparent">
-        <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
-        </m3:DefaultTile>
-        <m3:SplashScreen Image="Assets\SplashScreen.png" />
-        <m3:InitialRotationPreference>
-          <m3:Rotation Preference="portrait" />
-        </m3:InitialRotationPreference>
-      </m3:VisualElements>
+    <Application Id="App"
+        Executable="$targetnametoken$.exe"
+        EntryPoint="BXP_MobileApp_WindowsPhone.App">
+        <m3:VisualElements
+            DisplayName="BXP_MobileApp_WindowsPhone"
+            Square150x150Logo="Assets\Logo.png"
+            Square44x44Logo="Assets\SmallLogo.png"
+            Description="BXP_MobileApp_WindowsPhone"
+            ForegroundText="light"
+            BackgroundColor="transparent">
+            <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png"/>
+            <m3:SplashScreen Image="Assets\SplashScreen.png"/>
+        </m3:VisualElements>
     </Application>
   </Applications>
   <Capabilities>

@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="BXP_MobileApp_WindowsPhone.Views.ToDo"
+    x:Class="BXP_MobileApp_WindowsPhone.Views.Contact"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BXP_MobileApp_WindowsPhone.Views"
@@ -8,10 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
-        </CommandBar>
-    </Page.BottomAppBar>
+
     <Grid x:Name="LayoutRoot">
 
         <Grid.ChildrenTransitions>
@@ -28,24 +25,24 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="To Do" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
+            <TextBlock Text="Contacts" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.833,19,0" Background="yellow">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,0,20" HorizontalAlignment="Stretch"
-                           >
-                    <TextBox x:Name="Listee_Name_Here" Width="196" Margin="0,10,10,10" HorizontalAlignment="Stretch" Text="Listee"/>
-                    <Button x:Name="Insert_Listee" Background="CornflowerBlue" Width="30">Insert</Button>
+        <Grid Grid.Row="1" Background="y" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,10">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                    <TextBox x:Name="contact_To_Search" Foreground="Black" HorizontalAlignment="Stretch"
+                             Text="Enter Contact Here" Margin="0,10,10,0" Height="35" Width="225"/>
+                    <Button x:Name="button_to_search" HorizontalAlignment="Stretch" Background="CornflowerBlue">
+                        Search
+                    </Button>
                 </StackPanel>
-                <ScrollViewer Height="433">
-                    <ListView VerticalAlignment="Top" Header="List Of Jobs To Do" Background="brown" 
-                          x:Name = "Listview_Of_Listees" Height="392"  >
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
+                <ScrollViewer>
+                    <ListView x:Name="ListOfContacts" HorizontalAlignment="Stretch"
+                          Background="brown"
+                              Header="List Of Contacts">
+
                         <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                         <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                         <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>

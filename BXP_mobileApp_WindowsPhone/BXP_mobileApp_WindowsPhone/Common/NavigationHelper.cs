@@ -10,7 +10,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace BXP_mobileApp_WindowsPhone.Common
+namespace BXP_MobileApp_WindowsPhone.Common
 {
     /// <summary>
     /// NavigationHelper aids in navigation between pages.  It provides commands used to 

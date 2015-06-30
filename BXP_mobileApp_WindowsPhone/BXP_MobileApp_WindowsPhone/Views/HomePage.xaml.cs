@@ -1,13 +1,10 @@
-﻿using BXP_mobileApp_WindowsPhone.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Graphics.Display;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -15,44 +12,69 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Networking;
+using BXP_MobileApp_WindowsPhone.Common;
+using BXP_MobileApp_WindowsPhone.ViewModel;
 
-// The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace BXP_mobileApp_WindowsPhone.Views
+namespace BXP_MobileApp_WindowsPhone.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class tickets : Page
+    public sealed partial class HomePage : Page
     {
         private NavigationHelper navigationHelper;
-        private ObservableDictionary defaultViewModel = new ObservableDictionary();
-
-        public tickets()
+        public HomePage()
         {
+  
+            TestingBinding t = new TestingBinding();
             this.InitializeComponent();
-
+            this.DataContext = t;
+            t.test = "navy";
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
-        /// <summary>
-        /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
-        /// </summary>
+
+
         public NavigationHelper NavigationHelper
         {
             get { return this.navigationHelper; }
         }
 
-        /// <summary>
-        /// Gets the view model for this <see cref="Page"/>.
-        /// This can be changed to a strongly typed view model.
-        /// </summary>
-        public ObservableDictionary DefaultViewModel
+        private void OpenToDo(object sender, RoutedEventArgs e)
         {
-            get { return this.defaultViewModel; }
+            Frame.Navigate(typeof(ToDo));
         }
+
+        private void OpenTicket(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Ticket));
+        }
+
+        private void OpenToday(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Today));
+        }
+
+        private void OpenTomorrow(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Tomorrow));
+        }
+
+        private void OpenContacts(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Contact));
+        }
+
+        private void OpenCritical(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Critical));
+        }
+
 
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
@@ -106,6 +128,59 @@ namespace BXP_mobileApp_WindowsPhone.Views
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
+        #endregion
+
+
+// Launch the URI
+        async void DefaultLaunch(Uri uri)
+        {
+        // Launch the URI
+        var success = await Windows.System.Launcher.LaunchUriAsync(uri);
+
+        if (success)
+        {
+            // URI launched
+        }
+        else
+        {
+      // URI launch failed
+        }
+        }
+
+        #region NavigationFrames
+        private void OpenBxp(object sender, RoutedEventArgs e)
+        {
+            string uriToLaunch = @"http://www.bxpsoftware.com/";
+
+        var uri = new Uri(uriToLaunch);
+
+            DefaultLaunch(uri);
+        }
+
+        private void OpenWixi(object sender, RoutedEventArgs e)
+        {
+            string uriToLaunch = @"http://www.bxpsoftware.com/wixi/";
+
+            // Create a Uri object from a URI string 
+            var uri = new Uri(uriToLaunch);
+
+            DefaultLaunch(uri);
+        }
+
+        private void OpenSystem(object sender, RoutedEventArgs e)
+        {
+            string uriToLaunch = @"https://ww3.allnone.ie/client/client_allnone/main/main.asp";
+
+            // Create a Uri object from a URI string 
+            var uri = new Uri(uriToLaunch);
+
+            DefaultLaunch(uri);
+        }
+
+        private void OpenSettings(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Settings));
+        }
         #endregion
     }
 }

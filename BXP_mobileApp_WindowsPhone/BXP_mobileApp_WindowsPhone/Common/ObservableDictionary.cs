@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.Foundation.Collections;
 
-namespace BXP_mobileApp_WindowsPhone.Common
+namespace BXP_MobileApp_WindowsPhone.Common
 {
     /// <summary>
     /// Implementation of IObservableMap that supports reentrancy for use as a default view
