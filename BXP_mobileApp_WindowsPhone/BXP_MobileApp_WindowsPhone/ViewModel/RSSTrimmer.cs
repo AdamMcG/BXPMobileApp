@@ -12,7 +12,13 @@ namespace BXP_MobileApp_WindowsPhone.Model
 {
     class RSSTrimmer
     {
+        ObservableCollection<SyndicationItem> mycollection = new ObservableCollection<SyndicationItem>();
+        public ObservableCollection<SyndicationItem> _collection
+        {
+            get { return mycollection; }
 
+            set { _collection = value; }
+        }
         public async void testRss()
         {
             try
@@ -20,14 +26,19 @@ namespace BXP_MobileApp_WindowsPhone.Model
                 SyndicationClient client = new SyndicationClient();
                 client.BypassCacheOnRetrieve = true;
 
-                Uri RSSURI = new Uri("http://www.rte.ie/news/rss/entertainment.xml");
-              await client.RetrieveFeedAsync(RSSURI);
-               
+                Uri RSSURI = new Uri("http://www.rte.ie/news/rss/news-headlines.xml");
+             SyndicationFeed addd = await client.RetrieveFeedAsync(RSSURI);
+             int check =0;
+             foreach (SyndicationItem feed in addd.Items)
+             {
+                 _collection.Add(feed);
+                 check++;
+             }
                
             }
             catch (Exception e)
             {
-                e.ToString();
+                e.Message.ToString();
             }
         }
 
