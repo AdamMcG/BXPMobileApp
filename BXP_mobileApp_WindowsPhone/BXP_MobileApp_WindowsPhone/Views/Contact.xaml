@@ -9,6 +9,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 
+    <Page.BottomAppBar>
+        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
+        </CommandBar>
+    </Page.BottomAppBar>
+
+
     <Grid x:Name="LayoutRoot">
 
         <Grid.ChildrenTransitions>
@@ -29,7 +35,7 @@
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" Background="y" x:Name="ContentRoot" Margin="19,9.5,19,0">
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,10">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                     <TextBox x:Name="contact_To_Search" Foreground="Black" HorizontalAlignment="Stretch"

@@ -1,10 +1,12 @@
 ﻿using BXP_MobileApp_WindowsPhone.Common;
+using BXP_MobileApp_WindowsPhone.Model;
 using BXP_MobileApp_WindowsPhone.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -24,11 +26,13 @@ namespace BXP_MobileApp_WindowsPhone
     /// </summary>
     public sealed partial class MainPage : Page
     {
+       RSSTrimmer RSS = new RSSTrimmer();
             private NavigationHelper navigationHelper;
         public MainPage()
         {
             this.InitializeComponent();
-            
+            RSS.awaitRSS();
+            this.RSS_Feed_ListView.DataContext = RSS;   
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;

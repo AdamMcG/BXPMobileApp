@@ -10,7 +10,7 @@
 
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
+        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -40,15 +40,15 @@
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" Background="Yellow">
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
             <StackPanel Margin="10,10,10,10">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch"  >
-                    <TextBlock FontSize="30"  Width="233" Height="32"> Today</TextBlock>
-                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="CornflowerBlue" Width="108">Add ToDo</Button>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0,0,9.667,10" Height="64" >
+                    <TextBlock FontSize="30" Margin="0,0,0,0" Width="221" Height="36"> Today</TextBlock>
+                    <Button x:Name="addToDo" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="CornflowerBlue" Width="108" Click="openTodo">Add ToDo</Button>
                 </StackPanel>
                 <StackPanel>
                     <ScrollViewer Margin="0,0,-0.333,0">
-                        <ListView VerticalAlignment="Top" HorizontalAlignment="Stretch" Header="Listee's for Today" Margin="0,0,0,30" Background="CornflowerBlue" x:Name="Listee_Listview_Today" Height="155" >
+                        <ListView VerticalAlignment="Top" BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Listee's for Today" Margin="0,0,0,30" Background="CornflowerBlue" x:Name="Listee_Listview_Today" Height="155" >
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
@@ -61,7 +61,8 @@
                         </ListView>
                     </ScrollViewer>
                     <ScrollViewer Height="195" Margin="0,0,-0.333,0">
-                        <ListView  VerticalAlignment="Top" HorizontalAlignment="Stretch" Header="Appointments for Today"  Background="Brown"  x:Name="Appointment_Listview_today" Height="155" >
+                        <ListView  VerticalAlignment="Top"
+                                  BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Appointments for Today"  Background="Brown"  x:Name="Appointment_Listview_today" Height="155" >
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>

@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Networking;
 using BXP_MobileApp_WindowsPhone.Common;
 using BXP_MobileApp_WindowsPhone.ViewModel;
+using Windows.UI;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -25,21 +26,34 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// </summary>
     public sealed partial class HomePage : Page
     {
+      
         private NavigationHelper navigationHelper;
         public HomePage()
         {
-  
-            TestingBinding t = new TestingBinding();
             this.InitializeComponent();
-            this.DataContext = t;
-            t.test = "navy";
+    
+           
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
+        #region helpfulMethods
+        public static Windows.UI.Xaml.Media.SolidColorBrush GetColorFromHex(string hexaColor)
+        {
+            return new Windows.UI.Xaml.Media.SolidColorBrush(
+                Windows.UI.Color.FromArgb(
+                    255,
+                    Convert.ToByte(hexaColor.Substring(1, 2), 16),
+                    Convert.ToByte(hexaColor.Substring(3, 2), 16),
+                    Convert.ToByte(hexaColor.Substring(5, 2), 16)
+                )
+            );
+        }
+        #endregion
 
 
+        #region navigationMethods
         public NavigationHelper NavigationHelper
         {
             get { return this.navigationHelper; }
@@ -74,7 +88,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
         {
             Frame.Navigate(typeof(Critical));
         }
-
+        #endregion
 
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also

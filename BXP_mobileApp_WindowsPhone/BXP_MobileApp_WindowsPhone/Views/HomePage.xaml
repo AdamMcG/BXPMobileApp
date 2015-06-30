@@ -29,7 +29,7 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock FontFamily="{Binding _font}" Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
             <TextBlock Text="Main Page" Margin="0,-6.5,-0.167,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="81"/>
         </StackPanel>
 
@@ -38,7 +38,7 @@
             <TextBlock x:Name="Greeting_Text_Block" Foreground="white" FontStyle="Normal" FontSize="40"> Hi,(Bind name here)!</TextBlock>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,5,0">
-                    <Button Background="{Binding test}" Click="OpenToDo">To Do</Button>
+                    <Button x:Name="toDoButton" Background="{Binding _color}" Foreground="{Binding _font}" Click="OpenToDo">To Do</Button>
                     <Button Background="CornflowerBlue" Click="OpenToday">Today</Button>
                     <Button Background="CornflowerBlue" Click="OpenContacts">Contacts</Button>
                     <Button Background="red" Click="OpenBxp">Website</Button>
