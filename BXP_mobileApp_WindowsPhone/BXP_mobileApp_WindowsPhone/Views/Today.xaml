@@ -60,9 +60,9 @@
 
                         </ListView>
                     </ScrollViewer>
-                    <ScrollViewer Height="195" Margin="0,0,-0.333,0">
+                    <ScrollViewer Height="246" Margin="0,0,-0.333,0">
                         <ListView  VerticalAlignment="Top"
-                                  BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Appointments for Today"  Background="Brown"  x:Name="Appointment_Listview_today" Height="214" >
+                                  BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Appointments for Today"  Background="Brown"  x:Name="Appointment_Listview_today" Height="243" >
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
