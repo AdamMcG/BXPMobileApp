@@ -28,5 +28,11 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             set { myFont = value; }
             get { return myFont; }
         }
+        public string strUsername;
+        public string propStrUsername
+        {
+            get { return strUsername; }
+            set { strUsername = value; }
+        }
     }
 }

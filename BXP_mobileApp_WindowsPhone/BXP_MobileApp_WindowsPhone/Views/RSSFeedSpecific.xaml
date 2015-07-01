@@ -28,14 +28,15 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <Image Source="http://ww3.allnone.ie/client/client_allnone/images/Banner.jpg"/>
             <TextBlock Text="RSS Item" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
-            <StackPanel>
-                <TextBox HorizontalAlignment="Stretch" x:Name="RSS_Item_Content" Height="359"  Margin="10,10,10,10" Text="Content of RSS Item goes here"/>
+            <StackPanel x:Name="content_stack_panel">
+                <WebView x:Name="MyWebView"  Height="400" Margin="0,0,-0.333,0"
+                         Visibility="Visible" NavigationCompleted="MyWebView_NavigationCompleted" ContentLoading="MyWebView_ContentLoading"/>
                 <Button x:Name="Return_To_RSS_Feed" Background="CornflowerBlue" HorizontalAlignment="Center">Return</Button>
             </StackPanel>
         </Grid>

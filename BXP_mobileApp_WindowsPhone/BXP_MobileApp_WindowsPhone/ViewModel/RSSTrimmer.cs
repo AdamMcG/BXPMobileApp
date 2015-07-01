@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Windows.Foundation;
 using Windows.Web;
 using Windows.Web.Syndication;
@@ -12,29 +13,27 @@ namespace BXP_MobileApp_WindowsPhone.Model
 {
     class RSSTrimmer
     {
-        ObservableCollection<SyndicationItem> mycollection = new ObservableCollection<SyndicationItem>();
-        public ObservableCollection<SyndicationItem> _collection
+        ObservableCollection<SyndicationItem> syndItemcollection = new ObservableCollection<SyndicationItem>();
+        public ObservableCollection<SyndicationItem> propSynCollection
         {
-            get { return mycollection; }
+            get { return syndItemcollection; }
 
-            set { _collection = value; }
+            set { propSynCollection = value; }
         }
-        public async void testRss()
+        public async Task testRss()
         {
             try
             {
                 SyndicationClient client = new SyndicationClient();
                 client.BypassCacheOnRetrieve = true;
-
-                Uri RSSURI = new Uri("http://www.rte.ie/news/rss/news-headlines.xml");
-             SyndicationFeed addd = await client.RetrieveFeedAsync(RSSURI);
-             int check =0;
-             foreach (SyndicationItem feed in addd.Items)
+                Uri RSSURI = new Uri("http://ww3.allnone.ie/client/client_allnone/message/rssfeed.asp");
+                SyndicationFeed synRssFeed = await client.RetrieveFeedAsync(RSSURI);
+             foreach (SyndicationItem feed in synRssFeed.Items)
              {
-                 _collection.Add(feed);
-                 check++;
+                 propSynCollection.Add(feed); 
              }
-               
+ 
+             return;
             }
             catch (Exception e)
             {
@@ -45,7 +44,7 @@ namespace BXP_MobileApp_WindowsPhone.Model
 
             public async void awaitRSS()
             {
-                testRss();
+                await testRss();
             }
 
             public RSSTrimmer()

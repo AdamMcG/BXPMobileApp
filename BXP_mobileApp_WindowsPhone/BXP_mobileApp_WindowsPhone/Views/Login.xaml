@@ -27,7 +27,7 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <Image Source="http://ww3.allnone.ie/client/client_allnone/images/Banner.jpg"/>
             <TextBlock Text="Login" Margin="0,-6.5,0,26.5" 
                        Style="{ThemeResource HeaderTextBlockStyle}"
                        CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
@@ -40,9 +40,9 @@
                     <TextBlock Margin="10,10,10,10" FontSize="30" HorizontalAlignment="Center" Foreground="white">System</TextBlock>
                     <TextBox HorizontalAlignment="Stretch"></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Vertical"  >
+                <StackPanel x:Name="stackUsername" DataContext="{Binding viewStyling}" Orientation="Vertical"  >
                     <TextBlock Margin="10,10,10,10" FontSize="30" Foreground="white" HorizontalAlignment="Center" Width="135">Username</TextBlock>
-                    <TextBox HorizontalAlignment="Stretch" ></TextBox>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding propStrUsername,Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" >
                     <TextBlock Margin="10,10,10,10" HorizontalAlignment="Center" FontSize="30" Foreground="white">Password</TextBlock>

@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using BXP_MobileApp_WindowsPhone.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -23,6 +24,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// </summary>
     public sealed partial class Login : Page
     {
+        StylingViewModel viewStyling = new StylingViewModel();
         private NavigationHelper navigationHelper;
         public Login()
         {
@@ -31,6 +33,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 			
+            this.stackUsername.DataContext = viewStyling;
         }
 
 

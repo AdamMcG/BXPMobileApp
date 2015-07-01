@@ -30,9 +30,9 @@ namespace BXP_MobileApp_WindowsPhone
             private NavigationHelper navigationHelper;
         public MainPage()
         {
-            this.InitializeComponent();
             RSS.awaitRSS();
-            this.RSS_Feed_ListView.DataContext = RSS;   
+            this.InitializeComponent();
+            this.DataContext = RSS;   
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
@@ -97,6 +97,12 @@ namespace BXP_MobileApp_WindowsPhone
         private void Open_Login(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login));
+        }
+
+        private void RSSTapped(object sender, TappedRoutedEventArgs e)
+        {
+            int index = RSS_Feed_ListView.SelectedIndex;
+            Frame.Navigate(typeof(RSSFeedSpecific), RSS.propSynCollection.ElementAt(index));
         }
     }
 }

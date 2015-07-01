@@ -26,16 +26,17 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// </summary>
     public sealed partial class HomePage : Page
     {
-      
+         StylingViewModel viewStyling = new StylingViewModel();
         private NavigationHelper navigationHelper;
         public HomePage()
         {
-            this.InitializeComponent();
-    
-           
+
+            this.InitializeComponent();   
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            this.Greeting_Text_Block.Text = "Hi, " + viewStyling.propStrUsername;
+        
         }
 
         #region helpfulMethods

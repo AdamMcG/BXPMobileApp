@@ -11,11 +11,16 @@
 
     <Page.Resources>
         <DataTemplate x:Name="RSS_Feed_Item_Template">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom"  Width="400" Margin="0,0,0,0" 
-                            Background="#0C0B15">
-                <TextBlock>There is an RSS item here.</TextBlock>
-            </StackPanel>
+            <Border Background="White" BorderBrush="White" BorderThickness="1, 1, 1, 1">
+                <StackPanel x:Name="RSSItemPanel" DataContext="{Binding Title}" 
+                        Orientation="Vertical" HorizontalAlignment="Stretch"
+                        VerticalAlignment="Bottom" Height="50" Width="400" Margin="0,0,0,10" >
+                    <TextBlock HorizontalAlignment="Stretch"
+                               Text="{Binding Text }" Foreground="Black" FontSize="24" FontWeight="SemiBold" 
+        			Margin="10,10,0,0" VerticalAlignment="Center"
+        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
         </DataTemplate>
 
     </Page.Resources>
@@ -40,16 +45,16 @@
         </Grid.RowDefinitions>
 
         <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="RSS Feed Main" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
+        <StackPanel Grid.Row="0" Margin="10,0,9,0.333">
+            <Image Source="http://ww3.allnone.ie/client/client_allnone/images/Banner.jpg"/>
+            <TextBlock Text="Latest News!" Margin="0,-6.5,-0.167,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="69" />
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                <ListView ItemsSource="{Binding _collection}" 
-                          BorderBrush="AntiqueWhite" BorderThickness="1" Header="List of RSS items" Name="RSS_Feed_ListView" Margin="10,10,9.667,10" ItemTemplate="{ThemeResource RSS_Feed_Item_Template}"  Background="brown" Height="350">
+                <ListView ItemsSource="{Binding propSynCollection}" Tapped="RSSTapped"
+                          BorderBrush="AntiqueWhite" BorderThickness="1" Header="List of RSS items" Name="RSS_Feed_ListView" Margin="10,10,9.667,10" ItemTemplate="{ThemeResource RSS_Feed_Item_Template}"   Height="370">
 
                 </ListView>
                 <Button HorizontalAlignment="Center" Background="CornflowerBlue" Click="Open_Login">Login</Button>

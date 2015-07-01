@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Web.Syndication;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -86,6 +87,22 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            SyndicationItem syndItemdataContext = (SyndicationItem)e.Parameter;
+            this.DataContext = syndItemdataContext;
+            string display = "no content";
+
+            if (syndItemdataContext.Content != null)
+            {
+                display = syndItemdataContext.Content.Text;
+            }
+            else if (syndItemdataContext.Summary != null)
+            {
+                display = syndItemdataContext.Summary.Text;
+            }
+
+
+            MyWebView.NavigateToString(display);
+            
             this.navigationHelper.OnNavigatedTo(e);
         }
 
@@ -95,5 +112,22 @@ namespace BXP_MobileApp_WindowsPhone.Views
         }
 
         #endregion
+
+        private void MyWebView_ContentLoading(WebView sender, WebViewContentLoadingEventArgs args)
+        {
+           
+        }
+
+        private void MyWebView_NavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
+        {
+            if (args.IsSuccess == true)
+            {
+                
+            }
+            else
+            {
+                
+            }
+        }
     }
 }

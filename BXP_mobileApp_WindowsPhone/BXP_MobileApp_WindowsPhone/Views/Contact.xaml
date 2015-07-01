@@ -30,7 +30,7 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <Image Source="http://ww3.allnone.ie/client/client_allnone/images/Banner.jpg"/>
             <TextBlock Text="Contacts" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
@@ -39,8 +39,8 @@
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,10">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                     <TextBox x:Name="contact_To_Search" Foreground="Black" HorizontalAlignment="Stretch"
-                             Text="Enter Contact Here" Margin="0,10,10,0" Height="35" Width="225"/>
-                    <Button x:Name="button_to_search" HorizontalAlignment="Stretch" Background="CornflowerBlue">
+                             Text="Enter Contact Here" Margin="0,10,10,0" Height="35" Width="216"/>
+                    <Button x:Name="button_to_search" HorizontalAlignment="Stretch" Background="CornflowerBlue" Width="113">
                         Search
                     </Button>
                 </StackPanel>

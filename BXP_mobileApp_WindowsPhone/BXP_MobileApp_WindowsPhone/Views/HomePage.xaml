@@ -29,13 +29,13 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock FontFamily="{Binding _font}" Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <Image Source="http://ww3.allnone.ie/client/client_allnone/images/Banner.jpg"/>
             <TextBlock Text="Main Page" Margin="0,-6.5,-0.167,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="81"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.333,19,10" Background="Black">
-            <TextBlock x:Name="Greeting_Text_Block" Foreground="white" FontStyle="Normal" FontSize="40"> Hi,(Bind name here)!</TextBlock>
+            <TextBlock x:Name="Greeting_Text_Block" Foreground="white" FontStyle="Normal" FontSize="40" />
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,5,0">
                     <Button x:Name="toDoButton" Background="{Binding _color}" Foreground="{Binding _font}" Click="OpenToDo">To Do</Button>

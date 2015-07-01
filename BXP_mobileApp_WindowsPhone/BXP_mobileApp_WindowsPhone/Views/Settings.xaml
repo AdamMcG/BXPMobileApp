@@ -30,7 +30,7 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <Image Source="http://ww3.allnone.ie/client/client_allnone/images/Banner.jpg"/>
             <TextBlock Text="Settings" Margin="0,-6.5,-0.167,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="81"/>
         </StackPanel>
 
