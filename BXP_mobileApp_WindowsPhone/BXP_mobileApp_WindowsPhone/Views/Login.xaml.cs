@@ -91,6 +91,10 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.Parameter == typeof(StylingViewModel))
+            {
+                this.viewStyling = (StylingViewModel)e.Parameter;
+            }
             this.navigationHelper.OnNavigatedTo(e);
         }
 
@@ -103,7 +107,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
 
         private void LogIntoBxp(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(HomePage));
+            Frame.Navigate(typeof(HomePage), viewStyling);
         }
     }
 }

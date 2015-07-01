@@ -27,7 +27,7 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <Image Source="http://ww3.allnone.ie/client/client_allnone/images/Banner.jpg"/>
+            <Image VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source= "bxp-homepage-banner.png" Margin="0,0,-0.167,0"/>
             <TextBlock Text="Login" Margin="0,-6.5,0,26.5" 
                        Style="{ThemeResource HeaderTextBlockStyle}"
                        CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>

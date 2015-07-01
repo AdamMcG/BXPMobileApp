@@ -27,7 +27,7 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <Image Source="http://ww3.allnone.ie/client/client_allnone/images/Banner.jpg"/>
+            <Image Source= "bxp-homepage-banner.png"/>
             <TextBlock Text="To Do" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
         </StackPanel>
 
@@ -41,18 +41,13 @@
                 </StackPanel>
                 <ScrollViewer Height="433">
                     <ListView BorderBrush="AntiqueWhite" BorderThickness="1" VerticalAlignment="Top" Header="List Of Jobs To Do" Background="brown" 
-                          x:Name = "Listview_Of_Listees" Height="392"  >
+                          x:Name = "Listview_Of_Listees" Height="300"  >
                         <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                         <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                         <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                         <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                         <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
+                      
                     </ListView>
                 </ScrollViewer>
             </StackPanel>

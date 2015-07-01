@@ -35,7 +35,6 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-            this.Greeting_Text_Block.Text = "Hi, " + viewStyling.propStrUsername;
         
         }
 
@@ -135,6 +134,11 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.Parameter.GetType() == typeof(StylingViewModel))
+                this.viewStyling = (StylingViewModel)e.Parameter;
+ 
+            this.Greeting_Text_Block.Text = "Hi, " + viewStyling.propStrUsername;
+            
             this.navigationHelper.OnNavigatedTo(e);
         }
 

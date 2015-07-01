@@ -27,8 +27,8 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <Image Source="http://ww3.allnone.ie/client/client_allnone/images/Banner.jpg"/>
-            <TextBlock Text="Tomorrow" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <Image Source= "bxp-homepage-banner.png"/>
+            <TextBlock Text="Tomorrow" Margin="0,-6.5,0,20.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
@@ -39,7 +39,7 @@
                     <Button x:Name="addToDo" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="CornflowerBlue" Width="108" Click="openToDo">Add ToDo</Button>
                 </StackPanel>
                 <StackPanel>
-                    <ScrollViewer Margin="0,0,-0.333,0">
+                    <ScrollViewer Margin="0,0,-0.333,0" Height="193">
                         <ListView VerticalAlignment="Top" BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Listee's for Tomorrow" Margin="0,0,0,30" Background="CornflowerBlue" x:Name="Listee_Listview_Tomorrow" Height="155" >
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
@@ -52,7 +52,7 @@
 
                         </ListView>
                     </ScrollViewer>
-                    <ScrollViewer Height="195" Margin="0,0,-0.333,0">
+                    <ScrollViewer Height="238" Margin="0,0,-0.333,0">
                         <ListView  BorderBrush="AntiqueWhite" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Header="Appointments for Tomorrow"  Background="Brown"  x:Name="Appointment_Listview_tomorrow" Height="155" >
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                             <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
