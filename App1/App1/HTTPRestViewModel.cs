@@ -4,6 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Data.Xml;
+using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.Web.Http;
 
 namespace App1
@@ -32,11 +35,22 @@ namespace App1
             try
             {
                 HttpClient myClient = new HttpClient();
-                var Uri = new Uri("http://ww3.allnone.ie/client/client_allnone/message/atomfeed.asp");
-                var responseText = await myClient.GetStringAsync(Uri);
+                var Uri = new Uri("https://ww3.allnone.ie/client/client_demo/cti/userCTI_GenericEntry.asp");
+              //Send a get request to pull down information in format.
+                var response = await myClient.GetStringAsync(Uri);
+                var responseText = await myClient.GetAsync(Uri);
+
+                HttpStringContent a = new HttpStringContent("1234");
                 
-               myString = responseText;
-                int a = 001;
+                //send a post request to push up information for submission. 
+               var putrequest = await myClient.PostAsync(Uri,responseText.Content );
+
+                myString = putrequest.Content.ToString();
+
+                StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+               StorageFile File = await localFolder.CreateFileAsync("test.txt", CreationCollisionOption.ReplaceExisting);
+
+            
                 return;
             }
             catch (Exception e)
