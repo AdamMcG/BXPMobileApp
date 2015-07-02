@@ -14,12 +14,13 @@ namespace BXP_MobileApp_WindowsPhone.Model
     class RSSTrimmer
     {
         ObservableCollection<SyndicationItem> syndItemcollection = new ObservableCollection<SyndicationItem>();
-        public ObservableCollection<SyndicationItem> propSynCollection
-        {
+        public ObservableCollection<SyndicationItem> propSynCollection{
             get { return syndItemcollection; }
 
             set { propSynCollection = value; }
         }
+
+
         public async Task testRss()
         {
             try
