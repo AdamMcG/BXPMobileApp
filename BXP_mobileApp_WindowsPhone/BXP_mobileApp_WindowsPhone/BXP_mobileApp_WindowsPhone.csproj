@@ -86,7 +86,7 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
-    <Compile Include="ViewModel\HTTPRestViewModelcs.cs" />
+    <Compile Include="ViewModel\HTTPRestViewModel.cs" />
     <Compile Include="ViewModel\RSSTrimmer.cs" />
     <Compile Include="ViewModel\StylingViewModel.cs" />
     <Compile Include="Views\Contact.xaml.cs">
@@ -131,6 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AppSettings.txt" />
+    <Content Include="Assets\BadgeLogo.scale-100.png" />
+    <Content Include="Assets\ic_launcher.scale-100.png" />
+    <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Views\bxp-homepage-banner.png" />
     <Content Include="Assets\ic_launcher.scale-240.png" />
     <Content Include="Assets\Logo.scale-240.png" />

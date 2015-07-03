@@ -67,8 +67,12 @@ namespace App1
                 else
                     aString = "fail";
                 //Read Response as string
+                 
                 myString = await response.Content.ReadAsStringAsync();
-
+                StorageFolder folder = ApplicationData.Current.LocalFolder;
+                StorageFile File = await folder.CreateFileAsync("test.xml", CreationCollisionOption.ReplaceExisting);
+                await Windows.Storage.FileIO.WriteTextAsync(File, myString);
+                
                 return;
 
             }
