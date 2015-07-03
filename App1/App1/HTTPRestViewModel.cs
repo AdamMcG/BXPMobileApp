@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Windows.Data.Xml;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using Windows.Data.Xml.Dom;
 
 
 namespace App1
@@ -69,6 +70,7 @@ namespace App1
                 //Read Response as string
                  
                 myString = await response.Content.ReadAsStringAsync();
+              
                 StorageFolder folder = ApplicationData.Current.LocalFolder;
                 StorageFile File = await folder.CreateFileAsync("test.xml", CreationCollisionOption.ReplaceExisting);
                 await Windows.Storage.FileIO.WriteTextAsync(File, myString);
@@ -83,28 +85,6 @@ namespace App1
             }
       
         }
-
-
-   /*     public async void myHTTP2()
-        { 
-            Windows.Web.Http.HttpClient oHttpClient = new Windows.Web.Http.HttpClient();
-            Uri uri = new Uri("https://ww3.allnone.ie/client/client_demo/cti/userCTI_GenericEntry.asp"); // some Url
-            string stringXml= "...";  // some xml string
-            HttpRequestMessage mSent = new HttpRequestMessage(HttpMethod.Post, uri);
-        mSent.Content = 
-                        new HttpStringContent(String.Format("xml={0}", stringXml), 
-                        Windows.Storage.Streams.UnicodeEncoding.Utf8);
-
-HttpResponseMessage mReceived = await oHttpClient.SendRequestAsync(mSent,
-                                   HttpCompletionOption.ResponseContentRead);
-
-// to get the xml response:
-if (mReceived.IsSuccessStatusCode)
-{
-  string strXmlReturned = await mReceived.Content.ReadAsStringAsync();
-    myString = strXmlReturned;
-}
-        }*/
 
 
       

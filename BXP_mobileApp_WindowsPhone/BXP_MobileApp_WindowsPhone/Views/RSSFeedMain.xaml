@@ -11,7 +11,7 @@
 
     <Page.Resources>
         <DataTemplate x:Name="RSS_Feed_Item_Template">
-            <Border Background="White" BorderBrush="White" BorderThickness="1, 1, 1, 1">
+            <Border Background="White" BorderBrush="black" BorderThickness="3, 3, 3, 3">
                 <StackPanel x:Name="RSSItemPanel" DataContext="{Binding Title}" 
                         Orientation="Vertical" HorizontalAlignment="Stretch"
                         VerticalAlignment="Bottom" Height="50" Width="400" Margin="0,0,0,10" >
@@ -27,6 +27,9 @@
 
     <Page.BottomAppBar>
         <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="appbarbutton"/>
+            </CommandBar.SecondaryCommands>
             <AppBarButton Icon="Refresh" Label="Refresh RSS" Name="refreshRSS"/>
         </CommandBar>
     </Page.BottomAppBar>
