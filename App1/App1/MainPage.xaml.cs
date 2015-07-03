@@ -55,7 +55,7 @@ namespace App1
         private async void myButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             await myTest.myHTTP();
-            MessageDialog mymessage = new MessageDialog(myTest.myString);
+            MessageDialog mymessage = new MessageDialog(myTest.aString);
             await mymessage.ShowAsync();
         }
     }
