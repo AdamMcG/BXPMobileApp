@@ -10,9 +10,13 @@
 
     <Grid>
         <StackPanel>
-            <TextBox Name="myTextBox" TextWrapping="Wrap" TextAlignment="Left" Text="{Binding myString}" Margin="10,10,10,10" Height="468"/>
+            <TextBox Name="myTextBox" TextWrapping="Wrap" TextAlignment="Left" Text="{Binding myString}" Margin="10,10,10,10" Height="378"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Height="35" FontSize="30">Enter a Name:</TextBlock>
+                <TextBox HorizontalAlignment="Stretch" Width="199" Name="name_TextBlock"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button HorizontalAlignment="Center" Name="myButton" Margin="10,10,10,10" Tapped="myButton_Tapped" >GET Button</Button>
+                <Button HorizontalAlignment="Center"  Name="myButton" Margin="10,10,10,10" Tapped="myButton_Tapped" >GET Button</Button>
                 <Button HorizontalAlignment="Center" Name="myButton2" Tapped="myButton2_Tapped" >POST Button</Button>
             </StackPanel>
         </StackPanel>

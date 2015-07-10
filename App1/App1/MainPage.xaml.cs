@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
+using Windows.Web.Http;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
@@ -25,13 +26,12 @@ namespace App1
     /// </summary>
     public sealed partial class MainPage : Page
     {
-    
-            HTTPRestViewModel myTest = new HTTPRestViewModel();
-        
+        HTTPRestViewModel myTest = new HTTPRestViewModel();
+
         public MainPage()
         {
             this.InitializeComponent();
-            
+
             this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
@@ -42,7 +42,7 @@ namespace App1
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.DataContext = myTest;   
+            this.DataContext = myTest;
             // TODO: Prepare page for display here.
 
             // TODO: If your application contains multiple pages, ensure that you are
@@ -61,7 +61,34 @@ namespace App1
 
         private async void myButton2_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            await myTest.RESTcalls_POST_BXPAPI();
+            string[] nameString = name_TextBlock.Text.Split(' ');
+
+          
+            List<KeyValuePair<string, string>> contentList = new List<KeyValuePair<string, string>>();
+            contentList.Add(new KeyValuePair<string, string>("system", "formlogging"));
+            contentList.Add(new KeyValuePair<string, string>("user_id", "adammcgivern"));
+            contentList.Add(new KeyValuePair<string, string>("user_key", "password"));
+            contentList.Add(new KeyValuePair<string, string>("campaignid", "751"));
+
+            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_0_1", "1"));
+            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_1_1", nameString[0]));
+            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_2_1", "L"));
+            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_3_1", nameString[1]));
+
+            contentList.Add(new KeyValuePair<string, string>("Home", "22222"));
+            contentList.Add(new KeyValuePair<string, string>("workphone", "12322"));
+            contentList.Add(new KeyValuePair<string, string>("mobile", "0863222"));
+
+
+            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_0_10", "appartment 5"));
+            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_1_10", "Fake Road"));
+            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_2_10", "Tallaght"));
+            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_3_10", "25"));
+            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_4_10", "1"));
+
+            HttpFormUrlEncodedContent a = new HttpFormUrlEncodedContent(contentList);
+
+            await myTest.RESTcalls_POST_BXPAPI(a);
             MessageDialog mymessage = new MessageDialog(myTest.aString);
             await mymessage.ShowAsync();
         }
