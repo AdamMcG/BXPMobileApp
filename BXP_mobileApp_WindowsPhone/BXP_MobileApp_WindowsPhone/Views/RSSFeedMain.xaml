@@ -12,7 +12,7 @@
     <Page.Resources>
         <DataTemplate x:Name="RSS_Feed_Item_Template">
             <Border Background="White" BorderBrush="black" BorderThickness="3, 3, 3, 3">
-                <StackPanel x:Name="RSSItemPanel" DataContext="{Binding Title}" 
+                <StackPanel x:Name="RSSItemPanel" DataContext="{Binding Title}" Tapped="RSSTapped" 
                         Orientation="Vertical" HorizontalAlignment="Stretch"
                         VerticalAlignment="Bottom" Height="50" Width="400" Margin="0,0,0,10" >
                     <TextBlock HorizontalAlignment="Stretch"
@@ -56,7 +56,7 @@
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                <ListView ItemsSource="{Binding propSynCollection}" Tapped="RSSTapped"
+                <ListView ItemsSource="{Binding propSynCollection}" 
                           BorderBrush="AntiqueWhite" BorderThickness="1" Header="List of RSS items" Name="RSS_Feed_ListView" Margin="10,10,9.667,10" ItemTemplate="{ThemeResource RSS_Feed_Item_Template}"   Height="370">
 
                 </ListView>

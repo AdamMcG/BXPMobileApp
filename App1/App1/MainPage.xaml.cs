@@ -54,7 +54,14 @@ namespace App1
 
         private async void myButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            await myTest.myHTTP();
+            await myTest.RESTcalls_GET_BXPAPI();
+            MessageDialog mymessage = new MessageDialog(myTest.aString);
+            await mymessage.ShowAsync();
+        }
+
+        private async void myButton2_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            await myTest.RESTcalls_POST_BXPAPI();
             MessageDialog mymessage = new MessageDialog(myTest.aString);
             await mymessage.ShowAsync();
         }
