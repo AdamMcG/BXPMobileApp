@@ -48,30 +48,14 @@
                 </StackPanel>
                 <StackPanel>
                     <ScrollViewer Margin="0,0,-0.333,0" Height="188">
-                        <ListView VerticalAlignment="Top" BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Listee's for Today" Margin="0,0,0,30" Background="CornflowerBlue" x:Name="Listee_Listview_Today" Height="155" >
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-
+                        <ListView VerticalAlignment="Top" FontSize="19" BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Listee's for Today" Margin="0,0,0,30" Background="CornflowerBlue" x:Name="Listee_Listview_Today" Height="155" >
+                          
                         </ListView>
                     </ScrollViewer>
                     <ScrollViewer Height="246" Margin="0,0,-0.333,0">
                         <ListView  VerticalAlignment="Top"
-                                  BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Appointments for Today"  Background="Brown"  x:Name="Appointment_Listview_today" Height="243" >
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                            <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-
+                                  BorderBrush="AntiqueWhite" FontSize="19" BorderThickness="1" HorizontalAlignment="Stretch" Header="Appointments for Today"  Background="Brown"  x:Name="Appointment_Listview_today" Height="243" >
+                        
                         </ListView>
                     </ScrollViewer>
                 </StackPanel>

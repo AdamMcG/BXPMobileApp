@@ -11,6 +11,7 @@ using Windows.Web.Syndication;
 
 namespace BXP_MobileApp_WindowsPhone.Model
 {
+    //This class controls the list of RSS items for the RSS feed. 
     class RSSTrimmer
     {
         ObservableCollection<SyndicationItem> syndItemcollection = new ObservableCollection<SyndicationItem>();

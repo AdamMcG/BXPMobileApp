@@ -87,13 +87,17 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Model\Appointment.cs" />
+    <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\Listee.cs" />
     <Compile Include="Model\ToDo.cs" />
+    <Compile Include="ViewModel\AppointmentViewModel.cs" />
+    <Compile Include="ViewModel\ContactViewModel.cs" />
     <Compile Include="ViewModel\HTTPRestViewModel.cs" />
+    <Compile Include="ViewModel\ListeeViewModel.cs" />
     <Compile Include="ViewModel\RSSTrimmer.cs" />
     <Compile Include="ViewModel\StylingViewModel.cs" />
-    <Compile Include="Views\Contact.xaml.cs">
-      <DependentUpon>Contact.xaml</DependentUpon>
+    <Compile Include="Views\ContactPage.xaml.cs">
+      <DependentUpon>ContactPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Critical.xaml.cs">
       <DependentUpon>Critical.xaml</DependentUpon>
@@ -151,7 +155,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\Contact.xaml">
+    <Page Include="Views\ContactPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -42,7 +42,7 @@
                 </StackPanel>
                 <StackPanel x:Name="stackUsername" DataContext="{Binding viewStyling}" Orientation="Vertical"  >
                     <TextBlock Margin="10,10,10,10" FontSize="30" Foreground="white" HorizontalAlignment="Center" Width="135">Username</TextBlock>
-                    <TextBox HorizontalAlignment="Stretch" Text="{Binding propStrUsername,Mode=TwoWay}"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding strUserName,Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" >
                     <TextBlock Margin="10,10,10,10" HorizontalAlignment="Center" FontSize="30" Foreground="white">Password</TextBlock>

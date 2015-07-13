@@ -8,6 +8,8 @@ using Windows.Web.Http;
 
 namespace BXP_MobileApp_WindowsPhone.ViewModel
 {
+
+    /*this class controls the RESTful HTTP calls to the BXPAPI. */
     class HTTPRestViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = delegate { };

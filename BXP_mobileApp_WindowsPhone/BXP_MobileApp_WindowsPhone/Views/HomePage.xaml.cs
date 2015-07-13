@@ -137,7 +137,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
             if (e.Parameter.GetType() == typeof(StylingViewModel))
                 this.viewStyling = (StylingViewModel)e.Parameter;
  
-            this.Greeting_Text_Block.Text = "Hi, " + viewStyling.propStrUsername;
+            this.Greeting_Text_Block.Text = "Hi, " + viewStyling.strUserName;
             
             this.navigationHelper.OnNavigatedTo(e);
         }

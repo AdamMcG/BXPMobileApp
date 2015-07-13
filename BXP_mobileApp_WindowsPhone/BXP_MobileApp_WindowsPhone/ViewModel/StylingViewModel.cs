@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,29 +11,30 @@ using Windows.UI.Xaml.Media;
 
 namespace BXP_MobileApp_WindowsPhone.ViewModel
 {
-    class StylingViewModel
+    //This class controls the styling and configuration settings from the config file. 
+    class StylingViewModel: INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
+
+        public string userName;
+
+        public string strUserName
+        {
+            get { return userName; }
+            set { userName = value; }
+        }
+
+
         //Uses Solid color brush for coloring. 
-        public Brush myColor;
-
-        public Brush _color
+        public void NotifyPropertyChanged(string propertyName)
         {
-            get { return myColor; }
-            set { myColor = value; }
-        }
-
-        public FontFamily myFont;
-
-        public FontFamily _font
-        {
-            set { myFont = value; }
-            get { return myFont; }
-        }
-        public string strUsername;
-        public string propStrUsername
-        {
-            get { return strUsername; }
-            set { strUsername = value; }
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this,
+                    new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

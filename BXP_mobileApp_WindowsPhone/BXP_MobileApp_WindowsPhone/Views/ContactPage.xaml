@@ -45,17 +45,10 @@
                     </Button>
                 </StackPanel>
                 <ScrollViewer>
-                    <ListView x:Name="ListOfContacts" HorizontalAlignment="Stretch"
+                    <ListView FontSize="19" x:Name="ListOfContacts" HorizontalAlignment="Stretch"
                           Background="brown"
                               Header="List Of Contacts">
 
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
                     </ListView>
                 </ScrollViewer>
             </StackPanel>

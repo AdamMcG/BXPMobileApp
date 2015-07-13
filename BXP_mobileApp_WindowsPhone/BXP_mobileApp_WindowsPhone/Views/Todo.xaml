@@ -41,12 +41,8 @@
                 </StackPanel>
                 <ScrollViewer Height="433">
                     <ListView BorderBrush="AntiqueWhite" BorderThickness="1" VerticalAlignment="Top" Header="List Of Jobs To Do" Background="brown" 
-                          x:Name = "Listview_Of_Listees" Height="300"  >
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
-                        <ListViewItem BorderBrush="AntiqueWhite" BorderThickness="1">ggg</ListViewItem>
+                         FontSize="19" x:Name = "Listview_Of_Listees" Height="300"  >
+                       
                       
                     </ListView>
                 </ScrollViewer>
