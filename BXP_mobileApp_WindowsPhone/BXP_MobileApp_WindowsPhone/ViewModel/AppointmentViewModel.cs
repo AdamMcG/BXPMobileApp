@@ -7,6 +7,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Data.Xml.Dom;
+using Windows.Storage;
 
 namespace BXP_MobileApp_WindowsPhone.ViewModel
 {
@@ -24,10 +26,20 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
 
         }
 
-
-        public async Task fnParsingAppointmentList()
+        public async Task fnGetAppointments()
         {
+            HTTPRestViewModel oHttpViewModel = new HTTPRestViewModel();
+            string strAppointmentDocumentText = "";
+            string RESTAPIFunction = "";
+            await oHttpViewModel.RESTcalls_GET_BXPAPI(RESTAPIFunction, strAppointmentDocumentText);
+            StorageFile fAppointmentsXmlDocument = await ApplicationData.Current.LocalFolder.CreateFileAsync("Appointments.xml", CreationCollisionOption.ReplaceExisting);
+            await FileIO.WriteTextAsync(fAppointmentsXmlDocument, strAppointmentDocumentText);
+            await fnParsingAppointmentList(fAppointmentsXmlDocument);
+        }
 
+        public async Task fnParsingAppointmentList(StorageFile AppointmentXMLDocument)
+        {
+            var appointmentDocument = await XmlDocument.LoadFromFileAsync(AppointmentXMLDocument);
         }
 
 

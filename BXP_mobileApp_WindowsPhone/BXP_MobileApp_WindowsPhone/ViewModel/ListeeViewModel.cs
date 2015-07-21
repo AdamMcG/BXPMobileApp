@@ -23,13 +23,13 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         public async Task fnGetListees()
         {//Supply the http string for get request.
             string uGetToDoListItems = "https://ww3.allnone.ie/client/client_allnone/cti/userCTI_XML_AppFunctions.asp";
-           //Initialise httpViewModelObject. 
+            //Initialise httpViewModelObject. 
             HTTPRestViewModel oHttpViewModel = new HTTPRestViewModel();
             string myHttpResponse = "";
-           //Call the BXP_Get method to pull down XML.
+            //Call the BXP_Get method to pull down XML.
             await oHttpViewModel.RESTcalls_GET_BXPAPI(myHttpResponse, uGetToDoListItems);
             //For use of Windows.data.xml.dom, a storage file is needed. 
-            StorageFile todoXmlDocument = await ApplicationData.Current.LocalFolder.CreateFileAsync("ToDo.xml");
+            StorageFile todoXmlDocument = await ApplicationData.Current.LocalFolder.CreateFileAsync("ToDo.xml", CreationCollisionOption.ReplaceExisting);
             //Write to that file. 
             await FileIO.WriteTextAsync(todoXmlDocument, myHttpResponse);
             //Call the parsing method to parse through the XML string. This method may change. 
@@ -39,7 +39,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         public async Task fnparsingListeeList(StorageFile strXMLToParse)
         {
             var toDoXML = await XmlDocument.LoadFromFileAsync(strXMLToParse);
-      
+
         }
     }
 }
