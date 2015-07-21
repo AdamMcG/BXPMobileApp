@@ -31,6 +31,5 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         }
 
 
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
     }
 }

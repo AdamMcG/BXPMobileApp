@@ -11,7 +11,7 @@ namespace BXP_MobileApp_WindowsPhone.Model
     {
         public Contact() { }
 
-        public int intcontactID;
+        private int intcontactID;
         public int pintContactID
         {
             get { return intcontactID; }
@@ -20,6 +20,13 @@ namespace BXP_MobileApp_WindowsPhone.Model
                 intcontactID = value;
                 NotifyPropertyChanged("pintContactID");
             }
+        }
+
+        private string strContactName;
+        public string pstrContactName
+        {
+            get { return strContactName; }
+            set { strContactName = value; NotifyPropertyChanged("pstrContactName"); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
