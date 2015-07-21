@@ -90,18 +90,19 @@ namespace BXP_MobileApp_WindowsPhone.Views
             SyndicationItem syndItemdataContext = (SyndicationItem)e.Parameter;
             this.DataContext = syndItemdataContext;
             string display = "no content";
-
-            if (syndItemdataContext.Content != null)
-            {
-                display = syndItemdataContext.Content.Text;
-            }
-            else if (syndItemdataContext.Summary != null)
+            Uri uri = new Uri(syndItemdataContext.Id.ToString());
+            if(display == "no content")
             {
                 display = syndItemdataContext.Summary.Text;
+                MyWebView.NavigateToString(display);
+            }
+            else if (syndItemdataContext.Id != null)
+            {
+                 MyWebView.Navigate(uri);
+                
             }
 
 
-            MyWebView.NavigateToString(display);
             
             this.navigationHelper.OnNavigatedTo(e);
         }

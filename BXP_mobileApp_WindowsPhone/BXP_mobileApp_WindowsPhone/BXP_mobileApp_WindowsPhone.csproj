@@ -88,14 +88,15 @@
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\Contact.cs" />
-    <Compile Include="Model\Listee.cs" />
+    <Compile Include="Model\Ticket.cs" />
     <Compile Include="Model\ToDo.cs" />
     <Compile Include="ViewModel\AppointmentViewModel.cs" />
     <Compile Include="ViewModel\ContactViewModel.cs" />
     <Compile Include="ViewModel\HTTPRestViewModel.cs" />
     <Compile Include="ViewModel\ListeeViewModel.cs" />
-    <Compile Include="ViewModel\RSSTrimmer.cs" />
+    <Compile Include="ViewModel\RSSViewModel.cs" />
     <Compile Include="ViewModel\StylingViewModel.cs" />
+    <Compile Include="ViewModel\ticketViewModel.cs" />
     <Compile Include="Views\ContactPage.xaml.cs">
       <DependentUpon>ContactPage.xaml</DependentUpon>
     </Compile>

@@ -12,7 +12,7 @@ using Windows.Web.Syndication;
 namespace BXP_MobileApp_WindowsPhone.Model
 {
     //This class controls the list of RSS items for the RSS feed. 
-    class RSSTrimmer
+    class RSSViewModel
     {
         ObservableCollection<SyndicationItem> syndItemcollection = new ObservableCollection<SyndicationItem>();
         public ObservableCollection<SyndicationItem> propSynCollection{
@@ -24,23 +24,23 @@ namespace BXP_MobileApp_WindowsPhone.Model
 
         public async Task testRss()
         {
+
             try
             {
                 SyndicationClient client = new SyndicationClient();
                 client.BypassCacheOnRetrieve = true;
-                Uri RSSURI = new Uri("http://ww3.allnone.ie/client/client_allnone/message/rssfeed.asp");
-                SyndicationFeed synRssFeed = await client.RetrieveFeedAsync(RSSURI);
-             foreach (SyndicationItem feed in synRssFeed.Items)
-             {
-                 propSynCollection.Add(feed); 
-             }
- 
-             return;
+                SyndicationFeed synRssFeed;
+                synRssFeed = await client.RetrieveFeedAsync(new Uri("http://ww3.allnone.ie/client/client_allnone/message/rss2feed.asp"));
+                foreach (SyndicationItem feed in synRssFeed.Items)
+                    propSynCollection.Add(feed);
+
             }
             catch (Exception e)
             {
                 e.Message.ToString();
             }
+             return;
+           
         }
 
 
@@ -49,7 +49,7 @@ namespace BXP_MobileApp_WindowsPhone.Model
                 await testRss();
             }
 
-            public RSSTrimmer()
+            public RSSViewModel()
             {
             }
         }

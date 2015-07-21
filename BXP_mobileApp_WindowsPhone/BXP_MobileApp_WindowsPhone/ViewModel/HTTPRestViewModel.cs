@@ -13,23 +13,13 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
     class HTTPRestViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
-        public string myCheckString = "11111";
         public string aString;
 
-        public string myString
-        {
-            get { return myCheckString; }
-            set
-            {
-                myCheckString = value;
 
-                NotifyPropertyChanged("myString");
-            }
-        }
 
         public HTTPRestViewModel() { }
 
-        public async Task RESTcalls_POST_BXPAPI(string myfunction, List<KeyValuePair<string, string>> myParameters)
+        public async Task RESTcalls_POST_BXPAPI(string output, string myfunction, List<KeyValuePair<string, string>> myParameters)
         {
             try
             {
@@ -53,7 +43,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 else
                     aString = "fail";
                 //Read Response as string
-                myString = await response.Content.ReadAsStringAsync();
+               output = await response.Content.ReadAsStringAsync();
 
                 return;
 
@@ -67,7 +57,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             }
         }
 
-        public async Task RESTcalls_PUT_BXPAPI(string strmyFunction, List<KeyValuePair<string, string>> myParameters)
+        public async Task RESTcalls_PUT_BXPAPI(string output, string strmyFunction, List<KeyValuePair<string, string>> myParameters)
         {
             try
             {
@@ -83,7 +73,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                     aString = "Success!";
                 else
                     aString = "Fail!";
-                myString = await putResponse.Content.ReadAsStringAsync();
+                output = await putResponse.Content.ReadAsStringAsync();
                 return;
             }
             catch (Exception e)
@@ -94,7 +84,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             }
         }
 
-        public async Task RESTcalls_GET_BXPAPI(string strmyFunction)
+        public async Task RESTcalls_GET_BXPAPI(string output,string strmyFunction)
         {
             try
             {
@@ -102,7 +92,8 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 var Uri = new Uri(strmyFunction);
                 //Send a get request to pull down information in format.
                 var response = await myClient.GetStringAsync(Uri);
-                var responseText = await myClient.GetAsync(Uri);
+
+                output = response;
             }
             catch (Exception e)
             {

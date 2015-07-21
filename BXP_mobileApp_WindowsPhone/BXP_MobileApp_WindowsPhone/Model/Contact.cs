@@ -7,19 +7,30 @@ using System.Threading.Tasks;
 
 namespace BXP_MobileApp_WindowsPhone.Model
 {
-    class Contact: INotifyPropertyChanged
+    class Contact : INotifyPropertyChanged
     {
-        public Contact(){}
+        public Contact() { }
 
-       public event PropertyChangedEventHandler PropertyChanged = delegate { };
-       public void NotifyPropertyChanged(string propertyName)
-       {
-           PropertyChangedEventHandler handler = PropertyChanged;
-           if(handler != null)
-           {
-           handler(this, new PropertyChangedEventArgs(propertyName));
-           }
+        public int intcontactID;
+        public int pintContactID
+        {
+            get { return intcontactID; }
+            set
+            {
+                intcontactID = value;
+                NotifyPropertyChanged("pintContactID");
+            }
+        }
 
-       }
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        public void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+
+        }
     }
 }
