@@ -9,11 +9,16 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
+        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
+            <AppBarButton Icon="Add" Label="Add ToDo" Click="openToDo"/>
         </CommandBar>
     </Page.BottomAppBar>
-    <Grid x:Name="LayoutRoot">
+    <Page.Resources>
+        <DataTemplate x:Name="template_for_Listview">
 
+        </DataTemplate>
+    </Page.Resources>
+    <Grid x:Name="LayoutRoot">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -28,26 +33,20 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Tomorrow" Margin="0,-6.5,0,20.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="Tomorrow" Margin="0,-6.5,0,2.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
-            <StackPanel Margin="10,10,10,10">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0,0,9.667,10" Height="64" >
-                    <TextBlock FontSize="30" Margin="0,0,0,0" Width="221" Height="36"> Tomorrow</TextBlock>
-                    <Button x:Name="addToDo" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="CornflowerBlue" Width="108" Click="openToDo">Add ToDo</Button>
-                </StackPanel>
+            <StackPanel >
                 <StackPanel>
-                    <ScrollViewer Margin="0,0,-0.333,0" Height="193">
-                        <ListView FontSize="19" VerticalAlignment="Top" BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Listee's for Tomorrow" Margin="0,0,0,30" Background="CornflowerBlue" x:Name="Listee_Listview_Tomorrow" Height="155" >
-                           
-
+                    <ScrollViewer x:Name="ListeeScrollerTomorrow" Margin="0,0,-0.333,10" Height="210">
+                        <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding pColTomorrowToDoList}" FontSize="19" VerticalAlignment="Top" BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Listee's for Tomorrow" Margin="0,0,0,30" Background="CornflowerBlue" x:Name="Listee_Listview_Tomorrow" Height="200" >
                         </ListView>
                     </ScrollViewer>
-                    <ScrollViewer Height="238" Margin="0,0,-0.333,0">
-                        <ListView FontSize="19" BorderBrush="AntiqueWhite" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Header="Appointments for Tomorrow"  Background="Brown"  x:Name="Appointment_Listview_tomorrow" Height="155" >
-                          
+                    <ScrollViewer x:Name="AppointmentScrollerTomorrow"  Height="210" Margin="0,0,-0.333,0">
+                        <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding pColAppointmentTomorrow}" FontSize="19" BorderBrush="AntiqueWhite" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Header="Appointments for Tomorrow"  Background="Brown"  x:Name="Appointment_Listview_tomorrow" Height="200" >
+
 
                         </ListView>
                     </ScrollViewer>

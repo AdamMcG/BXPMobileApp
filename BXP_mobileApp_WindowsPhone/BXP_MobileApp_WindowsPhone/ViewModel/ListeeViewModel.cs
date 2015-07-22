@@ -1,6 +1,6 @@
 ﻿using BXP_MobileApp_WindowsPhone.Model;
 using BXP_MobileApp_WindowsPhone.ViewModel;
-using Windows.Data.Xml.Dom;
+using System.Xml.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,32 +13,86 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
 {
     class ListeeViewModel
     {
-        private ObservableCollection<ToDo> colTodoList;
+        public ListeeViewModel() {
+            for (int i = 0; i < 20; i++)
+            { 
+            ToDo mytest = new ToDo();
+            pColTodayToDoList.Add(mytest);
+            }
+        }
+
+        private ObservableCollection<ToDo> colTodoList = new ObservableCollection<ToDo>();
+        private ObservableCollection<ToDo> colTomorrowToDoList = new ObservableCollection<ToDo>();
+        private ObservableCollection<ToDo> colTodayToDoList = new ObservableCollection<ToDo>();
+
         public ObservableCollection<ToDo> pColTodolist
         {
             get { return colTodoList; }
             set { colTodoList = value; }
         }
+        public ObservableCollection<ToDo> pColTomorrowToDoList
+        {
+            get { return colTomorrowToDoList; }
+            set { colTomorrowToDoList = value; }
+        }
+        public ObservableCollection<ToDo> pColTodayToDoList
+        {
+            get { return colTodayToDoList; }
+            set { colTodayToDoList = value; }
 
-        public async Task fnGetListees()
-        {//Supply the http string for get request.
-            string uGetToDoListItems = "https://ww3.allnone.ie/client/client_allnone/cti/userCTI_XML_AppFunctions.asp";
-            //Initialise httpViewModelObject. 
-            HTTPRestViewModel oHttpViewModel = new HTTPRestViewModel();
-            string myHttpResponse = "";
-            //Call the BXP_Get method to pull down XML.
-            await oHttpViewModel.RESTcalls_GET_BXPAPI(myHttpResponse, uGetToDoListItems);
-            //For use of Windows.data.xml.dom, a storage file is needed. 
-            StorageFile todoXmlDocument = await ApplicationData.Current.LocalFolder.CreateFileAsync("ToDo.xml", CreationCollisionOption.ReplaceExisting);
-            //Write to that file. 
-            await FileIO.WriteTextAsync(todoXmlDocument, myHttpResponse);
-            //Call the parsing method to parse through the XML string. This method may change. 
-            await fnparsingListeeList(todoXmlDocument);
         }
 
-        public async Task fnparsingListeeList(StorageFile strXMLToParse)
+        //This is for pulling down the total Set of listees.
+        public async Task fnGetListees()
         {
-            var toDoXML = await XmlDocument.LoadFromFileAsync(strXMLToParse);
+            string uGetToDoListItems = "https://ww3.allnone.ie/client/client_allnone/cti/userCTI_XML_AppFunctions.asp";
+            HTTPRestViewModel oHttpViewModel = new HTTPRestViewModel();
+            string myHttpResponse = "";
+            List<KeyValuePair<string, string>> kvListOfParameters = new List<KeyValuePair<string, string>>();
+
+            KeyValuePair<string, string> kvMyParameter = new KeyValuePair<string, string>("strFunction",
+                "GetSessionId, ToDo_today,Diary_Today,Diary_Tomorrow,Diary_ThisWeek");
+            kvListOfParameters.Add(kvMyParameter);
+            kvMyParameter = new KeyValuePair<string, string>("strUsername", "abc123");
+            kvListOfParameters.Add(kvMyParameter);
+            kvMyParameter = new KeyValuePair<string, string>("strPassword", "abc123");
+            kvListOfParameters.Add(kvMyParameter);
+
+            await oHttpViewModel.RESTcalls_GET_BXPAPI_with_parameters
+                (myHttpResponse, uGetToDoListItems, kvListOfParameters);
+
+            fnparsingListeeList(myHttpResponse);
+            return;
+        }
+
+        //This is for parsing the listee Xml File.
+        public void fnparsingListeeList(string strXMLToParse)
+        {
+
+            XElement recordElement = XDocument.Parse(strXMLToParse, LoadOptions.PreserveWhitespace).Root.Element("data");
+            var collectionOfElements = recordElement.Elements("record");
+
+            foreach (XElement record in collectionOfElements)
+            {
+                string id = record.Element("intId").Value;
+                int intId = Int32.Parse(id);
+                string type = record.Element("strType").Value;
+                string from = record.Element("dtefrom").Value;
+                DateTime dteFrom = DateTime.Parse(from);
+                string to = record.Element("dteto").Value;
+                DateTime dteTo = DateTime.Parse(to);
+                string strSubject = record.Element("strSubject").Value;
+                string strBody = record.Element("strBody").Value;
+                string strLink = record.Element("strLink").Value;
+                string strData = record.Element("strData").Value;
+                ToDo xmlObject = new ToDo(intId, type, dteFrom, dteTo, strSubject, strBody, strLink, strData);
+                pColTodolist.Add(xmlObject);
+            }
+        }
+
+        //This is to post a new listee up to the BXPAPI system.
+        public void fnPostingNewListeeToSystem(string ListeeToAdd)
+        {
 
         }
     }

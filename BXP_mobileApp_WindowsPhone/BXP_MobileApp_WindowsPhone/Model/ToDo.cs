@@ -10,7 +10,18 @@ namespace BXP_MobileApp_WindowsPhone.Model
     class ToDo : INotifyPropertyChanged
     {
         public ToDo()
-        { }
+        { strTodosubject = "This is a test"; }
+
+        public ToDo(int id, string type, DateTime from, DateTime to, string subject, string body, string link, string data)
+        {
+            intToDoID = id;
+            dtetodoFrom = from;
+            dtetodoTo = to;
+            strTodosubject = subject;
+            strtoDoBody = body;
+            strToDoLink = link;
+            strToDoData = data;
+        }
 
         private int toDoID;
         public int intToDoID
@@ -21,7 +32,14 @@ namespace BXP_MobileApp_WindowsPhone.Model
                 toDoID = value; NotifyPropertyChanged("intToDoID");
             }
         }
-     
+
+        private string todoType;
+        public string strTodoType
+        {
+            get { return todoType; }
+            set { todoType = value; NotifyPropertyChanged("strtodoType"); }
+        }
+
         private DateTime toDoFrom;
         public DateTime dtetodoFrom
         {

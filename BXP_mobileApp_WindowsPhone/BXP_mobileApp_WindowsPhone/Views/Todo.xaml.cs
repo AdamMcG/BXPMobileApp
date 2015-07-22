@@ -1,4 +1,5 @@
 ﻿using BXP_MobileApp_WindowsPhone.Common;
+using BXP_MobileApp_WindowsPhone.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,16 +24,16 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// </summary>
     public sealed partial class ToDo : Page
     {
-             private NavigationHelper navigationHelper;
+        private NavigationHelper navigationHelper;
+         ListeeViewModel oListeeViewModel = new ListeeViewModel();
         public ToDo()
         {
+            this.DataContext = oListeeViewModel;
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
-
-
 
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
@@ -95,5 +96,10 @@ namespace BXP_MobileApp_WindowsPhone.Views
         }
 
         #endregion
+
+        private void Insert_Listee_Click(object sender, RoutedEventArgs e)
+        {
+            oListeeViewModel.fnPostingNewListeeToSystem(this.Listee_Name_Here.Text);
+        }
     }
 }

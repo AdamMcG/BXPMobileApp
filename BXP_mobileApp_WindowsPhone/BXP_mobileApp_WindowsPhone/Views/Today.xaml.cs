@@ -1,4 +1,5 @@
 ﻿using BXP_MobileApp_WindowsPhone.Common;
+using BXP_MobileApp_WindowsPhone.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,16 +24,17 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// </summary>
     public sealed partial class Today : Page
     {
-             private NavigationHelper navigationHelper;
+        private NavigationHelper navigationHelper;
+        AppointmentViewModel oAppointmentViewModel = new AppointmentViewModel();
+        ListeeViewModel oListeeViewModel = new ListeeViewModel();
         public Today()
         {
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-			
-			
-			
             this.InitializeComponent();
+            this.AppointmentScroller.DataContext = oAppointmentViewModel;
+            this.ListeeScroller.DataContext = oListeeViewModel;
         }
 
 

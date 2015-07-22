@@ -1,4 +1,5 @@
 ﻿using BXP_MobileApp_WindowsPhone.Common;
+using BXP_MobileApp_WindowsPhone.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,17 +25,15 @@ namespace BXP_MobileApp_WindowsPhone.Views
     public sealed partial class Contact : Page
     {
         private NavigationHelper navigationHelper;
-        
-        
+         ContactViewModel oContactViewModel = new ContactViewModel();
         public Contact()
         {
+            this.DataContext = oContactViewModel;
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
             this.InitializeComponent();
         }
-
-
 
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
@@ -97,5 +96,10 @@ namespace BXP_MobileApp_WindowsPhone.Views
         }
 
         #endregion
+
+        private void SearchForContact(object sender, RoutedEventArgs e)
+        {
+            oContactViewModel.fnGetContactList(contact_To_Search.Text);
+        }
     }
 }

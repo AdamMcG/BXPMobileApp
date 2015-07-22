@@ -11,9 +11,19 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
     {
         public ticketViewModel() { }
 
-        public void fnAddTicketToSystem(string strSubject, string strDescription)
-        { 
-        
+        //pull data from the ticket GUI, post up to the function to add the ticket to the system.
+        public async Task fnAddTicketToSystem(string strSubject, string strDescription)
+        {
+            HTTPRestViewModel ohttpRestViewModel = new HTTPRestViewModel();
+            List<KeyValuePair<string, string>> kvMyParameterList = new List<KeyValuePair<string, string>>();
+            KeyValuePair<string, string> kvMyParameter = new KeyValuePair<string, string>("subject", strSubject);
+            kvMyParameterList.Add(kvMyParameter);
+            kvMyParameter = new KeyValuePair<string, string>("description", strDescription);
+            kvMyParameterList.Add(kvMyParameter);
+            string strXMLDocument = "";
+            string strMyFunction = "";
+            await ohttpRestViewModel.RESTcalls_POST_BXPAPI(strXMLDocument, strMyFunction, kvMyParameterList);
+
         }
     }
 }

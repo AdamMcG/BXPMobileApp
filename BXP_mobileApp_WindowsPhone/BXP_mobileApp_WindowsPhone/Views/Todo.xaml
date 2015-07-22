@@ -9,9 +9,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
+        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
+            <AppBarButton x:Name="ToDoInsertButton" Icon="Add" Label="Add ToDo" Click="Insert_Listee_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
+
+
+    <Page.Resources>
+        <DataTemplate x:Name="template_for_Listview">
+
+
+        </DataTemplate>
+    </Page.Resources>
     <Grid x:Name="LayoutRoot">
 
         <Grid.ChildrenTransitions>
@@ -28,22 +37,21 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="To Do" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
+            <TextBlock Text="To Do" Margin="0,-6.5,0,2.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.833,19,0" >
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,0,20" HorizontalAlignment="Stretch"
                            >
-                    <TextBox x:Name="Listee_Name_Here" Width="196" Margin="0,10,10,10" HorizontalAlignment="Stretch" Text="Listee"/>
-                    <Button x:Name="Insert_Listee" Background="CornflowerBlue" Width="30">Insert</Button>
+                    <TextBox x:Name="Listee_Name_Here" Width="356" Margin="0,10,10,10" HorizontalAlignment="Center" Text="Listee"/>
                 </StackPanel>
                 <ScrollViewer Height="433">
-                    <ListView BorderBrush="AntiqueWhite" BorderThickness="1" VerticalAlignment="Top" Header="List Of Jobs To Do" Background="brown" 
-                         FontSize="19" x:Name = "Listview_Of_Listees" Height="300"  >
-                       
-                      
+                    <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding pColTodoList}" BorderBrush="AntiqueWhite" BorderThickness="1" VerticalAlignment="Top" Header="List Of Jobs To Do" Background="brown" 
+                         FontSize="19" x:Name = "Listview_Of_Listees" Height="331"  >
+
+
                     </ListView>
                 </ScrollViewer>
             </StackPanel>

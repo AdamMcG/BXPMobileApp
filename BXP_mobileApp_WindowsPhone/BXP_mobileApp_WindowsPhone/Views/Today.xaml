@@ -10,7 +10,8 @@
 
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
+        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
+            <AppBarButton Icon="Add" Label="Add ToDo" Click="openTodo"/>
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -41,21 +42,18 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <StackPanel Margin="10,10,10,10">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0,0,9.667,10" Height="64" >
-                    <TextBlock FontSize="30" Margin="0,0,0,0" Width="221" Height="36"> Today</TextBlock>
-                    <Button x:Name="addToDo" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="CornflowerBlue" Width="108" Click="openTodo">Add ToDo</Button>
-                </StackPanel>
+            <StackPanel Margin="0,0,0,0">
+
                 <StackPanel>
-                    <ScrollViewer Margin="0,0,-0.333,0" Height="188">
-                        <ListView VerticalAlignment="Top" FontSize="19" BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Listee's for Today" Margin="0,0,0,30" Background="CornflowerBlue" x:Name="Listee_Listview_Today" Height="155" >
-                          
+                    <ScrollViewer x:Name="ListeeScroller" Margin="0,0,-0.333,20" Height="200">
+                        <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding pColTodayToDoList}" VerticalAlignment="Top" FontSize="19" BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Listee's for Today" Margin="0,0,0,30" Background="CornflowerBlue" x:Name="Listee_Listview_Today" Height="200" >
+
                         </ListView>
                     </ScrollViewer>
-                    <ScrollViewer Height="246" Margin="0,0,-0.333,0">
-                        <ListView  VerticalAlignment="Top"
-                                  BorderBrush="AntiqueWhite" FontSize="19" BorderThickness="1" HorizontalAlignment="Stretch" Header="Appointments for Today"  Background="Brown"  x:Name="Appointment_Listview_today" Height="243" >
-                        
+                    <ScrollViewer x:Name="AppointmentScroller" Height="200" Margin="0,0,-0.333,0">
+                        <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding pColAppointmentToday}" VerticalAlignment="Top"
+                                  BorderBrush="AntiqueWhite" FontSize="19" BorderThickness="1" HorizontalAlignment="Stretch" Header="Appointments for Today"  Background="Brown"  x:Name="Appointment_Listview_today" Height="200" >
+
                         </ListView>
                     </ScrollViewer>
                 </StackPanel>

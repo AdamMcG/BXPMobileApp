@@ -12,17 +12,21 @@ using Windows.UI.Xaml.Media;
 namespace BXP_MobileApp_WindowsPhone.ViewModel
 {
     //This class controls the styling and configuration settings from the config file. 
-    class StylingViewModel: INotifyPropertyChanged
+    class StylingViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
 
-        public string userName;
+        private string userName;
 
         public string strUserName
         {
             get { return userName; }
-            set { userName = value; }
+            set
+            {
+                userName = value;
+                NotifyPropertyChanged("strUserName");
+            }
         }
 
 

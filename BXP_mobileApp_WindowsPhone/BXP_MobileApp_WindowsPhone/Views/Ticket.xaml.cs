@@ -1,9 +1,11 @@
 ﻿using BXP_MobileApp_WindowsPhone.Common;
+using BXP_MobileApp_WindowsPhone.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -23,9 +25,10 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// </summary>
     public sealed partial class Ticket : Page
     {
-            private NavigationHelper navigationHelper;
+        private NavigationHelper navigationHelper;
+         ticketViewModel oTicketViewModel = new ticketViewModel();
         public Ticket()
-        { 
+        {
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
@@ -95,5 +98,10 @@ namespace BXP_MobileApp_WindowsPhone.Views
         }
 
         #endregion
+
+        private void AddTicketCLick(object sender, RoutedEventArgs e)
+        {
+         Task t =  oTicketViewModel.fnAddTicketToSystem(Subject_Box.Text,Description_Field.Text);
+        }
     }
 }

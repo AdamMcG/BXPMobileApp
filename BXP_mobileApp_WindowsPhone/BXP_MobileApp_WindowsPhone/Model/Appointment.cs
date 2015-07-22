@@ -14,6 +14,18 @@ namespace BXP_MobileApp_WindowsPhone.Model
 
         }
 
+        public Appointment(int id, string name, DateTime from, DateTime to, string subject, string body, string link, string data)
+        {
+            pintAppointmentID = id;
+            pstrAppointmentName = name;
+            pdteFrom = from;
+            pdteTo = to;
+            pstrSubject = subject;
+            pstrBody = body;
+            pstrLink = link;
+            pstrData = data;
+        }
+
         private int intAppointmentid;
         public int pintAppointmentID
         {

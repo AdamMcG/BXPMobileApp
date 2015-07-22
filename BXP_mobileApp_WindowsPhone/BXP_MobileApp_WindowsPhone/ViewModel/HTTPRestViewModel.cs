@@ -15,8 +15,6 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public string aString;
 
-
-
         public HTTPRestViewModel() { }
 
         public async Task RESTcalls_POST_BXPAPI(string output, string myfunction, List<KeyValuePair<string, string>> myParameters)
@@ -43,7 +41,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 else
                     aString = "fail";
                 //Read Response as string
-               output = await response.Content.ReadAsStringAsync();
+                output = await response.Content.ReadAsStringAsync();
 
                 return;
 
@@ -70,9 +68,9 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
 
                 HttpResponseMessage putResponse = await myClient.SendRequestAsync(putRequest, HttpCompletionOption.ResponseContentRead);
                 if (putResponse.IsSuccessStatusCode)
-                    aString = "Success!";
+                    aString = "Success";
                 else
-                    aString = "Fail!";
+                    aString = "Fail";
                 output = await putResponse.Content.ReadAsStringAsync();
                 return;
             }
@@ -84,7 +82,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             }
         }
 
-        public async Task RESTcalls_GET_BXPAPI(string output,string strmyFunction)
+        public async Task RESTcalls_GET_BXPAPI(string output, string strmyFunction)
         {
             try
             {
@@ -94,6 +92,32 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 var response = await myClient.GetStringAsync(Uri);
 
                 output = response;
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+                e.Source.ToString();
+                e.HelpLink.ToString();
+            }
+        }
+
+        public async Task RESTcalls_GET_BXPAPI_with_parameters(string output, string strmyFunction, List<KeyValuePair<string, string>> myParameters)
+        {
+            try
+            {
+                HttpClient myClient = new HttpClient();
+                var uri = new Uri(strmyFunction);
+                var encodedContent = new HttpFormUrlEncodedContent(myParameters);
+                HttpRequestMessage httpGetRequest = new HttpRequestMessage(new HttpMethod("GET"), uri);
+                httpGetRequest.Content = encodedContent;
+                HttpResponseMessage getWithParametersResponse = await myClient.SendRequestAsync(httpGetRequest, HttpCompletionOption.ResponseContentRead);
+                if (getWithParametersResponse.IsSuccessStatusCode)
+                    aString = "Success!";
+                else
+                    aString = "Failure!";
+
+                output = await getWithParametersResponse.Content.ReadAsStringAsync();
+                return;
             }
             catch (Exception e)
             {
