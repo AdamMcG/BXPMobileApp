@@ -27,6 +27,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
         private NavigationHelper navigationHelper;
         AppointmentViewModel oAppointmentViewModel = new AppointmentViewModel();
         ListeeViewModel oListeeViewModel = new ListeeViewModel();
+        StylingViewModel oStylingViewModel = new StylingViewModel();
         public Today()
         {
             this.navigationHelper = new NavigationHelper(this);
@@ -35,6 +36,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.InitializeComponent();
             this.AppointmentScroller.DataContext = oAppointmentViewModel;
             this.ListeeScroller.DataContext = oListeeViewModel;
+            
         }
 
 

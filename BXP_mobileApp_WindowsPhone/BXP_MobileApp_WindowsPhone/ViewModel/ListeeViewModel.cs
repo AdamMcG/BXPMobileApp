@@ -8,16 +8,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.UI.Xaml.Media;
 
 namespace BXP_MobileApp_WindowsPhone.ViewModel
 {
     class ListeeViewModel
     {
-        public ListeeViewModel() {
-            for (int i = 0; i < 20; i++)
-            { 
-            ToDo mytest = new ToDo();
-            pColTodayToDoList.Add(mytest);
+        public ListeeViewModel()
+        {
+            try
+            {
+
+                for (int i = 0; i < 20; i++)
+                {
+                    ToDo mytest = new ToDo();
+                    mytest.strTodosubject = mytest.strTodosubject + ": " + i;
+                    mytest.styleMyStyle.brusTextForeground = new SolidColorBrush(Windows.UI.Colors.BlueViolet);
+                    pColTodayToDoList.Add(mytest);
+                }
+            }
+            catch (Exception e)
+            {
+                
+                e.Message.ToString();
             }
         }
 
@@ -86,7 +99,20 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 string strLink = record.Element("strLink").Value;
                 string strData = record.Element("strData").Value;
                 ToDo xmlObject = new ToDo(intId, type, dteFrom, dteTo, strSubject, strBody, strLink, strData);
-                pColTodolist.Add(xmlObject);
+
+                if (dteTo == DateTime.Now)
+                {
+                    pColTodolist.Add(xmlObject);
+                    pColTodayToDoList.Add(xmlObject);
+                }
+                else if (dteTo == DateTime.Now.AddDays(1))
+                {
+                    pColTomorrowToDoList.Add(xmlObject);
+                    pColTodolist.Add(xmlObject);
+                }
+                else
+                    pColTodolist.Add(xmlObject);
+
             }
         }
 

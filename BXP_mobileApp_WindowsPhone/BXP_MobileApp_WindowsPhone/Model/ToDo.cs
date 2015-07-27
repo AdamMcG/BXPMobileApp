@@ -1,16 +1,23 @@
-﻿using System;
+﻿using BXP_MobileApp_WindowsPhone.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Media;
 
 namespace BXP_MobileApp_WindowsPhone.Model
 {
     class ToDo : INotifyPropertyChanged
     {
         public ToDo()
-        { strTodosubject = "This is a test"; }
+        {
+            strTodoType = "Reminder";
+            strTodosubject = "This is a test";
+
+        }
+
 
         public ToDo(int id, string type, DateTime from, DateTime to, string subject, string body, string link, string data)
         {
@@ -21,6 +28,14 @@ namespace BXP_MobileApp_WindowsPhone.Model
             strtoDoBody = body;
             strToDoLink = link;
             strToDoData = data;
+        }
+
+
+        private StylingViewModel myStyle = new StylingViewModel();
+        public StylingViewModel styleMyStyle
+        {
+            get { return myStyle; }
+            set { myStyle = value; }
         }
 
         private int toDoID;

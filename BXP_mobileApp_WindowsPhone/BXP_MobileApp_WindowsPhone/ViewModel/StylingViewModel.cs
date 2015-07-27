@@ -16,9 +16,20 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
+        public StylingViewModel()
+        {
+            brusTextForeground = new SolidColorBrush(Windows.UI.Colors.Yellow);
+        }
 
         private string userName;
-
+        private SolidColorBrush textForeground;
+        public SolidColorBrush brusTextForeground
+        {
+            get { return textForeground; }
+            set { textForeground = value;
+            NotifyPropertyChanged("textForeground");
+            }
+        }
         public string strUserName
         {
             get { return userName; }
