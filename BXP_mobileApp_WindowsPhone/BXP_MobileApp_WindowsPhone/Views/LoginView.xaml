@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="BXP_MobileApp_WindowsPhone.Views.Login"
+    x:Class="BXP_MobileApp_WindowsPhone.Views.LoginView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BXP_MobileApp_WindowsPhone.Views"
@@ -38,17 +38,17 @@
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="44,10,55,9" Width="263">
                 <StackPanel Orientation="Vertical">
                     <TextBlock Margin="10,10,10,10" FontSize="30" HorizontalAlignment="Center" Foreground="white">System</TextBlock>
-                    <TextBox HorizontalAlignment="Stretch"></TextBox>
+                    <TextBox x:Name="systemTextBox" HorizontalAlignment="Stretch"></TextBox>
                 </StackPanel>
                 <StackPanel x:Name="stackUsername" DataContext="{Binding viewStyling}" Orientation="Vertical"  >
                     <TextBlock Margin="10,10,10,10" FontSize="30" Foreground="white" HorizontalAlignment="Center" Width="135">Username</TextBlock>
-                    <TextBox HorizontalAlignment="Stretch" Text="{Binding strUserName,Mode=TwoWay}"/>
+                    <TextBox x:Name="UsernameTextBox"  HorizontalAlignment="Stretch" Text="{Binding strUserName,Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" >
                     <TextBlock Margin="10,10,10,10" HorizontalAlignment="Center" FontSize="30" Foreground="white">Password</TextBlock>
-                    <PasswordBox HorizontalAlignment="Stretch"  ></PasswordBox>
+                    <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Stretch"  ></PasswordBox>
                 </StackPanel>
-                <Button VerticalAlignment="Center" HorizontalAlignment="Center" Background="Blue" Click="LogIntoBxp">Login</Button>
+                <Button x:Name="loginclickbutton" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Blue" Click="LogIntoBxp">Login</Button>
             </StackPanel>
         </Grid>
     </Grid>

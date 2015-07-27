@@ -22,7 +22,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             kvMyParameterList.Add(kvMyParameter);
             string strXMLDocument = "";
             string strMyFunction = "";
-            await ohttpRestViewModel.RESTcalls_POST_BXPAPI(strXMLDocument, strMyFunction, kvMyParameterList);
+         strXMLDocument = await ohttpRestViewModel.RESTcalls_POST_BXPAPI( strMyFunction, kvMyParameterList);
 
         }
     }

@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using BXP_MobileApp_WindowsPhone.ViewModel;
+using BXP_MobileApp_WindowsPhone.Model;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -22,11 +24,12 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Login : Page
+    public sealed partial class LoginView : Page
     {
         StylingViewModel viewStyling = new StylingViewModel();
+        SettingsViewModel viewSetting = new SettingsViewModel();
         private NavigationHelper navigationHelper;
-        public Login()
+        public LoginView()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
@@ -35,9 +38,6 @@ namespace BXP_MobileApp_WindowsPhone.Views
 			
             this.stackUsername.DataContext = viewStyling;
         }
-
-
-
 
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
@@ -105,9 +105,27 @@ namespace BXP_MobileApp_WindowsPhone.Views
 
         #endregion
 
-        private void LogIntoBxp(object sender, RoutedEventArgs e)
+        private async void LogIntoBxp(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(HomePage), viewStyling);
+            string password = PasswordBox.Password;
+            string strSystem = "client_" + systemTextBox.Text;
+            Boolean boolCheck = await viewSetting.fn_retrieveLoginSessionID(strSystem, UsernameTextBox.Text, password);
+                Login myLogin = Login.Instance;
+            if (boolCheck == true)
+            {
+                string strSessionId = "Your session id for this session is:" + myLogin.propStrClient_SessionField;
+                   MessageDialog mymessage = new MessageDialog(strSessionId);
+                await mymessage.ShowAsync();
+                Frame.Navigate(typeof(HomePage), viewStyling);
+            }
+            else
+            {
+                string strErrorString = "Error. Error was \n" + myLogin.propIntClient_Id + " : " + myLogin.propStrError;
+                MessageDialog mymessage = new MessageDialog(strErrorString);
+                await mymessage.ShowAsync();
+            }
         }
+
+
     }
 }

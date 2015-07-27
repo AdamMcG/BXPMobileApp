@@ -60,7 +60,7 @@
                           BorderBrush="AntiqueWhite" BorderThickness="1" Header="List of RSS items" Name="RSS_Feed_ListView" Margin="10,10,9.667,10" ItemTemplate="{ThemeResource RSS_Feed_Item_Template}"   Height="370">
 
                 </ListView>
-                <Button HorizontalAlignment="Center" Background="CornflowerBlue" Click="Open_Login">Login</Button>
+                <Button x:Name="loginButton" HorizontalAlignment="Center" Background="CornflowerBlue" Click="Open_Login">Login</Button>
             </StackPanel>
 
         </Grid>

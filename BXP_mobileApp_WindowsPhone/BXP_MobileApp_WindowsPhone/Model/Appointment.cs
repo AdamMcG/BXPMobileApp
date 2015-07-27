@@ -14,18 +14,6 @@ namespace BXP_MobileApp_WindowsPhone.Model
 
         }
 
-        public Appointment(int id, string name, DateTime from, DateTime to, string subject, string body, string link, string data)
-        {
-            pintAppointmentID = id;
-            pstrAppointmentName = name;
-            pdteFrom = from;
-            pdteTo = to;
-            pstrSubject = subject;
-            pstrBody = body;
-            pstrLink = link;
-            pstrData = data;
-        }
-
         private int intAppointmentid;
         public int pintAppointmentID
         {
@@ -48,70 +36,38 @@ namespace BXP_MobileApp_WindowsPhone.Model
             }
         }
 
-        private DateTime dtefrom;
-        public DateTime pdteFrom
+        private DateTime dteStart;
+        public DateTime pdteStart
         {
-            get { return dtefrom; }
+            get { return dteStart; }
             set
             {
-                dtefrom = value;
-                NotifyPropertyChanged("pdteFrom");
+                dteStart = value;
+                NotifyPropertyChanged("pdteStart");
             }
         }
 
-        private DateTime dteto;
-        public DateTime pdteTo
+        private DateTime dteEnd;
+        public DateTime pdteEnd
         {
-            get { return dteto; }
+            get { return dteEnd; }
             set
             {
-                dteto = value;
-                NotifyPropertyChanged("pdteto");
+                dteEnd = value;
+                NotifyPropertyChanged("pdteEnd");
             }
         }
 
-        private string strsubject;
-        public string pstrSubject
+        private string url;
+        public string pUrl
         {
-            get { return strsubject; }
+            get { return url; }
             set
             {
-                strsubject = value;
-                NotifyPropertyChanged("pstrSubject");
+                url = value;
+                NotifyPropertyChanged("pUrl");
             }
-        }
 
-        private string strbody;
-        public string pstrBody
-        {
-            get { return strbody; }
-            set
-            {
-                strbody = value;
-                NotifyPropertyChanged("pstrBody");
-            }
-        }
-
-        private string strLink;
-        public string pstrLink
-        {
-            get { return strLink; }
-            set
-            {
-                strLink = value;
-                NotifyPropertyChanged("pstrLink");
-            }
-        }
-
-        private string strdata;
-        public string pstrData
-        {
-            get { return strdata; }
-            set
-            {
-                strdata = value;
-                NotifyPropertyChanged("strData");
-            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };

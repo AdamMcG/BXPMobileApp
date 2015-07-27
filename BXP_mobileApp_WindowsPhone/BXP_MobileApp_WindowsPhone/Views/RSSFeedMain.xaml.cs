@@ -10,6 +10,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.Connectivity;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,15 +30,15 @@ namespace BXP_MobileApp_WindowsPhone
     public sealed partial class MainPage : Page
     {
         RSSViewModel RSS = new RSSViewModel();
-            private NavigationHelper navigationHelper;
+        private NavigationHelper navigationHelper;
         public MainPage()
         {
-            RSS.awaitRSS();
-            this.DataContext = RSS;   
+            this.DataContext = RSS;
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            ConnectionCheck();
             
         }
 
@@ -97,13 +99,36 @@ namespace BXP_MobileApp_WindowsPhone
 
         private void Open_Login(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Login));
+            Frame.Navigate(typeof(LoginView));
         }
 
         private void RSSTapped(object sender, TappedRoutedEventArgs e)
         {
             int index = RSS_Feed_ListView.SelectedIndex;
             Frame.Navigate(typeof(RSSFeedSpecific), RSS.propSynCollection.ElementAt(index));
+        }
+
+        public async void ConnectionCheck()
+        {
+            string strConnectionProfile = string.Empty;
+            try
+            {
+                ConnectionProfile intProfile = NetworkInformation.GetInternetConnectionProfile();
+                if (intProfile == null)
+                {
+                    MessageDialog myMessage = new MessageDialog("Unable to connect to the internet");
+                    await myMessage.ShowAsync();
+                    loginButton.IsEnabled = false;
+                }
+                else
+                {
+                    RSS.awaitRSS();
+                }
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+            }
         }
     }
 }

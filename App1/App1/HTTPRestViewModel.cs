@@ -16,7 +16,9 @@ namespace App1
     class HTTPRestViewModel : INotifyPropertyChanged
     {
         public string myCheckString = "11111";
-        public string aString = "1223";
+        public string aString = "";
+        public string sessionID;
+        public string clientID;
         public string myString
         {
             get { return myCheckString; }
@@ -33,14 +35,14 @@ namespace App1
             myString = "sfgf";
         }
 
-        public async Task RESTcalls_POST_BXPAPI(HttpFormUrlEncodedContent a)
+        public async Task RESTcalls_POST_BXPAPI(string function, HttpFormUrlEncodedContent a)
         {
             try
             {
                 //Set up client
                 HttpClient myClient = new HttpClient();
                 //supply the API URI to be called. 
-                var Uri = new Uri("https://ww3.allnone.ie/client/client_demo/cti/userCTI_GenericEntry.asp");
+                var Uri = new Uri(function);
 
                 //Set header on the client
                 var headers = myClient.DefaultRequestHeaders;

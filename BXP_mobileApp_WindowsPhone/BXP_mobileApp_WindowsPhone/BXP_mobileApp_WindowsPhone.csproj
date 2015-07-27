@@ -88,13 +88,17 @@
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\Diary.cs" />
     <Compile Include="Model\Hamster.cs" />
+    <Compile Include="Model\Login.cs" />
+    <Compile Include="Model\Setting.cs" />
     <Compile Include="Model\ToDo.cs" />
-    <Compile Include="ViewModel\AppointmentViewModel.cs" />
+    <Compile Include="ViewModel\DiaryViewModel.cs" />
     <Compile Include="ViewModel\ContactViewModel.cs" />
     <Compile Include="ViewModel\HTTPRestViewModel.cs" />
     <Compile Include="ViewModel\ListeeViewModel.cs" />
     <Compile Include="ViewModel\RSSViewModel.cs" />
+    <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\StylingViewModel.cs" />
     <Compile Include="ViewModel\ticketViewModel.cs" />
     <Compile Include="Views\ContactPage.xaml.cs">
@@ -106,8 +110,8 @@
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RSSFeedMain.xaml.cs">
       <DependentUpon>RSSFeedMain.xaml</DependentUpon>
@@ -168,7 +172,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Login.xaml">
+    <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

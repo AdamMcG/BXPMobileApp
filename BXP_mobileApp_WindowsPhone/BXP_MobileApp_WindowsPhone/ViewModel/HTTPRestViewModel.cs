@@ -14,15 +14,15 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public string aString;
-
         public HTTPRestViewModel() { }
 
-        public async Task RESTcalls_POST_BXPAPI(string output, string myfunction, List<KeyValuePair<string, string>> myParameters)
+        public async Task<string> RESTcalls_POST_BXPAPI(string myfunction, List<KeyValuePair<string, string>> myParameters)
         {
+            string output = "";
             try
             {
                 HttpClient myClient = new HttpClient();
-                var Uri = new Uri(myfunction);
+              
 
                 //for POST:
                 //Set header
@@ -30,20 +30,19 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 headers.UserAgent.ParseAdd("application/x-www-form-urlencoded");
                 //Attached encoded parameter content
                 HttpFormUrlEncodedContent a = new HttpFormUrlEncodedContent(myParameters);
-
+                Uri uri = new Uri(myfunction);
                 //Submit a POST request with the encoded contnt a
-                HttpRequestMessage postRequest = new HttpRequestMessage(new HttpMethod("POST"), Uri);
+                HttpRequestMessage postRequest = new HttpRequestMessage(new HttpMethod("POST"), uri);
                 postRequest.Content = a;
                 //Return ResponseMessage
                 HttpResponseMessage response = await myClient.SendRequestAsync(postRequest, HttpCompletionOption.ResponseContentRead);
                 if (response.IsSuccessStatusCode)
-                    aString = "Success";
+                { aString = "Success"; }
                 else
-                    aString = "fail";
+                { aString = "fail";
+                }
                 //Read Response as string
                 output = await response.Content.ReadAsStringAsync();
-
-                return;
 
             }
             catch (Exception e)
@@ -52,7 +51,9 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 e.Message.ToString();
                 e.Source.ToString();
                 e.HelpLink.ToString();
+                return output = "N/A";
             }
+            return output;
         }
 
         public async Task RESTcalls_PUT_BXPAPI(string output, string strmyFunction, List<KeyValuePair<string, string>> myParameters)

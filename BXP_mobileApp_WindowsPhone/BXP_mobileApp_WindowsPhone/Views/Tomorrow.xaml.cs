@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -14,8 +16,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace BXP_MobileApp_WindowsPhone.Views
 {
@@ -25,20 +25,26 @@ namespace BXP_MobileApp_WindowsPhone.Views
     public sealed partial class Tomorrow : Page
     {
         private NavigationHelper navigationHelper;
-        AppointmentViewModel oAppointmentViewModel = new AppointmentViewModel();
+        DiaryViewModel oDiaryViewModel = new DiaryViewModel();
         ListeeViewModel oListeeViewModel = new ListeeViewModel();
         public Tomorrow()
         {
-            this.InitializeComponent();
+            Task t = getAppointments();
+            t.Wait(250);
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-            this.AppointmentScrollerTomorrow.DataContext = oAppointmentViewModel;
+            this.InitializeComponent();
+            this.AppointmentScrollerTomorrow.DataContext = oDiaryViewModel.propObDiary;
             this.ListeeScrollerTomorrow.DataContext = oListeeViewModel;
 
         }
 
+        public async Task getAppointments()
+        {
+            await oDiaryViewModel.fnGetAppointments("diary_tomorrow");
 
+        }
 
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.

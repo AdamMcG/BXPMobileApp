@@ -16,24 +16,6 @@
     </Page.BottomAppBar>
 
     <Page.Resources>
-        <DataTemplate x:Name="template_for_Listview">
-            <Border BorderBrush="#363951"  BorderThickness="0, 1, 0, 1">
-                <StackPanel x:Name="dataTemplateStackPanel1" Orientation="Vertical" HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom" Background="{Binding styleMyStyle.brusTextForeground}"  Width="400" Margin="0,0,0,0" 
-                        IsHoldingEnabled="True" >
- 
-                    <TextBlock Text="{Binding strTodoType, UpdateSourceTrigger=PropertyChanged}" FontSize="24" FontWeight="SemiBold" 
-        			Margin="20,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Center"
-        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
-
-                    <TextBlock Text="{Binding strTodosubject, UpdateSourceTrigger=PropertyChanged}"
-                           FontSize="20" FontWeight="Normal" 
-        			Margin="20,10,10,0" HorizontalAlignment="Left" VerticalAlignment="Center"
-        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
-                </StackPanel>
-            </Border>
-        </DataTemplate>
-       
         
         <DataTemplate x:Name="template_for_Listview2">
             <Border BorderBrush="#363951"  BorderThickness="0, 1, 0, 1">
@@ -42,13 +24,13 @@
                         IsHoldingEnabled="True" >
 
 
-                    <TextBlock Text="{Binding td, UpdateSourceTrigger=PropertyChanged}" FontSize="24" FontWeight="SemiBold" 
-        			Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    <TextBlock Text="{Binding pintAppointmentID, UpdateSourceTrigger=PropertyChanged}" FontSize="20" FontWeight="SemiBold" 
+        			Margin="23,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
 
-                    <TextBlock Text="{Binding intAppointmentId, UpdateSourceTrigger=PropertyChanged}"
-                           FontSize="24" FontWeight="SemiBold" 
-        			Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    <TextBlock Text="{Binding pstrAppointmentName, UpdateSourceTrigger=PropertyChanged}"
+                           FontSize="16" FontWeight="SemiBold" 
+        			Margin="26,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                 </StackPanel>
             </Border>
@@ -79,13 +61,13 @@
             <StackPanel Margin="0,0,0,0">
 
                 <StackPanel Orientation="Vertical">
-                    <ScrollViewer x:Name="ListeeScroller" Margin="0,0,-0.333,20" Height="190" HorizontalAlignment="Stretch" VerticalAlignment="top">
-                        <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding pColTodayToDoList}" VerticalAlignment="top" FontSize="19" 
-                         BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Listee's for Today" Margin="0,0,0,30" Background="CornflowerBlue" x:Name="Listee_Listview_Today" Height="200">
+                    <ScrollViewer x:Name="ListeeScroller" Margin="0,0,-0.333,0" Height="200" HorizontalAlignment="Stretch" >
+                        <ListView  ItemsSource="{Binding pColTodayToDoList}" VerticalAlignment="Stretch" FontSize="19" 
+                         BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Listee's for Today"  Background="CornflowerBlue" x:Name="Listee_Listview_Today" Height="200">
                             </ListView>
                     </ScrollViewer>
-                    <ScrollViewer x:Name="AppointmentScroller" Height="200" Margin="0,0,-0.333,0" HorizontalAlignment="Stretch">
-                        <ListView ItemTemplate="{ThemeResource template_for_Listview2}" ItemsSource="{Binding pColAppointmentToday}" VerticalAlignment="Stretch"
+                    <ScrollViewer x:Name="AppointmentScroller" Height="200" Margin="0,20,-0.333,0" HorizontalAlignment="Stretch">
+                        <ListView ItemTemplate="{ThemeResource template_for_Listview2}" ItemsSource="{Binding pColAppointment}" VerticalAlignment="Stretch"
                                   BorderBrush="AntiqueWhite" FontSize="19" BorderThickness="1" HorizontalAlignment="Stretch" Header="Appointments for Today"  Background="Brown"  x:Name="Appointment_Listview_today" Height="200" >
 
                         </ListView>

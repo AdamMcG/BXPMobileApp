@@ -16,7 +16,7 @@
                 <TextBox HorizontalAlignment="Stretch" Width="199" Name="name_TextBlock"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button HorizontalAlignment="Center"  Name="myButton" Margin="10,10,10,10" Tapped="myButton_Tapped" >GET Button</Button>
+                <Button HorizontalAlignment="Center"  x:Name="myButton" Margin="10,10,10,10" Tapped="myButton_Tapped" Content="Diary Test" />
                 <Button HorizontalAlignment="Center" Name="myButton2" Tapped="myButton2_Tapped" >POST Button</Button>
             </StackPanel>
         </StackPanel>

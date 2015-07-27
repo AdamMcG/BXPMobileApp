@@ -16,22 +16,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
     {
         public ListeeViewModel()
         {
-            try
-            {
-
-                for (int i = 0; i < 20; i++)
-                {
-                    ToDo mytest = new ToDo();
-                    mytest.strTodosubject = mytest.strTodosubject + ": " + i;
-                    mytest.styleMyStyle.brusTextForeground = new SolidColorBrush(Windows.UI.Colors.BlueViolet);
-                    pColTodayToDoList.Add(mytest);
-                }
-            }
-            catch (Exception e)
-            {
-                
-                e.Message.ToString();
-            }
+         
         }
 
         private ObservableCollection<ToDo> colTodoList = new ObservableCollection<ToDo>();

@@ -65,30 +65,15 @@ namespace App1
 
           
             List<KeyValuePair<string, string>> contentList = new List<KeyValuePair<string, string>>();
-            contentList.Add(new KeyValuePair<string, string>("system", "formlogging"));
-            contentList.Add(new KeyValuePair<string, string>("user_id", "adammcgivern"));
-            contentList.Add(new KeyValuePair<string, string>("user_key", "password"));
-            contentList.Add(new KeyValuePair<string, string>("campaignid", "751"));
+            contentList.Add(new KeyValuePair<string, string>("strFunction", "login"));
+            contentList.Add(new KeyValuePair<string, string>("strSystem", "client_allnone"));
+            contentList.Add(new KeyValuePair<string, string>("strClient_Username", "Adam McGivern"));
+            contentList.Add(new KeyValuePair<string, string>("strClient_Password", "luke1712"));
 
-            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_0_1", "1"));
-            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_1_1", nameString[0]));
-            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_2_1", "L"));
-            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_3_1", nameString[1]));
-
-            contentList.Add(new KeyValuePair<string, string>("Home", "22222"));
-            contentList.Add(new KeyValuePair<string, string>("workphone", "12322"));
-            contentList.Add(new KeyValuePair<string, string>("mobile", "0863222"));
-
-
-            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_0_10", "appartment 5"));
-            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_1_10", "Fake Road"));
-            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_2_10", "Tallaght"));
-            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_3_10", "25"));
-            contentList.Add(new KeyValuePair<string, string>("strCDA_751_field_4_10", "1"));
 
             HttpFormUrlEncodedContent a = new HttpFormUrlEncodedContent(contentList);
-
-            await myTest.RESTcalls_POST_BXPAPI(a);
+            string strFunction = "https://ww3.allnone.ie/client/client_allnone/cti/userAPP_Main.asp";
+            await myTest.RESTcalls_POST_BXPAPI(strFunction, a);
             MessageDialog mymessage = new MessageDialog(myTest.aString);
             await mymessage.ShowAsync();
         }
