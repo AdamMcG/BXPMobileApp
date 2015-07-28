@@ -42,9 +42,9 @@
                     <TextBox HorizontalAlignment="Stretch" Text="Default System"/>
                     </StackPanel>
                 <StackPanel HorizontalAlignment="Center" Margin="10,10,10,10">
-                <Button Background="CornflowerBlue" HorizontalAlignment="Stretch">Store Settings</Button>
-                    <Button Background="CornflowerBlue" HorizontalAlignment="Stretch">Get Config</Button>
-                    <Button Background="CornflowerBlue" HorizontalAlignment="Stretch">Reset Settings</Button>
+                <Button x:Name="StoreConfigurationButton" Background="CornflowerBlue" HorizontalAlignment="Stretch">Store Settings</Button>
+                    <Button x:Name="GetConfigFileButton" Background="CornflowerBlue" HorizontalAlignment="Stretch">Get Config</Button>
+                    <Button x:Name="ResetConfigButton" Background="CornflowerBlue" HorizontalAlignment="Stretch" Click="resetFromServer">Reset Settings</Button>
                 </StackPanel>
             </StackPanel>
         </Grid>

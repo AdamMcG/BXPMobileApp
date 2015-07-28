@@ -1,4 +1,5 @@
 ﻿using BXP_MobileApp_WindowsPhone.Common;
+using BXP_MobileApp_WindowsPhone.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,6 +25,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// </summary>
     public sealed partial class Settings : Page
     {
+        SettingsViewModel settingViewModel = new SettingsViewModel();
              private NavigationHelper navigationHelper;
         public Settings()
         {
@@ -96,5 +99,15 @@ namespace BXP_MobileApp_WindowsPhone.Views
         }
 
         #endregion
+
+        private async void resetFromServer(object sender, RoutedEventArgs e)
+        {
+           Boolean check = await settingViewModel.fn_retrieveSettingsData();
+           if (check)
+           {
+               MessageDialog myMessage = new MessageDialog("The Setting Retrieval was successful");
+             await myMessage.ShowAsync();
+           }
+        }
     }
 }

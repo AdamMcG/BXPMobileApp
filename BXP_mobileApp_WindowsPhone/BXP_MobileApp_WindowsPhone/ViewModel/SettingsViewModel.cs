@@ -1,6 +1,7 @@
 ﻿using BXP_MobileApp_WindowsPhone.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,19 @@ using System.Xml.Linq;
 
 namespace BXP_MobileApp_WindowsPhone.ViewModel
 {
-    class SettingsViewModel
+    class SettingsViewModel : INotifyPropertyChanged
     {
+        private Setting obSetting;
+        public Setting propObSetting
+        {
+            get { return obSetting; }
+            set
+            {
+                obSetting = value;
+                NotifyPropertyChanged("propObSetting");
+            }
+        }
+
         public async Task<Boolean> fn_retrieveLoginSessionID(string strSystem, string strUsername, string strPassword)
         {
             HTTPRestViewModel oHttpRestVm = new HTTPRestViewModel();
@@ -19,7 +31,6 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             List<KeyValuePair<string, string>> listKVmyParameter = new List<KeyValuePair<string, string>>();
             KeyValuePair<string, string> myParameter = new KeyValuePair<string, string>("strFunction", "login");
             listKVmyParameter.Add(myParameter);
-
             myParameter = new KeyValuePair<string, string>("strSystem", strSystem);
             listKVmyParameter.Add(myParameter);
             myParameter = new KeyValuePair<string, string>("strClient_Username", strUsername);
@@ -83,17 +94,27 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             {
                 XDocument xmlSettingsDocument = XDocument.Parse(xmlToBeParsed);
                 XElement xmlSettingsData = xmlSettingsDocument.Element("data");
-                Setting obSetting = new Setting();
+                obSetting = new Setting();
                 obSetting.propStrFunction = xmlSettingsData.Element("strFunction").Value;
                 obSetting.propStrError = xmlSettingsData.Element("strError").Value;
                 obSetting.propIntErrorId = Int32.Parse(xmlSettingsData.Element("intErrorId").Value);
                 count = true;
+
             }
             catch (Exception e)
             {
                 e.Message.ToString();
             }
             return count;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
+
         }
     }
 }

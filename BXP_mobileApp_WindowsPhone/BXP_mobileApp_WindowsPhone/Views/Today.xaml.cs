@@ -30,6 +30,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
         public Today()
         {
            Task t = getAppointments();
+           t.Wait(250);
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
