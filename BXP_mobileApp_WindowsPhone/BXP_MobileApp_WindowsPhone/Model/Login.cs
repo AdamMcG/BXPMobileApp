@@ -85,19 +85,19 @@ namespace BXP_MobileApp_WindowsPhone.Model
         public string propStrError
         {
             get { return strError; }
-            set { strError = value; }
+            set { strError = value;
+            NotifyPropertyChanged("propStrError");
+            }
         }
-        public event PropertyChangedEventHandler propertyChanged = delegate { };
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public void NotifyPropertyChanged(string propertyName)
         {
-            PropertyChangedEventHandler handler = propertyChanged;
+            PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

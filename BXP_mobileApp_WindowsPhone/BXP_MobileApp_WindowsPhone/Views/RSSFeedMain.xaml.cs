@@ -33,12 +33,20 @@ namespace BXP_MobileApp_WindowsPhone
         private NavigationHelper navigationHelper;
         public MainPage()
         {
-            this.DataContext = RSS;
-            this.InitializeComponent();
-            this.navigationHelper = new NavigationHelper(this);
-            this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
-            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-            ConnectionCheck();
+            try
+            {
+                this.DataContext = RSS;
+                this.InitializeComponent();
+                this.navigationHelper = new NavigationHelper(this);
+                this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
+                this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+                ConnectionCheck();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
             
         }
 
@@ -95,7 +103,6 @@ namespace BXP_MobileApp_WindowsPhone
         }
 
         #endregion
-
 
         private void Open_Login(object sender, RoutedEventArgs e)
         {

@@ -20,17 +20,14 @@ namespace BXP_MobileApp_WindowsPhone.Model
 
             set { propSynCollection = value; }
         }
-
-
         public async Task testRss()
         {
-
             try
             {
                 SyndicationClient client = new SyndicationClient();
                 client.BypassCacheOnRetrieve = true;
                 SyndicationFeed synRssFeed;
-                synRssFeed = await client.RetrieveFeedAsync(new Uri("http://ww3.allnone.ie/client/client_allnone/message/rss2feed.asp"));
+                synRssFeed = await client.RetrieveFeedAsync(new Uri("http://ww3.allnone.ie/client/client_demo/message/rss2feed.asp"));
                 foreach (SyndicationItem feed in synRssFeed.Items)
                     propSynCollection.Add(feed);
 
@@ -40,9 +37,8 @@ namespace BXP_MobileApp_WindowsPhone.Model
                 e.Message.ToString();
             }
              return;
-           
-        }
 
+        }
 
             public async void awaitRSS()
             {

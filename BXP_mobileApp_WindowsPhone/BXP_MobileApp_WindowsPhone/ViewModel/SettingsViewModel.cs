@@ -24,23 +24,36 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
 
         public async Task<Boolean> fn_retrieveLoginSessionID(string strSystem, string strUsername, string strPassword)
         {
-            HTTPRestViewModel oHttpRestVm = new HTTPRestViewModel();
-            string function = "https://ww3.allnone.ie/client/" + strSystem + "/cti/userAPP_main.asp";
-            string strForOutput = "";
-            #region PostParameters
-            List<KeyValuePair<string, string>> listKVmyParameter = new List<KeyValuePair<string, string>>();
-            KeyValuePair<string, string> myParameter = new KeyValuePair<string, string>("strFunction", "login");
-            listKVmyParameter.Add(myParameter);
-            myParameter = new KeyValuePair<string, string>("strSystem", strSystem);
-            listKVmyParameter.Add(myParameter);
-            myParameter = new KeyValuePair<string, string>("strClient_Username", strUsername);
-            listKVmyParameter.Add(myParameter);
-            myParameter = new KeyValuePair<string, string>("strClient_Password", strPassword);
-            listKVmyParameter.Add(myParameter);
-            #endregion
+            Boolean check = false;
+            try
+            {
+                HTTPRestViewModel oHttpRestVm = new HTTPRestViewModel();
+                string function = "https://ww3.allnone.ie/client/" + strSystem + "/cti/userAPP_main.asp";
+                string strForOutput = "";
+                #region PostParameters
+                List<KeyValuePair<string, string>> listKVmyParameter = new List<KeyValuePair<string, string>>();
+                KeyValuePair<string, string> myParameter = new KeyValuePair<string, string>("strFunction", "login");
+                listKVmyParameter.Add(myParameter);
+                myParameter = new KeyValuePair<string, string>("strSystem", strSystem);
+                listKVmyParameter.Add(myParameter);
+                myParameter = new KeyValuePair<string, string>("strClient_Username", strUsername);
+                listKVmyParameter.Add(myParameter);
+                myParameter = new KeyValuePair<string, string>("strClient_Password", strPassword);
+                listKVmyParameter.Add(myParameter);
+                #endregion
+                strForOutput = await oHttpRestVm.RESTcalls_POST_BXPAPI(function, listKVmyParameter);
+                if (strForOutput == "N/A")
+                    return check;
 
-            strForOutput = await oHttpRestVm.RESTcalls_POST_BXPAPI(function, listKVmyParameter);
-            return fn_ParseLoginXMLDocument(strForOutput, function, strSystem);
+                   check = fn_ParseLoginXMLDocument(strForOutput, function, strSystem);
+                   
+            }
+            catch (Exception)
+            {
+                
+               
+            }
+            return check;
         }
 
         public Boolean fn_ParseLoginXMLDocument(string output, string function, string strSystem)
@@ -54,16 +67,17 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 int a = Int32.Parse(xmlDataElement.Element("intErrorId").Value);
                 myLogin.propIntErrorId = a;
                 myLogin.propStrError = xmlDataElement.Element("strError").Value;
-                myLogin.propIntClient_Id = Int32.Parse(xmlDataElement.Element("intClient_Id").Value);
-                myLogin.propStrClient_SessionField = xmlDataElement.Element("strClient_SessionField").Value;
+                if (myLogin.propIntErrorId == 0)
+                {
+                    myLogin.propIntClient_Id = Int32.Parse(xmlDataElement.Element("intClient_Id").Value);
+                    myLogin.propStrClient_SessionField = xmlDataElement.Element("strClient_SessionField").Value;
+                }
                 myLogin.propStrFunctionURL = function;
                 myLogin.propStrSystemUsed = strSystem;
                 count = true;
             }
             catch (Exception e)
             {
-
-                e.Message.ToString();
             }
             return count;
         }

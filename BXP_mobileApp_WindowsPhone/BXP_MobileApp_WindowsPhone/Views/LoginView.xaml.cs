@@ -105,27 +105,46 @@ namespace BXP_MobileApp_WindowsPhone.Views
 
         #endregion
 
-        private async void LogIntoBxp(object sender, RoutedEventArgs e)
+        private async void fn_CheckconnectionBeforeLogin(object sender, RoutedEventArgs e)
         {
-            string password = PasswordBox.Password;
-            string strSystem = "client_" + systemTextBox.Text;
-            Boolean boolCheck = await viewSetting.fn_retrieveLoginSessionID(strSystem, UsernameTextBox.Text, password);
-                Login myLogin = Login.Instance;
-            if (boolCheck == true)
+                MessageDialog mymessage = null;
+                try
+                {
+                    string password = PasswordBox.Password;
+                    string strSystem = "client_" + systemTextBox.Text;
+                    Boolean boolCheck = await viewSetting.fn_retrieveLoginSessionID(strSystem, UsernameTextBox.Text, password);
+                    if (boolCheck == true)
+                        navigateToMain();
+                    else
+                    {
+                        string strErrorString = "Error. Error was: No valid Network Connection ";
+                        mymessage = new MessageDialog(strErrorString);
+                        await mymessage.ShowAsync();
+                    }
+                }
+                catch (Exception reached){
+                    throw reached;
+                }
+        }
+
+        private async void navigateToMain()
+        {
+            MessageDialog mymessage = null;
+           Login myLogin = Login.Instance;
+            if (myLogin.propIntErrorId== 0)
             {
                 string strSessionId = "Your session id for this session is:" + myLogin.propStrClient_SessionField;
-                   MessageDialog mymessage = new MessageDialog(strSessionId);
+                mymessage = new MessageDialog(strSessionId);
                 await mymessage.ShowAsync();
                 Frame.Navigate(typeof(HomePage), viewStyling);
             }
             else
             {
-                string strErrorString = "Error. Error was \n" + myLogin.propIntClient_Id + " : " + myLogin.propStrError;
-                MessageDialog mymessage = new MessageDialog(strErrorString);
+                string strErrorString = "Error \n" + myLogin.propIntErrorId + " : " + myLogin.propStrError;
+                mymessage = new MessageDialog(strErrorString);
                 await mymessage.ShowAsync();
             }
         }
-
 
     }
 }

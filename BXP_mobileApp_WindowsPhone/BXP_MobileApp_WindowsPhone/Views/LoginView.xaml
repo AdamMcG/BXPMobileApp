@@ -48,7 +48,7 @@
                     <TextBlock Margin="10,10,10,10" HorizontalAlignment="Center" FontSize="30" Foreground="white">Password</TextBlock>
                     <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Stretch"  ></PasswordBox>
                 </StackPanel>
-                <Button x:Name="loginclickbutton" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Blue" Click="LogIntoBxp">Login</Button>
+                <Button x:Name="loginclickbutton" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Blue" Click="fn_CheckconnectionBeforeLogin">Login</Button>
             </StackPanel>
         </Grid>
     </Grid>

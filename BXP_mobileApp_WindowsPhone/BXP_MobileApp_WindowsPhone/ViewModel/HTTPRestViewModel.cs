@@ -22,35 +22,25 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             try
             {
                 HttpClient myClient = new HttpClient();
-              
-
-                //for POST:
-                //Set header
                 var headers = myClient.DefaultRequestHeaders;
                 headers.UserAgent.ParseAdd("application/x-www-form-urlencoded");
-                //Attached encoded parameter content
                 HttpFormUrlEncodedContent a = new HttpFormUrlEncodedContent(myParameters);
                 Uri uri = new Uri(myfunction);
-                //Submit a POST request with the encoded contnt a
                 HttpRequestMessage postRequest = new HttpRequestMessage(new HttpMethod("POST"), uri);
                 postRequest.Content = a;
                 //Return ResponseMessage
                 HttpResponseMessage response = await myClient.SendRequestAsync(postRequest, HttpCompletionOption.ResponseContentRead);
                 if (response.IsSuccessStatusCode)
-                { aString = "Success"; }
+                aString = "Success";
                 else
-                { aString = "fail";
-                }
-                //Read Response as string
+                aString = "fail";
+                
                 output = await response.Content.ReadAsStringAsync();
 
             }
             catch (Exception e)
             {
-
-                e.Message.ToString();
-                e.Source.ToString();
-                e.HelpLink.ToString();
+                int check= 34;
                 return output = "N/A";
             }
             return output;
