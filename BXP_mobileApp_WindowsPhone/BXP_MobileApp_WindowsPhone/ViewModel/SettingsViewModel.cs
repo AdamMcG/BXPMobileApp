@@ -22,19 +22,41 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             }
         }
 
-        public async Task<Boolean> fn_retrieveLoginSessionID(string strSystem, string strUsername, string strPassword)
+        private static string strSystem;
+        public string propStrSystem
+        {
+            get { return strSystem; }
+            set
+            {
+                strSystem = value;
+                NotifyPropertyChanged("propStrSystem");
+            }
+        }
+
+        private static string strUsername;
+        public string propStrUsername
+        {
+            get { return strUsername; }
+            set
+            {
+                strUsername = value;
+                NotifyPropertyChanged("propStrUsername");
+            }
+        }
+        public async Task<Boolean> fn_retrieveLoginSessionID(string strPassword)
         {
             Boolean check = false;
             try
             {
+                string pstrSystem = "client_" + propStrSystem.ToLower();
                 HTTPRestViewModel oHttpRestVm = new HTTPRestViewModel();
-                string function = "https://ww3.allnone.ie/client/" + strSystem + "/cti/userAPP_main.asp";
+                string function = "https://ww3.allnone.ie/client/" + pstrSystem + "/cti/userAPP_main.asp";
                 string strForOutput = "";
                 #region PostParameters
                 List<KeyValuePair<string, string>> listKVmyParameter = new List<KeyValuePair<string, string>>();
                 KeyValuePair<string, string> myParameter = new KeyValuePair<string, string>("strFunction", "login");
                 listKVmyParameter.Add(myParameter);
-                myParameter = new KeyValuePair<string, string>("strSystem", strSystem);
+                myParameter = new KeyValuePair<string, string>("strSystem", pstrSystem);
                 listKVmyParameter.Add(myParameter);
                 myParameter = new KeyValuePair<string, string>("strClient_Username", strUsername);
                 listKVmyParameter.Add(myParameter);
@@ -45,7 +67,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 if (strForOutput == "N/A")
                     return check;
 
-                   check = fn_ParseLoginXMLDocument(strForOutput, function, strSystem);
+                   check = fn_ParseLoginXMLDocument(strForOutput, function, pstrSystem);
                    
             }
             catch (Exception)
@@ -78,6 +100,8 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             }
             catch (Exception e)
             {
+
+                e.ToString();
             }
             return count;
         }
@@ -113,7 +137,6 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 obSetting.propStrError = xmlSettingsData.Element("strError").Value;
                 obSetting.propIntErrorId = Int32.Parse(xmlSettingsData.Element("intErrorId").Value);
                 count = true;
-
             }
             catch (Exception e)
             {

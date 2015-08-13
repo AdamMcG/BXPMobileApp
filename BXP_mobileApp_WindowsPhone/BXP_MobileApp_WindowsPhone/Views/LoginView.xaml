@@ -9,7 +9,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
+        <CommandBar Background="AntiqueWhite" Foreground="Black" >
+            <AppBarButton Icon="Accept" Label="Login"
+                           x:Name="loginclickbutton" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                          Background="Blue" Click="fn_CheckconnectionBeforeLogin"/>
         </CommandBar>
     </Page.BottomAppBar>
     <Grid x:Name="LayoutRoot" Margin="0,0.333,0,-0.333">
@@ -35,20 +38,18 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" Background="black">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="44,10,55,9" Width="263">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Margin="10,10,10,10" FontSize="30" HorizontalAlignment="Center" Foreground="white">System</TextBlock>
-                    <TextBox x:Name="systemTextBox" HorizontalAlignment="Stretch"></TextBox>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                <Image HorizontalAlignment="Stretch"  Source="https://upload.wikimedia.org/wikipedia/commons/8/82/Wide_angle_tetons.jpg"></Image>
+                
+                <StackPanel Orientation="Vertical" Margin="0,30,0,0">
+                    <TextBox x:Name="systemTextBox" HorizontalAlignment="Stretch" PlaceholderText="System" Text="{Binding propStrSystem, Mode=TwoWay}"/>
                 </StackPanel>
-                <StackPanel x:Name="stackUsername" DataContext="{Binding viewStyling}" Orientation="Vertical"  >
-                    <TextBlock Margin="10,10,10,10" FontSize="30" Foreground="white" HorizontalAlignment="Center" Width="135">Username</TextBlock>
-                    <TextBox x:Name="UsernameTextBox"  HorizontalAlignment="Stretch" Text="{Binding strUserName,Mode=TwoWay}"/>
+                <StackPanel x:Name="stackUsername" Margin="0,30,0,0" DataContext="{Binding viewStyling}" Orientation="Vertical"  >
+                    <TextBox x:Name="UsernameTextBox"  HorizontalAlignment="Stretch" PlaceholderText="Username" Text="{Binding propStrUsername,Mode=TwoWay}"/>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" >
-                    <TextBlock Margin="10,10,10,10" HorizontalAlignment="Center" FontSize="30" Foreground="white">Password</TextBlock>
-                    <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Stretch"  ></PasswordBox>
+                <StackPanel Orientation="Vertical" Margin="0,30,0,0" >
+                    <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Stretch"  PlaceholderText="Password"></PasswordBox>
                 </StackPanel>
-                <Button x:Name="loginclickbutton" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Blue" Click="fn_CheckconnectionBeforeLogin">Login</Button>
             </StackPanel>
         </Grid>
     </Grid>

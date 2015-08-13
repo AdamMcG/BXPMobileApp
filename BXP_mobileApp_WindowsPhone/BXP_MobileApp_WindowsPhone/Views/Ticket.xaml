@@ -10,7 +10,7 @@
 
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
+        <CommandBar Background="AntiqueWhite" Foreground="Black">
             <AppBarButton x:Name="AddTicketClick" Click="AddTicketCLick" Icon="Add" Label="Add a Ticket"/>
 
 
@@ -33,14 +33,14 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Ticket" Margin="0,-6.5,-0.167,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="81"/>
+            <TextBlock Text="Ticket" Margin="0,-6.5,-0.167,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="81"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.333,19,10" Background="Black">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch"  Margin="10,10,10,10">
-                <TextBox x:Name="Subject_Box" Margin="0,20,0,22" Text="Subject" />
-                <TextBox x:Name="Description_Field" Margin="0,0,-0.333,22" Height="283" Text="Description" TextWrapping="Wrap"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <TextBox x:Name="Subject_Box" Text="{Binding propStrSubject, Mode=TwoWay}" Margin="0,20,0,22" PlaceholderText="Subject" />
+                <TextBox x:Name="Description_Field" Text="{Binding propStrDescription, Mode=TwoWay}" Margin="0,0,-0.333,22" Height="310" PlaceholderText="Description" TextWrapping="Wrap"/>
             </StackPanel>
         </Grid>
     </Grid>

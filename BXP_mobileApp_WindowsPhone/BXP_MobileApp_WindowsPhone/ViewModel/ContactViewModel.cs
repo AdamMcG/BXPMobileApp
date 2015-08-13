@@ -12,11 +12,17 @@ using System;
 
 namespace BXP_MobileApp_WindowsPhone.ViewModel
 {
-    class ContactViewModel
+    class ContactViewModel : INotifyPropertyChanged 
     {
 
-        public ContactViewModel() { }
-
+        public ContactViewModel(){ }
+        private static string strRetainContact = "121212fs";
+        public string propStrRetainContact
+        {
+            get { return strRetainContact; }
+            set{strRetainContact = value;
+            NotifyPropertyChanged("propStrRetainContact");}
+        }
         private ObservableCollection<Contact> colContacts;
         public ObservableCollection<Contact> pColContacts
         {
@@ -52,5 +58,13 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 pColContacts.Add(oContactObject);
             }
         }
-    }
+    
+public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyPropertyChanged(String propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if(handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+}
 }

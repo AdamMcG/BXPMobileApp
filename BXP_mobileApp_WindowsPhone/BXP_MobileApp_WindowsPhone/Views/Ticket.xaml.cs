@@ -29,6 +29,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
          ticketViewModel oTicketViewModel = new ticketViewModel();
         public Ticket()
         {
+            this.DataContext = oTicketViewModel;
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;

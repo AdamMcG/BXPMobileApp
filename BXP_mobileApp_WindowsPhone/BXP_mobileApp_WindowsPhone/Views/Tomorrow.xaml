@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
+        <CommandBar Background="AntiqueWhite" Foreground="Black">
             <AppBarButton Icon="Add" Label="Add ToDo" Click="openToDo"/>
         </CommandBar>
     </Page.BottomAppBar>

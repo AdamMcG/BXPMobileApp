@@ -28,7 +28,6 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 Uri uri = new Uri(myfunction);
                 HttpRequestMessage postRequest = new HttpRequestMessage(new HttpMethod("POST"), uri);
                 postRequest.Content = a;
-                //Return ResponseMessage
                 HttpResponseMessage response = await myClient.SendRequestAsync(postRequest, HttpCompletionOption.ResponseContentRead);
                 if (response.IsSuccessStatusCode)
                 aString = "Success";
@@ -38,9 +37,8 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 output = await response.Content.ReadAsStringAsync();
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                int check= 34;
                 return output = "N/A";
             }
             return output;

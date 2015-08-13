@@ -16,9 +16,7 @@ using Windows.UI.Xaml.Navigation;
 using BXP_MobileApp_WindowsPhone.ViewModel;
 using BXP_MobileApp_WindowsPhone.Model;
 using Windows.UI.Popups;
-
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
-
 namespace BXP_MobileApp_WindowsPhone.Views
 {
     /// <summary>
@@ -35,8 +33,8 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-			
-            this.stackUsername.DataContext = viewStyling;
+            this.systemTextBox.DataContext = viewSetting;
+            this.UsernameTextBox.DataContext = viewSetting;
         }
 
         /// <summary>
@@ -44,6 +42,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// </summary>
         public NavigationHelper NavigationHelper
         {
+           
             get { return this.navigationHelper; }
         }
 
@@ -111,13 +110,13 @@ namespace BXP_MobileApp_WindowsPhone.Views
                 try
                 {
                     string password = PasswordBox.Password;
-                    string strSystem = "client_" + systemTextBox.Text;
-                    Boolean boolCheck = await viewSetting.fn_retrieveLoginSessionID(strSystem, UsernameTextBox.Text, password);
+                    string strSystem = "client_" + viewSetting.propStrSystem.ToLower();
+                    Boolean boolCheck = await viewSetting.fn_retrieveLoginSessionID(password);
                     if (boolCheck == true)
                         navigateToMain();
                     else
                     {
-                        string strErrorString = "Error. Error was: No valid Network Connection ";
+                        string strErrorString = "Error: No valid Network Connection ";
                         mymessage = new MessageDialog(strErrorString);
                         await mymessage.ShowAsync();
                     }
@@ -136,6 +135,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
                 string strSessionId = "Your session id for this session is:" + myLogin.propStrClient_SessionField;
                 mymessage = new MessageDialog(strSessionId);
                 await mymessage.ShowAsync();
+                viewStyling.strUserName = viewSetting.propStrUsername;
                 Frame.Navigate(typeof(HomePage), viewStyling);
             }
             else

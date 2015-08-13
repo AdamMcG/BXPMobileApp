@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
+        <CommandBar Background="AntiqueWhite" Foreground="Black">
             <AppBarButton x:Name="ToDoInsertButton" Icon="Add" Label="Add ToDo" Click="Insert_Listee_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
@@ -45,7 +45,7 @@
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,0,20" HorizontalAlignment="Stretch"
                            >
-                    <TextBox x:Name="Listee_Name_Here" Width="356" Margin="0,10,10,10" HorizontalAlignment="Center" Text="Listee"/>
+                    <TextBox x:Name="Listee_Name_Here" Width="356" Margin="0,10,10,10" HorizontalAlignment="Center" PlaceholderText="Enter ToDo to add"/>
                 </StackPanel>
                 <ScrollViewer Height="433">
                     <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding pColTodoList}" BorderBrush="AntiqueWhite" BorderThickness="1" VerticalAlignment="Top" Header="List Of Jobs To Do" Background="brown" 
