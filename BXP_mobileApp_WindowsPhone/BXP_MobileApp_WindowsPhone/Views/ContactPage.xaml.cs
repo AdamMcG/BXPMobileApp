@@ -1,4 +1,5 @@
 ﻿using BXP_MobileApp_WindowsPhone.Common;
+using BXP_MobileApp_WindowsPhone.Model;
 using BXP_MobileApp_WindowsPhone.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// </summary>
     public sealed partial class Contact : Page
     {
+        Login myLogin = Login.Instance;
         private NavigationHelper navigationHelper;
          ContactViewModel oContactViewModel = new ContactViewModel();
         public Contact()
@@ -56,6 +58,14 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            if (e.PageState != null)
+            {
+                myLogin.propStrClient_SessionField = e.PageState["LoginSession"].ToString();
+                myLogin.propIntClient_Id = Int32.Parse(e.PageState["LoginClient"].ToString());
+                myLogin.propStrFunctionURL = e.PageState["LoginURL"].ToString();
+                myLogin.propStrSystemUsed = e.PageState["loginSystem"].ToString();
+
+            }
         }
 
         /// <summary>
@@ -68,6 +78,10 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// serializable state.</param>
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
+            e.PageState["LoginSession"] = myLogin.propStrClient_SessionField;
+            e.PageState["LoginClient"] = myLogin.propIntClient_Id;
+            e.PageState["LoginURL"] = myLogin.propStrFunctionURL;
+            e.PageState["loginSystem"] = myLogin.propStrSystemUsed;
         }
 
         #region NavigationHelper registration

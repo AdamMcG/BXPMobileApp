@@ -129,7 +129,7 @@ namespace BXP_MobileApp_WindowsPhone
                 }
                 else
                 {
-                    RSS.awaitRSS();
+                    RSS.fnCallRetrievalFunction();
                 }
             }
             catch (Exception e)

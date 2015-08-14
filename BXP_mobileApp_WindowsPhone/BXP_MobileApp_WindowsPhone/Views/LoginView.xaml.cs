@@ -59,6 +59,11 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            if (e.PageState != null)
+            {
+                viewSetting.propStrSystem = e.PageState["signInSystem"].ToString();
+                viewSetting.propStrUsername = e.PageState["signInUsername"].ToString();
+            }
         }
 
         /// <summary>
@@ -71,6 +76,8 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// serializable state.</param>
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
+            e.PageState["signInUsername"] = viewSetting.propStrUsername;
+            e.PageState["signInSystem"] = viewSetting.propStrSystem;
         }
 
         #region NavigationHelper registration
@@ -111,7 +118,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
                 {
                     string password = PasswordBox.Password;
                     string strSystem = "client_" + viewSetting.propStrSystem.ToLower();
-                    Boolean boolCheck = await viewSetting.fn_retrieveLoginSessionID(password);
+                    Boolean boolCheck = await viewSetting.fn_retrieveLoginSession(password);
                     if (boolCheck == true)
                         navigateToMain();
                     else
@@ -136,7 +143,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
                 mymessage = new MessageDialog(strSessionId);
                 await mymessage.ShowAsync();
                 viewStyling.strUserName = viewSetting.propStrUsername;
-                Frame.Navigate(typeof(HomePage), viewStyling);
+                Frame.Navigate(typeof(HomePage));
             }
             else
             {
@@ -144,6 +151,12 @@ namespace BXP_MobileApp_WindowsPhone.Views
                 mymessage = new MessageDialog(strErrorString);
                 await mymessage.ShowAsync();
             }
+        }
+
+        private void systemTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["strSystem"] = systemTextBox.Text;
         }
 
     }

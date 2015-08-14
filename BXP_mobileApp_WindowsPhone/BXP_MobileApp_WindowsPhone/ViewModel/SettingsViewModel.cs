@@ -43,7 +43,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 NotifyPropertyChanged("propStrUsername");
             }
         }
-        public async Task<Boolean> fn_retrieveLoginSessionID(string strPassword)
+        public async Task<Boolean> fn_retrieveLoginSession(string strPassword)
         {
             Boolean check = false;
             try
@@ -52,17 +52,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 HTTPRestViewModel oHttpRestVm = new HTTPRestViewModel();
                 string function = "https://ww3.allnone.ie/client/" + pstrSystem + "/cti/userAPP_main.asp";
                 string strForOutput = "";
-                #region PostParameters
-                List<KeyValuePair<string, string>> listKVmyParameter = new List<KeyValuePair<string, string>>();
-                KeyValuePair<string, string> myParameter = new KeyValuePair<string, string>("strFunction", "login");
-                listKVmyParameter.Add(myParameter);
-                myParameter = new KeyValuePair<string, string>("strSystem", pstrSystem);
-                listKVmyParameter.Add(myParameter);
-                myParameter = new KeyValuePair<string, string>("strClient_Username", strUsername);
-                listKVmyParameter.Add(myParameter);
-                myParameter = new KeyValuePair<string, string>("strClient_Password", strPassword);
-                listKVmyParameter.Add(myParameter);
-                #endregion
+                List<KeyValuePair<string, string>> listKVmyParameter = fn_addParamsToList(strPassword, pstrSystem);
                 strForOutput = await oHttpRestVm.RESTcalls_POST_BXPAPI(function, listKVmyParameter);
                 if (strForOutput == "N/A")
                     return check;
@@ -76,6 +66,20 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                
             }
             return check;
+        }
+
+        private static List<KeyValuePair<string, string>> fn_addParamsToList(string strPassword, string pstrSystem)
+        {
+            List<KeyValuePair<string, string>> listKVmyParameter = new List<KeyValuePair<string, string>>();
+            KeyValuePair<string, string> myParameter = new KeyValuePair<string, string>("strFunction", "login");
+            listKVmyParameter.Add(myParameter);
+            myParameter = new KeyValuePair<string, string>("strSystem", pstrSystem);
+            listKVmyParameter.Add(myParameter);
+            myParameter = new KeyValuePair<string, string>("strClient_Username", strUsername);
+            listKVmyParameter.Add(myParameter);
+            myParameter = new KeyValuePair<string, string>("strClient_Password", strPassword);
+            listKVmyParameter.Add(myParameter);
+            return listKVmyParameter;
         }
 
         public Boolean fn_ParseLoginXMLDocument(string output, string function, string strSystem)

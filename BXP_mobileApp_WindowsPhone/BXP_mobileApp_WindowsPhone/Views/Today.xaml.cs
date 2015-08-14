@@ -1,4 +1,5 @@
 ﻿using BXP_MobileApp_WindowsPhone.Common;
+using BXP_MobileApp_WindowsPhone.Model;
 using BXP_MobileApp_WindowsPhone.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -25,15 +26,15 @@ namespace BXP_MobileApp_WindowsPhone.Views
     public sealed partial class Today : Page
     {
         private NavigationHelper navigationHelper;
+        Login myLogin = Login.Instance;
         DiaryViewModel oDiaryViewModel = new DiaryViewModel();
         ListeeViewModel oListeeViewModel = new ListeeViewModel();
         public Today()
         {
-           Task t = getAppointments();
-           t.Wait(250);
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+           Task t = getAppointments();
             this.InitializeComponent();
             this.AppointmentScroller.DataContext = oDiaryViewModel.propObDiary;
             this.ListeeScroller.DataContext = oListeeViewModel;
@@ -42,7 +43,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
 
         public async Task getAppointments()
         {
-            await oDiaryViewModel.fnGetAppointments("diary_today");
+            await oDiaryViewModel.fn_PostingToServerForDiary("diary_today");
 
         }
 
@@ -67,6 +68,14 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            if (e.PageState != null)
+            {
+                myLogin.propStrClient_SessionField = e.PageState["LoginSession"].ToString();
+                myLogin.propIntClient_Id = Int32.Parse(e.PageState["LoginClient"].ToString());
+                myLogin.propStrFunctionURL = e.PageState["LoginURL"].ToString();
+                myLogin.propStrSystemUsed = e.PageState["loginSystem"].ToString();
+                Task t = getAppointments();
+            }
         }
 
         /// <summary>
@@ -79,6 +88,10 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// serializable state.</param>
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
+            e.PageState["LoginSession"] = myLogin.propStrClient_SessionField;
+            e.PageState["LoginClient"] = myLogin.propIntClient_Id;
+            e.PageState["LoginURL"] = myLogin.propStrFunctionURL;
+            e.PageState["loginSystem"] = myLogin.propStrSystemUsed;
         }
 
         #region NavigationHelper registration

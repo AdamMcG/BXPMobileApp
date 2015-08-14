@@ -20,7 +20,7 @@ namespace BXP_MobileApp_WindowsPhone.Model
 
             set { propSynCollection = value; }
         }
-        public async Task testRss()
+        private async Task fn_retrieveRSSItems()
         {
             try
             {
@@ -40,13 +40,9 @@ namespace BXP_MobileApp_WindowsPhone.Model
 
         }
 
-            public async void awaitRSS()
+            public async void fnCallRetrievalFunction()
             {
-                await testRss();
-            }
-
-            public RSSViewModel()
-            {
+                await fn_retrieveRSSItems();
             }
         }
     }

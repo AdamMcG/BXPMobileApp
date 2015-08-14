@@ -42,7 +42,7 @@
                 <Image HorizontalAlignment="Stretch"  Source="https://upload.wikimedia.org/wikipedia/commons/8/82/Wide_angle_tetons.jpg"></Image>
                 
                 <StackPanel Orientation="Vertical" Margin="0,30,0,0">
-                    <TextBox x:Name="systemTextBox" HorizontalAlignment="Stretch" PlaceholderText="System" Text="{Binding propStrSystem, Mode=TwoWay}"/>
+                    <TextBox x:Name="systemTextBox" HorizontalAlignment="Stretch" PlaceholderText="System" Text="{Binding propStrSystem, Mode=TwoWay}" TextChanged="systemTextBox_TextChanged"/>
                 </StackPanel>
                 <StackPanel x:Name="stackUsername" Margin="0,30,0,0" DataContext="{Binding viewStyling}" Orientation="Vertical"  >
                     <TextBox x:Name="UsernameTextBox"  HorizontalAlignment="Stretch" PlaceholderText="Username" Text="{Binding propStrUsername,Mode=TwoWay}"/>

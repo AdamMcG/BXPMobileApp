@@ -16,6 +16,7 @@ using Windows.Networking;
 using BXP_MobileApp_WindowsPhone.Common;
 using BXP_MobileApp_WindowsPhone.ViewModel;
 using Windows.UI;
+using BXP_MobileApp_WindowsPhone.Model;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -26,7 +27,8 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// </summary>
     public sealed partial class HomePage : Page
     {
-         StylingViewModel viewStyling = new StylingViewModel();
+        Login myLogin = Login.Instance;
+        SettingsViewModel mySettings = new SettingsViewModel();
         private NavigationHelper navigationHelper;
         public HomePage()
         {
@@ -103,6 +105,16 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            if (e.PageState != null)
+            {
+                myLogin.propStrClient_SessionField = e.PageState["LoginSession"].ToString();
+                myLogin.propIntClient_Id = Int32.Parse(e.PageState["LoginClient"].ToString());
+                myLogin.propStrFunctionURL = e.PageState["LoginURL"].ToString();
+                myLogin.propStrSystemUsed = e.PageState["loginSystem"].ToString();
+                mySettings.propStrUsername = e.PageState["settingVM"].ToString();
+                this.Greeting_Text_Block.Text = "Hi, " + mySettings.propStrUsername;
+            }
+
         }
 
         /// <summary>
@@ -115,6 +127,11 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// serializable state.</param>
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
+            e.PageState["LoginSession"] = myLogin.propStrClient_SessionField;
+            e.PageState["LoginClient"] = myLogin.propIntClient_Id;
+            e.PageState["LoginURL"] = myLogin.propStrFunctionURL;
+            e.PageState["loginSystem"] = myLogin.propStrSystemUsed;
+            e.PageState["settingVM"] = mySettings.propStrUsername;
         }
 
         #region NavigationHelper registration
@@ -134,10 +151,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (e.Parameter.GetType() == typeof(StylingViewModel))
-                this.viewStyling = (StylingViewModel)e.Parameter;
- 
-            this.Greeting_Text_Block.Text = "Hi, " + viewStyling.strUserName;
+            this.Greeting_Text_Block.Text = "Hi, " +mySettings.propStrUsername;
             
             this.navigationHelper.OnNavigatedTo(e);
         }

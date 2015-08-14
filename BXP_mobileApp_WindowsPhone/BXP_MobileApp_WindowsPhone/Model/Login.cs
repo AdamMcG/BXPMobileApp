@@ -13,6 +13,7 @@ namespace BXP_MobileApp_WindowsPhone.Model
 
         private Login() { }
 
+
         private string strSystemUsed;
         public string propStrSystemUsed
         {

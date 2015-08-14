@@ -41,13 +41,22 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         }
 
         //This is for pulling down the total Set of listees.
-        public async Task fnGetListees()
-        {
+        public async Task fn_POSTToServerForListees() {
             string uGetToDoListItems = "https://ww3.allnone.ie/client/client_allnone/cti/userCTI_XML_AppFunctions.asp";
             HTTPRestViewModel oHttpViewModel = new HTTPRestViewModel();
             string myHttpResponse = "";
-            List<KeyValuePair<string, string>> kvListOfParameters = new List<KeyValuePair<string, string>>();
+            List<KeyValuePair<string, string>> kvListOfParameters = fn_addParamsToList();
 
+            await oHttpViewModel.RESTcalls_GET_BXPAPI_with_parameters
+                (myHttpResponse, uGetToDoListItems, kvListOfParameters);
+
+            fn_parsingListeeList(myHttpResponse);
+            return;
+        }
+
+        private static List<KeyValuePair<string, string>> fn_addParamsToList()
+        {
+            List<KeyValuePair<string, string>> kvListOfParameters = new List<KeyValuePair<string, string>>();
             KeyValuePair<string, string> kvMyParameter = new KeyValuePair<string, string>("strFunction",
                 "GetSessionId, ToDo_today,Diary_Today,Diary_Tomorrow,Diary_ThisWeek");
             kvListOfParameters.Add(kvMyParameter);
@@ -55,21 +64,20 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             kvListOfParameters.Add(kvMyParameter);
             kvMyParameter = new KeyValuePair<string, string>("strPassword", "abc123");
             kvListOfParameters.Add(kvMyParameter);
-
-            await oHttpViewModel.RESTcalls_GET_BXPAPI_with_parameters
-                (myHttpResponse, uGetToDoListItems, kvListOfParameters);
-
-            fnparsingListeeList(myHttpResponse);
-            return;
+            return kvListOfParameters;
         }
 
-        //This is for parsing the listee Xml File.
-        public void fnparsingListeeList(string strXMLToParse)
+        public void fn_parsingListeeList(string strXMLToParse)
         {
 
             XElement recordElement = XDocument.Parse(strXMLToParse, LoadOptions.PreserveWhitespace).Root.Element("data");
             var collectionOfElements = recordElement.Elements("record");
 
+            fn_applyItemsToObject(collectionOfElements);
+        }
+
+        private void fn_applyItemsToObject(IEnumerable<XElement> collectionOfElements)
+        {
             foreach (XElement record in collectionOfElements)
             {
                 string id = record.Element("intId").Value;
@@ -101,7 +109,6 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             }
         }
 
-        //This is to post a new listee up to the BXPAPI system.
         public void fnPostingNewListeeToSystem(string ListeeToAdd)
         {
 
