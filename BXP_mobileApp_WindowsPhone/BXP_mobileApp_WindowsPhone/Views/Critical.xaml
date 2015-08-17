@@ -16,37 +16,20 @@
     <Page.Resources>
 
         <DataTemplate x:Key="GridTemplate">
-            <Grid Width="173" Margin="5,5,5,5">
+            <Grid Width="66" Height="100" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5,5,0,0" Background="{Binding gridColour}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Border Background="#363951" Height="173" Width="173" 
-                        Grid.Row="0" HorizontalAlignment="Left" Opacity="0.3" >
-                </Border>
-                <TextBlock FontSize="32" Text="{Binding propHamsterName}" HorizontalAlignment="Left" FontWeight="SemiBold" TextWrapping="WrapWholeWords"/>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                <TextBlock FontSize="12" FontStretch="ExtraExpanded" Text="{Binding propHamsterName}" 
+                           HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
+                <TextBlock FontSize="40" Text="{Binding propHamsterValue}" HorizontalAlignment="Center" 
+                           FontWeight="Bold" TextWrapping="WrapWholeWords"/>
+                </StackPanel>
             </Grid>
 
-        </DataTemplate>
-
-
-        <DataTemplate x:Name="template_for_Listview2">
-            <Border BorderBrush="#363951"  BorderThickness="0, 1, 0, 1">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom" Background="#0C0B15"  Width="400" Margin="0,0,0,0" 
-                        IsHoldingEnabled="True" >
-
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding propHamsterName, UpdateSourceTrigger=PropertyChanged}" FontSize="20" FontWeight="SemiBold" 
-        			Margin="23,10,30,0" HorizontalAlignment="Left" VerticalAlignment="Center"
-        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
-                    </StackPanel>
-                        <TextBlock Text="{Binding propHamsterValue, UpdateSourceTrigger=PropertyChanged}"
-                           FontSize="20" FontWeight="SemiBold" 
-        			Margin="26,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
-        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
-                </StackPanel>
-            </Border>
         </DataTemplate>
     </Page.Resources>
     
@@ -66,13 +49,17 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Critical" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
+            <TextBlock Text="Hamster Board" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="10,0,10,10">
-            <GridView ItemTemplate="{ThemeResource template_for_Listview2}"   
-             ItemsSource="{Binding propHamsterList.propColListOfHamsters}" Background="Red"/>
+            <GridView x:Name="gridOfHamsters" ItemTemplate="{ThemeResource GridTemplate}" ItemsSource="{Binding propHamsterList.propColListOfHamsters}"
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+              
+            </GridView>
+            <!--><GridView ItemTemplate="{ThemeResource template_for_Listview2}"   
+             ItemsSource="{Binding propHamsterList.propColListOfHamsters}" Background="Red"/>-->
        </Grid>
     </Grid>
 </Page>

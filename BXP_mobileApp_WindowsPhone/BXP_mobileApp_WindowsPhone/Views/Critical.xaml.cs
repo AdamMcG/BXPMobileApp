@@ -43,6 +43,22 @@ namespace BXP_MobileApp_WindowsPhone.Views
         private async System.Threading.Tasks.Task fn_PostCall()
         {
             await ohamsterVM.fn_PostCallForHamsterXMLRetrieval();
+            foreach (var item in ohamsterVM.propHamsterList.propColListOfHamsters)
+            {
+                if (item.propHamsterName.Equals("green") || item.propHamsterName.Equals("emerald") || item.propHamsterName.Equals("jade") || item.propHamsterName.Equals("apple") || item.propHamsterName.Equals("help"))
+                {
+                    
+                    item.gridColour = new SolidColorBrush(Windows.UI.Colors.DarkGreen);
+                }
+                if (item.propHamsterName.Equals("white") || item.propHamsterName.Equals("olive") || item.propHamsterName.Equals("lime") || item.propHamsterName.Equals("suggestion") || item.propHamsterName.Equals("newUser"))
+                {
+                    item.gridColour = new SolidColorBrush(Windows.UI.Colors.DarkRed);
+                }
+                if (item.propHamsterName.Equals("excellent") || item.propHamsterName.Equals("good") || item.propHamsterName.Equals("poor") || item.propHamsterName.Equals("awful"))
+                {
+                    item.gridColour = new SolidColorBrush(Windows.UI.Colors.DarkBlue);
+                }
+            }
         }
 
 

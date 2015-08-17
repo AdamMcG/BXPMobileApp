@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Media;
 
 namespace BXP_MobileApp_WindowsPhone.Model
 {
@@ -28,6 +29,8 @@ namespace BXP_MobileApp_WindowsPhone.Model
         { get; set; }
 
         public int propHamsterValue { get; set; }
+
+        public SolidColorBrush gridColour { get; set; }
 
     }
 }
