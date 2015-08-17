@@ -28,10 +28,11 @@ namespace BXP_MobileApp_WindowsPhone.Views
         private NavigationHelper navigationHelper;
         Login myLogin = Login.Instance;
         DiaryViewModel oDiaryViewModel = new DiaryViewModel();
-        ListeeViewModel oListeeViewModel = new ListeeViewModel();
+        ListerViewModel oListeeViewModel = new ListerViewModel();
         public Tomorrow()
         {
             Task t = getAppointments();
+            Task t2 = oListeeViewModel.fn_POSTToServerForAllListees("tomorrow", "list_listee_due");
             t.Wait(250);
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;

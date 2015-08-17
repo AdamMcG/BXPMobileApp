@@ -10,7 +10,6 @@
 
     <Page.BottomAppBar>
         <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
-
         </CommandBar>
     </Page.BottomAppBar>
 

@@ -10,12 +10,32 @@
 
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
+        <CommandBar Background="AntiqueWhite" Foreground="Black">
             <AppBarButton Icon="Add" Label="Add ToDo" Click="openTodo"/>
         </CommandBar>
     </Page.BottomAppBar>
 
     <Page.Resources>
+
+        <DataTemplate x:Name="template_for_Listview">
+            <Border BorderBrush="#363951"  BorderThickness="0, 1, 0, 1">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom" Background="#0C0B15"  Width="400" Margin="0,0,0,0" 
+                        IsHoldingEnabled="True" >
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding strListerTitle, UpdateSourceTrigger=PropertyChanged}" FontSize="20" FontWeight="SemiBold" 
+        			Margin="23,10,30,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <TextBlock Text="{Binding dteListerDate, UpdateSourceTrigger=PropertyChanged}"
+                           FontSize="20" FontWeight="SemiBold" 
+        			Margin="26,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        
         
         <DataTemplate x:Name="template_for_Listview2">
             <Border BorderBrush="#363951"  BorderThickness="0, 1, 0, 1">
@@ -67,7 +87,7 @@
 
                 <StackPanel Orientation="Vertical">
                     <ScrollViewer x:Name="ListeeScroller" Margin="0,0,-0.333,0" Height="200" HorizontalAlignment="Stretch" >
-                        <ListView  ItemsSource="{Binding pColTodayToDoList}" VerticalAlignment="Stretch" FontSize="19" 
+                        <ListView  ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding propMyLister.pColTodolist}" VerticalAlignment="Stretch" FontSize="19" 
                          BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Listee's for Today"  Background="CornflowerBlue" x:Name="Listee_Listview_Today" Height="200">
                             </ListView>
                     </ScrollViewer>

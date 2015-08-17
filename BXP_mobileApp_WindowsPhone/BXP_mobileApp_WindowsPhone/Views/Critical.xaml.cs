@@ -1,10 +1,12 @@
 ﻿using BXP_MobileApp_WindowsPhone.Common;
 using BXP_MobileApp_WindowsPhone.Model;
+using BXP_MobileApp_WindowsPhone.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -26,12 +28,21 @@ namespace BXP_MobileApp_WindowsPhone.Views
     {
         private NavigationHelper navigationHelper;
         Login myLogin = Login.Instance;
+        HamsterViewModel ohamsterVM = new HamsterViewModel();
         public Critical()
         {
+            Task t = fn_PostCall();
+            t.Wait(100);
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            this.DataContext = ohamsterVM;
             this.InitializeComponent();
+        }
+
+        private async System.Threading.Tasks.Task fn_PostCall()
+        {
+            await ohamsterVM.fn_PostCallForHamsterXMLRetrieval();
         }
 
 

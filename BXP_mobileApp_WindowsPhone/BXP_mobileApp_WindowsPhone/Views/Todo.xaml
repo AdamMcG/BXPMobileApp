@@ -17,7 +17,22 @@
 
     <Page.Resources>
         <DataTemplate x:Name="template_for_Listview">
+            <Border BorderBrush="#363951"  BorderThickness="0, 1, 0, 1">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom" Background="#0C0B15"  Width="400" Margin="0,0,0,0" 
+                        IsHoldingEnabled="True" >
 
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding strListerTitle, UpdateSourceTrigger=PropertyChanged}" FontSize="20" FontWeight="SemiBold" 
+        			Margin="23,10,30,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <TextBlock Text="{Binding dteListerDate, UpdateSourceTrigger=PropertyChanged}"
+                           FontSize="20" FontWeight="SemiBold" 
+        			Margin="26,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
 
         </DataTemplate>
     </Page.Resources>
@@ -48,7 +63,7 @@
                     <TextBox x:Name="Listee_Name_Here" Width="356" Margin="0,10,10,10" HorizontalAlignment="Center" PlaceholderText="Enter ToDo to add"/>
                 </StackPanel>
                 <ScrollViewer Height="433">
-                    <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding pColTodoList}" BorderBrush="AntiqueWhite" BorderThickness="1" VerticalAlignment="Top" Header="List Of Jobs To Do" Background="brown" 
+                    <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding propMyLister.pColTodolist}" BorderBrush="AntiqueWhite" BorderThickness="1" VerticalAlignment="Top" Header="List Of Jobs To Do" Background="brown" 
                          FontSize="19" x:Name = "Listview_Of_Listees" Height="331"  >
 
 

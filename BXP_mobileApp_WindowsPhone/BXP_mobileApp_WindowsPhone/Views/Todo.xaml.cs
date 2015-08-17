@@ -6,8 +6,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,9 +29,11 @@ namespace BXP_MobileApp_WindowsPhone.Views
     {
         Login myLogin =  Login.Instance;
         private NavigationHelper navigationHelper;
-         ListeeViewModel oListeeViewModel = new ListeeViewModel();
+         ListerViewModel oListeeViewModel = new ListerViewModel();
         public ToDo()
         {
+            Task t = oListeeViewModel.fn_POSTToServerForAllListees("n/a", "list_listee_incomplete");
+            t.Wait(150);
             this.DataContext = oListeeViewModel;
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
@@ -111,9 +115,18 @@ namespace BXP_MobileApp_WindowsPhone.Views
 
         #endregion
 
-        private void Insert_Listee_Click(object sender, RoutedEventArgs e)
+        private async void Insert_Listee_Click(object sender, RoutedEventArgs e)
         {
-            oListeeViewModel.fnPostingNewListeeToSystem(this.Listee_Name_Here.Text);
+            string strTitle = Listee_Name_Here.Text;
+           bool check = await oListeeViewModel.fn_POSTToServerInsert(strTitle);
+             MessageDialog myMessage = null;
+             if (check)
+             {
+                 myMessage = new MessageDialog("Successfully added a Listee!");
+             }
+             else
+                 myMessage = new MessageDialog("Sorry, your insert has failed.");
+             myMessage.ShowAsync();
         }
     }
 }

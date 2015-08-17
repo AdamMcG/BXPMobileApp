@@ -10,10 +10,10 @@ namespace BXP_MobileApp_WindowsPhone.Model
     class Hamster : INotifyPropertyChanged
     {
         public Hamster() { }
-        public Hamster(int id, string subject, string description) {
-            pIntHamsterID = id;
-            pstrHamsterDescription = description;
-            pStrHamsterSubject = subject;
+        public Hamster(string name, int value)
+        {
+            this.propHamsterName = name;
+            this.propHamsterValue = value;
         }
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public void NotifyPropertyChanged(string propertyName)
@@ -24,41 +24,10 @@ namespace BXP_MobileApp_WindowsPhone.Model
 
         }
 
+        public string propHamsterName
+        { get; set; }
 
-        private int intHamsterID;
-        public int pIntHamsterID
-        {
-            get { return intHamsterID; }
-            set
-            {
-                intHamsterID = value;
-                NotifyPropertyChanged("pintHamsterID");
-            }
-
-        }
-
-        private string strHamsterSubject;
-        public string pStrHamsterSubject
-        {
-            get { return strHamsterSubject; }
-            set
-            {
-                strHamsterSubject = value;
-                NotifyPropertyChanged("pStrHamsterSubject");
-            }
-        }
-
-        private string strHamsterDescription;
-        public string pstrHamsterDescription
-        {
-            get { return strHamsterDescription; }
-            set
-            {
-                strHamsterDescription = value;
-                NotifyPropertyChanged("pstrHamsterDescription");
-            }
-        }
-
+        public int propHamsterValue { get; set; }
 
     }
 }
