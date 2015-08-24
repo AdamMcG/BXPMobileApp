@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.BottomAppBar>
-        <CommandBar ClosedDisplayMode="Minimal" Background="AntiqueWhite" Foreground="Black">
+        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
         </CommandBar>
     </Page.BottomAppBar>
     
@@ -47,7 +47,7 @@
         </Grid.RowDefinitions>
 
         <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+        <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
             <TextBlock Text="Hamster Board" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
         </StackPanel>
@@ -58,8 +58,7 @@
                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
               
             </GridView>
-            <!--><GridView ItemTemplate="{ThemeResource template_for_Listview2}"   
-             ItemsSource="{Binding propHamsterList.propColListOfHamsters}" Background="Red"/>-->
+         
        </Grid>
     </Grid>
 </Page>

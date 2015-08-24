@@ -11,11 +11,7 @@ namespace BXP_MobileApp_WindowsPhone.Model
 {
     class Listee : INotifyPropertyChanged
     {
-        public Listee()
-        {
-
-        }
-
+      #region Accessors
         public int intLister_id { get; set; }
         public int intListerClient_id { get; set; }
         public string strListerComplete { get; set; }
@@ -39,7 +35,7 @@ namespace BXP_MobileApp_WindowsPhone.Model
         public int intListerProjectId { get; set; }
         public int intListerMeetingId { get; set; }
         public int intListerMeetingActionId { get; set; }
-
+        #endregion
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public void NotifyPropertyChanged(string propertyName)
         {

@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource AppBarBackgroundThemeBrush}">
 
     <Page.BottomAppBar>
         <CommandBar Background="AntiqueWhite" Foreground="Black">
@@ -22,12 +22,12 @@
                         IsHoldingEnabled="True" >
 
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding strListerTitle, UpdateSourceTrigger=PropertyChanged}" FontSize="20" FontWeight="SemiBold" 
+                        <TextBlock Text="{Binding strListerTitle, UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="SemiBold" 
         			Margin="23,10,30,0" HorizontalAlignment="Left" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                     </StackPanel>
                     <TextBlock Text="{Binding dteListerDate, UpdateSourceTrigger=PropertyChanged}"
-                           FontSize="20" FontWeight="SemiBold" 
+                           FontSize="15" FontWeight="SemiBold" 
         			Margin="26,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                 </StackPanel>
@@ -42,7 +42,7 @@
                         IsHoldingEnabled="True" >
 
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding pintAppointmentID, UpdateSourceTrigger=PropertyChanged}" FontSize="20" FontWeight="SemiBold" 
+                        <TextBlock Text="{Binding pintAppointmentID, UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="SemiBold" 
         			Margin="23,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                         <TextBlock Text="{Binding pdteStart, UpdateSourceTrigger=PropertyChanged}"
@@ -72,7 +72,7 @@
         </Grid.RowDefinitions>
 
         <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+        <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
             <TextBlock Text="Tomorrow" Margin="0,-6.5,0,2.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
@@ -81,14 +81,17 @@
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
             <StackPanel >
                 <StackPanel>
-                    <ScrollViewer x:Name="ListeeScrollerTomorrow" Margin="0,0,-0.333,10" Height="210">
-                        <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding propMyLister.pColTodolist}" FontSize="19" VerticalAlignment="Top" BorderBrush="AntiqueWhite" BorderThickness="1" HorizontalAlignment="Stretch" Header="Listee's for Tomorrow"  Background="CornflowerBlue" x:Name="Listee_Listview_Tomorrow" Height="200" >
+                   
+                    <ScrollViewer x:Name="AppointmentScrollerTomorrow"  Height="210" Margin="0,0,-0.333,0">
+                        <ListView ItemTemplate="{ThemeResource template_for_Listview2}" ItemsSource="{Binding pColAppointment}" FontSize="19"  BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Header="Appointment"  x:Name="Appointment_Listview_tomorrow" Height="200" >
+
+
                         </ListView>
                     </ScrollViewer>
-                    <ScrollViewer x:Name="AppointmentScrollerTomorrow"  Height="210" Margin="0,0,-0.333,0">
-                        <ListView ItemTemplate="{ThemeResource template_for_Listview2}" ItemsSource="{Binding pColAppointment}" FontSize="19" BorderBrush="AntiqueWhite" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Header="Appointments for Tomorrow"  Background="Brown"  x:Name="Appointment_Listview_tomorrow" Height="200" >
 
-
+                    <ScrollViewer x:Name="ListeeScrollerTomorrow" Margin="0,20,-0.333,10" Height="210">
+                        <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding propMyLister.pColTodolist}" 
+                                  FontSize="19" VerticalAlignment="Top" BorderThickness="1" HorizontalAlignment="Stretch" Header="Lister" x:Name="Listee_Listview_Tomorrow" Height="200" >
                         </ListView>
                     </ScrollViewer>
                 </StackPanel>

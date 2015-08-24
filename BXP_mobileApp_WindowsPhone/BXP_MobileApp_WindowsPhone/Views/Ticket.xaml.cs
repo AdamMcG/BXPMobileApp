@@ -116,6 +116,8 @@ namespace BXP_MobileApp_WindowsPhone.Views
         private void AddTicketCLick(object sender, RoutedEventArgs e)
         {
          Task t =  oTicketViewModel.fnAddTicketToSystem(Subject_Box.Text,Description_Field.Text);
+         Subject_Box.Text = "";
+         Description_Field.Text = "";
         }
     }
 }

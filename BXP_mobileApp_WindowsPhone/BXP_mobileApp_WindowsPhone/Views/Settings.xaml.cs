@@ -24,8 +24,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Settings : Page
-    {
+    public sealed partial class Settings : Page{
         SettingsViewModel settingViewModel = new SettingsViewModel();
         Login myLogin = Login.Instance;
              private NavigationHelper navigationHelper;
@@ -35,9 +34,9 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
             this.InitializeComponent();
+            systemTextBox.Text = settingViewModel.propStrSystem;
+            usernameTextBox.Text = settingViewModel.propStrUsername;
         }
-
-
 
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
@@ -46,7 +45,6 @@ namespace BXP_MobileApp_WindowsPhone.Views
         {
             get { return this.navigationHelper; }
         }
-
 
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also

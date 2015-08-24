@@ -11,12 +11,12 @@
 
     <Page.Resources>
         <DataTemplate x:Name="RSS_Feed_Item_Template">
-            <Border Background="White" BorderBrush="black" BorderThickness="3, 3, 3, 3">
+            <Border Background="" BorderBrush="black" BorderThickness="3, 3, 3, 3">
                 <StackPanel x:Name="RSSItemPanel" DataContext="{Binding Title}" Tapped="RSSTapped" 
-                        Orientation="Vertical" HorizontalAlignment="Stretch"
+                        Orientation="Vertical" HorizontalAlignment="Stretch" Background="#0C0B15"
                         VerticalAlignment="Bottom" Height="50" Width="400" Margin="0,0,0,10" >
                     <TextBlock HorizontalAlignment="Stretch"
-                               Text="{Binding Text }" Foreground="Black" FontSize="24" FontWeight="SemiBold" 
+                               Text="{Binding Text }" Foreground="White" FontSize="24" FontWeight="SemiBold" 
         			Margin="10,10,0,0" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                 </StackPanel>
@@ -26,11 +26,8 @@
     </Page.Resources>
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
-            <CommandBar.SecondaryCommands>
-             
-            </CommandBar.SecondaryCommands>
-            
+        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
+            <AppBarButton x:Name="loginButton" Icon="Forward" Click="Open_Login" Label="Login"></AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -48,7 +45,7 @@
         </Grid.RowDefinitions>
 
         <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="10,0,9,0.333">
+        <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
             <TextBlock Text="Latest News!" Margin="0,-6.5,-0.167,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="69" />
         </StackPanel>
@@ -57,10 +54,9 @@
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <ListView ItemsSource="{Binding propSynCollection}" 
-                          BorderBrush="AntiqueWhite" BorderThickness="1" Header="List of RSS items" Name="RSS_Feed_ListView" Margin="10,10,9.667,10" ItemTemplate="{ThemeResource RSS_Feed_Item_Template}"   Height="370">
+                          BorderBrush="AntiqueWhite" BorderThickness="1" Header="List of RSS items" Name="RSS_Feed_ListView" FontSize="19" Margin="10,10,9.667,10" ItemTemplate="{ThemeResource RSS_Feed_Item_Template}"   Height="392">
 
                 </ListView>
-                <Button x:Name="loginButton" HorizontalAlignment="Center" Background="CornflowerBlue" Click="Open_Login">Login</Button>
             </StackPanel>
 
         </Grid>

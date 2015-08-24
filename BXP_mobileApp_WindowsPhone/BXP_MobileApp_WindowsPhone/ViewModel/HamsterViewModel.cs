@@ -19,8 +19,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             set { HamsterList = value; }
         }
 
-        public async Task fn_PostCallForHamsterXMLRetrieval()
-        {
+        public async Task fn_PostCallForHamsterXMLRetrieval(){
             HTTPRestViewModel oHttpClient = new HTTPRestViewModel();
             Login login = Login.Instance;
             #region Parameters

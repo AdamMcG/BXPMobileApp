@@ -29,31 +29,19 @@ namespace BXP_MobileApp_WindowsPhone.Views
     {
         Login myLogin = Login.Instance;
         SettingsViewModel mySettings = new SettingsViewModel();
+        StylingViewModel viewStyling = new StylingViewModel();
         private NavigationHelper navigationHelper;
         public HomePage()
         {
-
             this.InitializeComponent();   
+            this.DataContext = viewStyling;
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         
         }
 
-        #region helpfulMethods
-        public static Windows.UI.Xaml.Media.SolidColorBrush GetColorFromHex(string hexaColor)
-        {
-            return new Windows.UI.Xaml.Media.SolidColorBrush(
-                Windows.UI.Color.FromArgb(
-                    255,
-                    Convert.ToByte(hexaColor.Substring(1, 2), 16),
-                    Convert.ToByte(hexaColor.Substring(3, 2), 16),
-                    Convert.ToByte(hexaColor.Substring(5, 2), 16)
-                )
-            );
-        }
-        #endregion
-
+       
 
         #region navigationMethods
         public NavigationHelper NavigationHelper
@@ -164,7 +152,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
         #endregion
 
 
-// Launch the URI
+        // Launch the URI
         async void DefaultLaunch(Uri uri)
         {
         // Launch the URI

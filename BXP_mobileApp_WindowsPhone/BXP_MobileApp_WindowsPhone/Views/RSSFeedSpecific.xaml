@@ -10,7 +10,8 @@
    
     
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
+        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
+            <AppBarButton x:Name="returntologin" Label="Return" Icon="Back" Click="loginReturn"/>
         </CommandBar>
     </Page.BottomAppBar>
     <Grid x:Name="LayoutRoot">
@@ -27,17 +28,17 @@
         </Grid.RowDefinitions>
 
         <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+        <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="RSS Item" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="Details" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
             <StackPanel x:Name="content_stack_panel">
-                <WebView x:Name="MyWebView"  Height="387" Margin="0,0,-0.333,0"
+                <WebView x:Name="MyWebView"  Height="368" Margin="0,0,-0.333,0"
                          Visibility="Visible" NavigationCompleted="MyWebView_NavigationCompleted" ContentLoading="MyWebView_ContentLoading"/>
-                <Button x:Name="Return_To_RSS_Feed" Background="CornflowerBlue" HorizontalAlignment="Center">Return</Button>
+               
             </StackPanel>
         </Grid>
     </Grid>

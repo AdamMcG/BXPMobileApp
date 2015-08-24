@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
 
         <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+        <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source="bxp-homepage-banner.png"/>
             <TextBlock Text="Main Page" Margin="0,-6.5,-0.167,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="81"/>
         </StackPanel>
@@ -36,19 +36,19 @@
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.333,19,10" Background="Black">
             <TextBlock x:Name="Greeting_Text_Block" Foreground="white" FontStyle="Normal" FontSize="40" />
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,5,0">
-                    <Button x:Name="toDoButton" Background="CornflowerBlue" Foreground="{Binding _font}" Click="OpenToDo">To Do</Button>
-                    <Button Background="CornflowerBlue" Click="OpenToday">Today</Button>
-                    <Button Background="CornflowerBlue" Click="OpenContacts">Contacts</Button>
-                    <Button Background="red" Click="OpenBxp">Website</Button>
-                    <Button Background="red" Click="OpenSystem">System</Button>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,20,0">
+                    <Button Margin="0,0,0,0" x:Name="toDoButton" Background="{Binding buttonBackground}"    FontSize="{Binding mediumFontSize}" Foreground="{Binding buttonForeground}" Click="OpenToDo">To Do</Button>
+                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenToday">Today</Button>
+                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenContacts">Contacts</Button>
+                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenBxp">Website</Button>
+                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" Click="OpenSystem">System</Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,5,0">
-                    <Button Background="CornflowerBlue" Click="OpenTicket">Ticket</Button>
-                    <Button Background="CornflowerBlue" Click="OpenTomorrow">Tomorrow</Button>
-                    <Button Background="CornflowerBlue" Click="OpenCritical">Critical</Button>
-                    <Button Background="Red" Click="OpenWixi">Wixi</Button>
-                    <Button Background="CornflowerBlue" Click="OpenSettings">Settings</Button>
+                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenTicket">Ticket</Button>
+                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenTomorrow">Tomorrow</Button>
+                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}"  FontFamily="{Binding appFont}" Click="OpenCritical">Critical</Button>
+                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenWixi">Wixi</Button>
+                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenSettings">Settings</Button>
                 </StackPanel>
             </StackPanel>
         </Grid>

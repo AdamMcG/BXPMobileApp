@@ -47,7 +47,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
             {
                 if (item.propHamsterName.Equals("green") || item.propHamsterName.Equals("emerald") || item.propHamsterName.Equals("jade") || item.propHamsterName.Equals("apple") || item.propHamsterName.Equals("help"))
                 {
-                    
+
                     item.gridColour = new SolidColorBrush(Windows.UI.Colors.DarkGreen);
                 }
                 if (item.propHamsterName.Equals("white") || item.propHamsterName.Equals("olive") || item.propHamsterName.Equals("lime") || item.propHamsterName.Equals("suggestion") || item.propHamsterName.Equals("newUser"))

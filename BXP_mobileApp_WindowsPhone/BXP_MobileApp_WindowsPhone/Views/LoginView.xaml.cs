@@ -114,22 +114,32 @@ namespace BXP_MobileApp_WindowsPhone.Views
         private async void fn_CheckconnectionBeforeLogin(object sender, RoutedEventArgs e)
         {
                 MessageDialog mymessage = null;
-                try
+                if((viewSetting.propStrSystem == "") && (viewSetting.propStrUsername ==""))
                 {
-                    string password = PasswordBox.Password;
-                    string strSystem = "client_" + viewSetting.propStrSystem.ToLower();
-                    Boolean boolCheck = await viewSetting.fn_retrieveLoginSession(password);
-                    if (boolCheck == true)
-                        navigateToMain();
-                    else
-                    {
-                        string strErrorString = "Error: No valid Network Connection ";
-                        mymessage = new MessageDialog(strErrorString);
-                        await mymessage.ShowAsync();
-                    }
+                    mymessage = new MessageDialog("No parameters were filled");
+                   await mymessage.ShowAsync();
+                   loginclickbutton.IsEnabled = true;
                 }
-                catch (Exception reached){
-                    throw reached;
+                else
+                {
+                    try
+                    {
+                        string password = PasswordBox.Password;
+                        string strSystem = "client_" + viewSetting.propStrSystem.ToLower();
+                        Boolean boolCheck = await viewSetting.fn_retrieveLoginSession(password);
+                        if (boolCheck == true)
+                            navigateToMain();
+                        else
+                        {
+                            string strErrorString = "Error: No valid Network Connection ";
+                            mymessage = new MessageDialog(strErrorString);
+                            await mymessage.ShowAsync();
+                        }
+                    }
+                    catch (Exception reached)
+                    {
+                        throw reached;
+                    }
                 }
         }
 
@@ -150,6 +160,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
                 string strErrorString = "Error \n" + myLogin.propIntErrorId + " : " + myLogin.propStrError;
                 mymessage = new MessageDialog(strErrorString);
                 await mymessage.ShowAsync();
+                loginclickbutton.IsEnabled = true;
             }
         }
 

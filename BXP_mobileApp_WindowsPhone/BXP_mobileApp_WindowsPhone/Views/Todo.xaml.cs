@@ -117,16 +117,22 @@ namespace BXP_MobileApp_WindowsPhone.Views
 
         private async void Insert_Listee_Click(object sender, RoutedEventArgs e)
         {
+            ToDoInsertButton.IsEnabled = false;
             string strTitle = Listee_Name_Here.Text;
            bool check = await oListeeViewModel.fn_POSTToServerInsert(strTitle);
              MessageDialog myMessage = null;
              if (check)
              {
+                 Listee_Name_Here.Text = "";
                  myMessage = new MessageDialog("Successfully added a Listee!");
+                 ToDoInsertButton.IsEnabled = true;
              }
              else
+             {
                  myMessage = new MessageDialog("Sorry, your insert has failed.");
-             myMessage.ShowAsync();
+                ToDoInsertButton.IsEnabled = true;
+             }
+            await myMessage.ShowAsync();
         }
     }
 }

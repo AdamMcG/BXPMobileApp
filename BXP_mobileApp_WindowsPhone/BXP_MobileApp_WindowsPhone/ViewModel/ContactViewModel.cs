@@ -33,13 +33,13 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         //Pull down the list of contacts under a particular search name
         public async void fnGetContactList(string strcontactToSearchFor)
         {
-            string strAPIFunction = "";
+          //  string strAPIFunction = "";
             HTTPRestViewModel oHttpRestViewModel = new HTTPRestViewModel();
-            string strXmlDocumentContent = "";
+          //  string strXmlDocumentContent = "";
             List<KeyValuePair<string, string>> kvHttpRequestParameters = new List<KeyValuePair<string, string>>();
             KeyValuePair<string, string> kvMyParameter = new KeyValuePair<string, string>("value", strcontactToSearchFor);
-            await oHttpRestViewModel.RESTcalls_GET_BXPAPI_with_parameters(strXmlDocumentContent, strAPIFunction, kvHttpRequestParameters);
-            fnParseContactXMLDocument(strXmlDocumentContent);
+           // await oHttpRestViewModel.RESTcalls_GET_BXPAPI_with_parameters(strXmlDocumentContent, strAPIFunction, kvHttpRequestParameters);
+           // fnParseContactXMLDocument(strXmlDocumentContent);
             return;
         }
 

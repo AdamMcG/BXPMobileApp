@@ -22,7 +22,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             }
         }
 
-        private static string strSystem;
+        private static string strSystem = "";
         public string propStrSystem
         {
             get { return strSystem; }
@@ -33,7 +33,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             }
         }
 
-        private static string strUsername;
+        private static string strUsername = "";
         public string propStrUsername
         {
             get { return strUsername; }
@@ -60,9 +60,8 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                    check = fn_ParseLoginXMLDocument(strForOutput, function, pstrSystem);
                    
             }
-            catch (Exception)
-            {
-                
+            catch (Exception e) {
+                e.Message.ToString();
                
             }
             return check;

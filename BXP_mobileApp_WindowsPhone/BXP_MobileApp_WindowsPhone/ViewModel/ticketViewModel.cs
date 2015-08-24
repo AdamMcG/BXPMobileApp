@@ -40,9 +40,8 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             kvMyParameterList.Add(kvMyParameter);
             kvMyParameter = new KeyValuePair<string, string>("description", strDescription);
             kvMyParameterList.Add(kvMyParameter);
-            string strXMLDocument = "";
-            string strMyFunction = "";
-         strXMLDocument = await ohttpRestViewModel.RESTcalls_POST_BXPAPI( strMyFunction, kvMyParameterList);
+          //  string strXMLDocument = "";
+//         strXMLDocument = await ohttpRestViewModel.RESTcalls_POST_BXPAPI( strMyFunction, kvMyParameterList);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

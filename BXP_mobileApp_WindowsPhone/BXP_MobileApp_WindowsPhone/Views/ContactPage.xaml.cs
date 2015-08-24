@@ -114,6 +114,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
         private void SearchForContact(object sender, RoutedEventArgs e)
         {
             oContactViewModel.fnGetContactList(contact_To_Search.Text);
+            contact_To_Search.Text = "";
         }
     }
 }

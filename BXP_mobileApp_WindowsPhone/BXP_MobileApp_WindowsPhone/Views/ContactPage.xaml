@@ -10,7 +10,7 @@
 
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" >
+        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
             <AppBarButton Icon="Find" Label="Search"/>
                 
             </CommandBar>
@@ -35,9 +35,9 @@
         </Grid.RowDefinitions>
 
         <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+        <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Contacts" Margin="0,-6.5,0,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="Contacts" Margin="0,0,0,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
@@ -50,7 +50,7 @@
                 </StackPanel>
                 <ScrollViewer Height="379" Margin="0,0,-0.333,0">
                     <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding pColContacts}" FontSize="19" x:Name="ListOfContacts" VerticalAlignment="Top" HorizontalAlignment="Stretch"
-                          Background="brown"
+ BorderBrush="AntiqueWhite" BorderThickness="1"
                               Header="List Of Contacts" Height="369" >
 
                     </ListView>
