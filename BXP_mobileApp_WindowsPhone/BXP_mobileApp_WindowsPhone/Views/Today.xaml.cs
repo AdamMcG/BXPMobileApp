@@ -23,6 +23,10 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    /// 
+
+    
+
     public sealed partial class Today : Page
     {
         private NavigationHelper navigationHelper;
@@ -38,9 +42,11 @@ namespace BXP_MobileApp_WindowsPhone.Views
            Task t = getAppointments();
            Task t2 = oListeeViewModel.fn_POSTToServerForAllListees("today", "list_listee_due");
             this.InitializeComponent();
+            this.DataContext = myStyling;
             this.AppointmentScroller.DataContext = oDiaryViewModel.propObDiary;
             this.ListeeScroller.DataContext = oListeeViewModel;
 
+            LayoutRoot.Background = myStyling.pbackgroundBrush;
         }
 
         public async Task getAppointments()

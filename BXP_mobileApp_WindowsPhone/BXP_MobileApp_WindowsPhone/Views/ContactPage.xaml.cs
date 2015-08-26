@@ -26,8 +26,9 @@ namespace BXP_MobileApp_WindowsPhone.Views
     public sealed partial class Contact : Page
     {
         Login myLogin = Login.Instance;
+        StylingViewModel myStyle = new StylingViewModel();
         private NavigationHelper navigationHelper;
-         ContactViewModel oContactViewModel = new ContactViewModel();
+         CampaignViewModel oContactViewModel = new CampaignViewModel();
         public Contact()
         {
             this.DataContext = oContactViewModel;
@@ -35,6 +36,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
             this.InitializeComponent();
+            LayoutRoot.Background = myStyle.pbackgroundBrush;
         }
 
         /// <summary>
@@ -111,10 +113,12 @@ namespace BXP_MobileApp_WindowsPhone.Views
 
         #endregion
 
-        private void SearchForContact(object sender, RoutedEventArgs e)
+
+        private void contactSearch_Click(object sender, RoutedEventArgs e)
         {
-            oContactViewModel.fnGetContactList(contact_To_Search.Text);
-            contact_To_Search.Text = "";
+          oContactViewModel.fnGetContactList(contact_To_Search.Text, 469);
         }
+
+        
     }
 }

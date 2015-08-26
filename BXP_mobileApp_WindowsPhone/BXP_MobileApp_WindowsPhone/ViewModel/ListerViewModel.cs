@@ -101,7 +101,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             kvListOfParameters.Add(kvParameters);
         } 
         #endregion
-
+        //Parse Response from Post call for Lister
         public void fn_parsingListeeList(string strXMLToParse)
         {
             XElement recordElement = XDocument.Parse(strXMLToParse, LoadOptions.PreserveWhitespace).Element("data");
@@ -111,6 +111,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             fn_parseForEachListeeItem(recordElement);
         }
 
+        //Parse through the Lister XML and add Listees to your 
         private void fn_parseForEachListeeItem(XElement recordElement)
         {
             var collectionOfElements = recordElement.Elements("item");

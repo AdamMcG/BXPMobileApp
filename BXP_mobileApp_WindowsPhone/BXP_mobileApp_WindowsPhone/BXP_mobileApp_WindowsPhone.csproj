@@ -87,7 +87,9 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Model\Appointment.cs" />
-    <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\Button.cs" />
+    <Compile Include="Model\Campaign.cs" />
+    <Compile Include="Model\CampaignItem.cs" />
     <Compile Include="Model\Diary.cs" />
     <Compile Include="Model\Hamster.cs" />
     <Compile Include="Model\HamsterList.cs" />
@@ -96,7 +98,7 @@
     <Compile Include="Model\Setting.cs" />
     <Compile Include="Model\Listee.cs" />
     <Compile Include="ViewModel\DiaryViewModel.cs" />
-    <Compile Include="ViewModel\ContactViewModel.cs" />
+    <Compile Include="ViewModel\CampaignViewModel.cs" />
     <Compile Include="ViewModel\HamsterViewModel.cs" />
     <Compile Include="ViewModel\HTTPRestViewModel.cs" />
     <Compile Include="ViewModel\ListerViewModel.cs" />
@@ -149,6 +151,8 @@
     <Content Include="Assets\BadgeLogo.scale-100.png" />
     <Content Include="Assets\ic_launcher.scale-100.png" />
     <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\maxresdefault.jpg" />
+    <Content Include="Assets\TextureBackgroundDefault.jpg" />
     <Content Include="Views\bxp-homepage-banner.png" />
     <Content Include="Assets\ic_launcher.scale-240.png" />
     <Content Include="Assets\Logo.scale-240.png" />
@@ -156,7 +160,7 @@
     <Content Include="Assets\SplashScreen.scale-240.png" />
     <Content Include="Assets\Square71x71Logo.scale-240.png" />
     <Content Include="Assets\StoreLogo.scale-240.png" />
-    <Content Include="Assets\WideLogo.scale-240.png" />
+    <Content Include="Assets\WideLogo.scale-240.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -207,6 +211,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

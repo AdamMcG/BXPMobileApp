@@ -27,6 +27,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             }
         }
        
+        //Send a Post request to the BXPAPP API
         public async Task fn_PostingToServerForDiary(string strFunctionToCall)
         {
             Login myLogin = Login.Instance;
@@ -40,6 +41,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                  fnParsingThroughRetrievedDiary( await oHttpViewModel.RESTcalls_POST_BXPAPI(RESTAPIFunction, listKVParameters));
         }
 
+        //Add Parameters for posting. 
         private static List<KeyValuePair<string, string>> fn_addingPostParamsToList(string strFunctionToCall, Login myLogin)
         {
             #region KeyValueParameters
@@ -58,6 +60,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             return listKVParameters;
         }
 
+        //Parse through the XML retrieved from POST call
         public void fnParsingThroughRetrievedDiary(string AppointmentXMLDocument)
         {
             try
@@ -77,6 +80,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             }
         }
 
+        //Add XML to appointment list
         private void fn_pushingParsedDataToAppointmentList(IEnumerable<XElement> xmlListOfItems)
         {
             try

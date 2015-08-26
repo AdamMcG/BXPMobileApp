@@ -27,6 +27,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
     public sealed partial class Settings : Page{
         SettingsViewModel settingViewModel = new SettingsViewModel();
         Login myLogin = Login.Instance;
+        StylingViewModel myStyle = new StylingViewModel();
              private NavigationHelper navigationHelper;
         public Settings()
         {
@@ -36,6 +37,10 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.InitializeComponent();
             systemTextBox.Text = settingViewModel.propStrSystem;
             usernameTextBox.Text = settingViewModel.propStrUsername;
+            this.GetConfigFileButton.DataContext = myStyle;
+            this.ResetConfigButton.DataContext = myStyle;
+            this.StoreConfigurationButton.DataContext = myStyle;
+            LayoutRoot.Background = myStyle.pbackgroundBrush;
         }
 
         /// <summary>
@@ -115,7 +120,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
 
         private async void resetFromServer(object sender, RoutedEventArgs e)
         {
-           Boolean check = await settingViewModel.fn_retrieveSettingsData();
+           Boolean check = await settingViewModel.fn_retrieveConfigPrimaryData();
            if (check)
            {
                MessageDialog myMessage = new MessageDialog("The Setting Retrieval was successful");

@@ -11,7 +11,6 @@
 
     <Page.BottomAppBar>
         <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
-
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -29,24 +28,21 @@
         </Grid.RowDefinitions>
 
         <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="0,0,0,0">
+        <StackPanel Grid.Row="0" Margin="0,0,0,0.167">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Settings" Margin="0,0,0.167,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="81"/>
-        </StackPanel>
-
-        <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,0,19,10" >
+            <TextBlock Text="Settings" Margin="0,0,0,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="81"/>
+       
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
                 <StackPanel Margin="10,10,10,10">
                     <TextBox x:Name="usernameTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Default Username"/>
                     <TextBox x:Name="systemTextBox" HorizontalAlignment="Stretch" Text="Default System"/>
                     </StackPanel>
                 <StackPanel HorizontalAlignment="Center" Margin="10,10,10,10">
-                <Button x:Name="StoreConfigurationButton" Background="CornflowerBlue" HorizontalAlignment="Stretch">Store Settings</Button>
-                    <Button x:Name="GetConfigFileButton" Background="CornflowerBlue" HorizontalAlignment="Stretch">Get Config</Button>
-                    <Button x:Name="ResetConfigButton" Background="CornflowerBlue" HorizontalAlignment="Stretch" Click="resetFromServer">Reset Settings</Button>
+                    <Button x:Name="StoreConfigurationButton" Foreground="{Binding pbuttonForeground}" FontSize="{Binding pmediumFontSize}" FontFamily="{Binding pappFont}" Background="{Binding pbuttonBackground}" Margin="0,0,0,10" HorizontalAlignment="Stretch" Height="80" Width="150">Store Settings</Button>
+                    <Button x:Name="GetConfigFileButton" Foreground="{Binding pbuttonForeground}" FontSize="{Binding pmediumFontSize}" FontFamily="{Binding pappFont}" Background="{Binding pbuttonBackground}" Margin="0,0,0,10" HorizontalAlignment="Stretch" Height="80" Width="150">Get Config</Button>
+                    <Button x:Name="ResetConfigButton" Foreground="{Binding pbuttonForeground}" FontSize="{Binding pmediumFontSize}" FontFamily="{Binding pappFont}" Background="{Binding pbuttonBackground}" HorizontalAlignment="Stretch" Click="resetFromServer" Height="80" Width="150">Reset Settings</Button>
                 </StackPanel>
             </StackPanel>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Page>

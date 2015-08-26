@@ -30,16 +30,13 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Details" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
-        </StackPanel>
-
-        <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
+            <TextBlock Text="Details" Margin="0,0,0,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+       
             <StackPanel x:Name="content_stack_panel">
-                <WebView x:Name="MyWebView"  Height="368" Margin="0,0,-0.333,0"
+                <WebView x:Name="MyWebView"  Height="417" Margin="1,1,1,1"
                          Visibility="Visible" NavigationCompleted="MyWebView_NavigationCompleted" ContentLoading="MyWebView_ContentLoading"/>
                
             </StackPanel>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BXP_MobileApp_WindowsPhone.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ namespace BXP_MobileApp_WindowsPhone.Model
     class Diary : INotifyPropertyChanged
     {
         private ObservableCollection<Appointment> ColAppointment = new ObservableCollection<Appointment>();
+       
 
         public ObservableCollection<Appointment> pColAppointment
         {

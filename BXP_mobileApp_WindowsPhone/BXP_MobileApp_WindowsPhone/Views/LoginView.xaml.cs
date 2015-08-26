@@ -16,6 +16,10 @@ using Windows.UI.Xaml.Navigation;
 using BXP_MobileApp_WindowsPhone.ViewModel;
 using BXP_MobileApp_WindowsPhone.Model;
 using Windows.UI.Popups;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Windows.Storage.Streams;
+using Windows.Storage;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 namespace BXP_MobileApp_WindowsPhone.Views
 {
@@ -30,6 +34,9 @@ namespace BXP_MobileApp_WindowsPhone.Views
         public LoginView()
         {
             this.InitializeComponent();
+            LayoutRoot.DataContext = viewStyling;
+            imageLogoURL.DataContext = viewStyling;
+            LayoutRoot.Background = viewStyling.pbackgroundBrush;
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
@@ -42,7 +49,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
         /// </summary>
         public NavigationHelper NavigationHelper
         {
-           
+
             get { return this.navigationHelper; }
         }
 
@@ -106,53 +113,60 @@ namespace BXP_MobileApp_WindowsPhone.Views
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+
             this.navigationHelper.OnNavigatedFrom(e);
         }
+
+    
 
         #endregion
 
         private async void fn_CheckconnectionBeforeLogin(object sender, RoutedEventArgs e)
         {
-                MessageDialog mymessage = null;
-                if((viewSetting.propStrSystem == "") && (viewSetting.propStrUsername ==""))
+            MessageDialog mymessage = null;
+            if ((viewSetting.propStrSystem == "") && (viewSetting.propStrUsername == ""))
+            {
+                mymessage = new MessageDialog("No parameters were filled");
+                await mymessage.ShowAsync();
+                loginclickbutton.IsEnabled = true;
+            }
+            else
+            {
+                try
                 {
-                    mymessage = new MessageDialog("No parameters were filled");
-                   await mymessage.ShowAsync();
-                   loginclickbutton.IsEnabled = true;
-                }
-                else
-                {
-                    try
+                    string password = PasswordBox.Password;
+                    string strSystem = "client_" + viewSetting.propStrSystem.ToLower();
+                    Boolean boolCheck = await viewSetting.fn_retrieveLoginSession(password);
+                    if (boolCheck == true)
+                        navigateToMain();
+                    else
                     {
-                        string password = PasswordBox.Password;
-                        string strSystem = "client_" + viewSetting.propStrSystem.ToLower();
-                        Boolean boolCheck = await viewSetting.fn_retrieveLoginSession(password);
-                        if (boolCheck == true)
-                            navigateToMain();
-                        else
-                        {
-                            string strErrorString = "Error: No valid Network Connection ";
-                            mymessage = new MessageDialog(strErrorString);
-                            await mymessage.ShowAsync();
-                        }
-                    }
-                    catch (Exception reached)
-                    {
-                        throw reached;
+                        string strErrorString = "Error: No valid Network Connection ";
+                        mymessage = new MessageDialog(strErrorString);
+                        await mymessage.ShowAsync();
                     }
                 }
+                catch (Exception reached)
+                {
+                    throw reached;
+                }
+            }
         }
 
         private async void navigateToMain()
         {
             MessageDialog mymessage = null;
-           Login myLogin = Login.Instance;
-            if (myLogin.propIntErrorId== 0)
+            Login myLogin = Login.Instance;
+            if (myLogin.propIntErrorId == 0)
             {
                 string strSessionId = "Your session id for this session is:" + myLogin.propStrClient_SessionField;
                 mymessage = new MessageDialog(strSessionId);
                 await mymessage.ShowAsync();
+                Task t = viewSetting.fn_retrieveConfigPrimaryData();
+                await viewSetting.fn_retrieveSettingsbuttonData();
+                viewSetting.assignToStyling();
                 viewStyling.strUserName = viewSetting.propStrUsername;
+                cacheLoginSettings();
                 Frame.Navigate(typeof(HomePage));
             }
             else
@@ -162,6 +176,17 @@ namespace BXP_MobileApp_WindowsPhone.Views
                 await mymessage.ShowAsync();
                 loginclickbutton.IsEnabled = true;
             }
+        }
+
+
+
+        public void cacheLoginSettings()
+        {
+            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            localSettings.Values["LoginClientID"] = Login.Instance.propIntClient_Id;
+            localSettings.Values["LoginClientSession"] = Login.Instance.propStrClient_SessionField;
+
         }
 
         private void systemTextBox_TextChanged(object sender, TextChangedEventArgs e)

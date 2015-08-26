@@ -2,6 +2,7 @@
 using BXP_MobileApp_WindowsPhone.Model;
 using BXP_MobileApp_WindowsPhone.ViewModel;
 using BXP_MobileApp_WindowsPhone.Views;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Networking.Connectivity;
+using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -31,6 +34,8 @@ namespace BXP_MobileApp_WindowsPhone
     {
         RSSViewModel RSS = new RSSViewModel();
         private NavigationHelper navigationHelper;
+        StylingViewModel myStyle = new StylingViewModel();
+        SettingsViewModel viewSetting = new SettingsViewModel();
         public MainPage()
         {
             try
@@ -41,6 +46,7 @@ namespace BXP_MobileApp_WindowsPhone
                 this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
                 this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
                 ConnectionCheck();
+                LayoutRoot.Background = myStyle.pbackgroundBrush;
             }
             catch (Exception)
             {
@@ -94,18 +100,27 @@ namespace BXP_MobileApp_WindowsPhone
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+           
             this.navigationHelper.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            
+            
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
         #endregion
 
-        private void Open_Login(object sender, RoutedEventArgs e)
+        private async void Open_Login(object sender, RoutedEventArgs e)
         {
+
+            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+             int a = Int32.Parse(localSettings.Values["LoginClientID"].ToString());
+             string b = localSettings.Values["LoginClientSession"].ToString();
+             Login.Instance.propIntClient_Id = a;
+             Login.Instance.propStrClient_SessionField = b;
             Frame.Navigate(typeof(LoginView));
         }
 
@@ -137,5 +152,7 @@ namespace BXP_MobileApp_WindowsPhone
                 e.Message.ToString();
             }
         }
+
+      
     }
 }

@@ -16,6 +16,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         public string aString;
         public HTTPRestViewModel() { }
 
+        //Send up a POST call to the specified URL
         public async Task<string> RESTcalls_POST_BXPAPI(string myfunction, List<KeyValuePair<string, string>> myParameters)
         {
             string output = "";

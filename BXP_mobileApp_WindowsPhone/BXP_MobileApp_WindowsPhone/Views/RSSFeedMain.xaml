@@ -47,18 +47,14 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Latest News!" Margin="0,-6.5,-0.167,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="69" />
-        </StackPanel>
+            <TextBlock Text="Latest News!" Margin="0,0,0,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="69" />
 
-        <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <ListView ItemsSource="{Binding propSynCollection}" 
-                          BorderBrush="AntiqueWhite" BorderThickness="1" Header="List of RSS items" Name="RSS_Feed_ListView" FontSize="19" Margin="10,10,9.667,10" ItemTemplate="{ThemeResource RSS_Feed_Item_Template}"   Height="392">
+                          BorderBrush="AntiqueWhite" BorderThickness="1" Header="List of RSS items" Name="RSS_Feed_ListView" FontSize="19" Margin="10" ItemTemplate="{ThemeResource RSS_Feed_Item_Template}"   Height="417">
 
                 </ListView>
             </StackPanel>
-
-        </Grid>
+        </StackPanel>
     </Grid>
 </Page>

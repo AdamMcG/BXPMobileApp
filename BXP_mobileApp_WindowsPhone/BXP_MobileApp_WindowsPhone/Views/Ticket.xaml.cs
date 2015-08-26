@@ -28,7 +28,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
     {
         private NavigationHelper navigationHelper;
         Login myLogin = Login.Instance;
-
+        StylingViewModel myStyle = new StylingViewModel();
          ticketViewModel oTicketViewModel = new ticketViewModel();
         public Ticket()
         {
@@ -37,6 +37,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
             this.InitializeComponent();
+            LayoutRoot.Background = myStyle.pbackgroundBrush;
         }
 
         /// <summary>

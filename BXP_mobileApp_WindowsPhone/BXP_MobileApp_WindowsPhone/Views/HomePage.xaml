@@ -9,7 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
+        <CommandBar Background="AntiqueWhite" Foreground="Black" >
+            <AppBarButton x:Name="logout" Icon="BackToWindow" Label="Logout"/>
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -29,28 +30,24 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source="bxp-homepage-banner.png"/>
-            <TextBlock Text="Main Page" Margin="0,-6.5,-0.167,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="81"/>
-        </StackPanel>
-
-        <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.333,19,10" Background="Black">
             <TextBlock x:Name="Greeting_Text_Block" Foreground="white" FontStyle="Normal" FontSize="40" />
+
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,20,0">
-                    <Button Margin="0,0,0,0" x:Name="toDoButton" Background="{Binding buttonBackground}"    FontSize="{Binding mediumFontSize}" Foreground="{Binding buttonForeground}" Click="OpenToDo">To Do</Button>
-                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenToday">Today</Button>
-                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenContacts">Contacts</Button>
-                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenBxp">Website</Button>
-                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" Click="OpenSystem">System</Button>
+                <StackPanel x:Name="column1" Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,20,0">
+                    <Button Margin="0,0,0,0" x:Name="toDoButton" Background="{Binding pbuttonBackground}"   FontSize="{Binding pmediumFontSize}" Foreground="{Binding pbuttonForeground}" FontFamily="{Binding pappFont}" Click="OpenToDo" Width="125" Height="80">To Do</Button>
+                    <Button Background="{Binding pbuttonBackground}" Foreground="{Binding pbuttonForeground}" FontSize="{Binding pmediumFontSize}" FontFamily="{Binding pappFont}" Click="OpenToday" Width="125" Height="80">Today</Button>
+                    <Button Background="{Binding pbuttonBackground}" Foreground="{Binding pbuttonForeground}" FontSize="{Binding pmediumFontSize}" FontFamily="{Binding pappFont}" Click="OpenContacts" Width="125" Height="80">Contacts</Button>
+                    <Button Background="{Binding pbuttonBackground}" Foreground="{Binding pbuttonForeground}" FontSize="{Binding pmediumFontSize}" FontFamily="{Binding pappFont}" Click="OpenBxp" Width="125" Height="80">Website</Button>
+                    <Button Background="{Binding pbuttonBackground}" Foreground="{Binding pbuttonForeground}" FontSize="{Binding pmediumFontSize}" FontFamily="{Binding pappFont}" Click="OpenSystem" Width="125" Height="80">System</Button>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,5,0">
-                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenTicket">Ticket</Button>
-                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenTomorrow">Tomorrow</Button>
-                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}"  FontFamily="{Binding appFont}" Click="OpenCritical">Critical</Button>
-                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenWixi">Wixi</Button>
-                    <Button Background="{Binding buttonBackground}" Foreground="{Binding buttonForeground}" FontSize="{Binding mediumFontSize}" FontFamily="{Binding appFont}" Click="OpenSettings">Settings</Button>
+                <StackPanel x:Name="column2" Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,5,0">
+                    <Button Background="{Binding pbuttonBackground}" Foreground="{Binding pbuttonForeground}" FontSize="{Binding pmediumFontSize}" FontFamily="{Binding pappFont}" Click="OpenTicket" Width="125" Height="80">Ticket</Button>
+                    <Button Background="{Binding pbuttonBackground}" Foreground="{Binding pbuttonForeground}" FontSize="{Binding pmediumFontSize}" FontFamily="{Binding pappFont}" Click="OpenTomorrow" Width="125" Height="80">Tomorrow</Button>
+                    <Button Background="{Binding pbuttonBackground}" Foreground="{Binding pbuttonForeground}" FontSize="{Binding pmediumFontSize}"  FontFamily="{Binding pappFont}" Click="OpenCritical" Width="125" Height="80">Critical</Button>
+                    <Button Background="{Binding pbuttonBackground}" Foreground="{Binding pbuttonForeground}" FontSize="{Binding pmediumFontSize}" FontFamily="{Binding pappFont}" Click="OpenWixi" Width="125" Height="80">Wixi</Button>
+                    <Button Background="{Binding pbuttonBackground}" Foreground="{Binding pbuttonForeground}" FontSize="{Binding pmediumFontSize}" FontFamily="{Binding pappFont}" Click="OpenSettings" Width="125" Height="80">Settings</Button>
                 </StackPanel>
             </StackPanel>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Page>

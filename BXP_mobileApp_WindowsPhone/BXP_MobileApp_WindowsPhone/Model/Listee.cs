@@ -47,5 +47,15 @@ namespace BXP_MobileApp_WindowsPhone.Model
             }
         }
 
+        private StylingViewModel myStyling = new StylingViewModel();
+        public StylingViewModel propMyStyling
+        {
+            get { return myStyling; }
+            set
+            {
+                myStyling = value;
+                NotifyPropertyChanged("propMStyling");
+            }
+        }
     }
 }

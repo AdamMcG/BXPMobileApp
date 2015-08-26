@@ -49,16 +49,11 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Hamster Board" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
-        </StackPanel>
-
-        <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="10,0,10,10">
+            <TextBlock Text="Hamster Board" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
             <GridView x:Name="gridOfHamsters" ItemTemplate="{ThemeResource GridTemplate}" ItemsSource="{Binding propHamsterList.propColListOfHamsters}"
-                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-              
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch">              
             </GridView>
          
-       </Grid>
-    </Grid>
+</StackPanel>
+        </Grid>
 </Page>

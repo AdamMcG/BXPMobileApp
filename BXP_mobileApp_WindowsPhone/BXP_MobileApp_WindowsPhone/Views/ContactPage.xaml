@@ -10,10 +10,10 @@
 
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Minimal">
-            <AppBarButton Icon="Find" Label="Search"/>
-                
+        <CommandBar Background="AntiqueWhite" Foreground="Black">
+            <AppBarButton x:Name="contactSearch" Icon="Find" Label="Search" Click="contactSearch_Click"/> 
             </CommandBar>
+        
     </Page.BottomAppBar>
     <Page.Resources>
         <DataTemplate x:Name="template_for_Listview">
@@ -37,25 +37,21 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Contacts" Margin="0,0,0,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
-        </StackPanel>
-
-        <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,10">
-                <StackPanel Margin="0,0,0,10" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                    <TextBox x:Name="contact_To_Search" Text="{Binding propStrRetainContact, Mode=TwoWay}" Foreground="Black" HorizontalAlignment="Stretch"
-                             PlaceholderText="Enter Contact Here" Margin="0,10,10,0" Width="346"/>
+            <TextBlock Text="Contacts" Margin="0,0,0,0" Style="{ThemeResource HeaderTextBlockStyle}" Foreground="{Binding pbuttonForeground}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                    <TextBox x:Name="contact_To_Search" Text="{Binding propStrRetainContact, Mode=TwoWay}" Foreground="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                             PlaceholderText="Enter Contact Here" Margin="0,0,0,10"/>
                       
-                </StackPanel>
-                <ScrollViewer Height="379" Margin="0,0,-0.333,0">
+           
+                <ScrollViewer Height="379" Margin="0,0,0,0">
                     <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding pColContacts}" FontSize="19" x:Name="ListOfContacts" VerticalAlignment="Top" HorizontalAlignment="Stretch"
- BorderBrush="AntiqueWhite" BorderThickness="1"
-                              Header="List Of Contacts" Height="369" >
+             
+                              Header="List Of Contacts" Height="375" >
 
                     </ListView>
                 </ScrollViewer>
             </StackPanel>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Page>

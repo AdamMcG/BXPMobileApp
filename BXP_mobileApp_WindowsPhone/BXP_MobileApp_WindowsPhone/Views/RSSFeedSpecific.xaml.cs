@@ -1,4 +1,5 @@
 ﻿using BXP_MobileApp_WindowsPhone.Common;
+using BXP_MobileApp_WindowsPhone.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,13 +26,14 @@ namespace BXP_MobileApp_WindowsPhone.Views
     public sealed partial class RSSFeedSpecific : Page
     {
         private NavigationHelper navigationHelper;
-        
+        StylingViewModel myStyle = new StylingViewModel();
         public RSSFeedSpecific()
         {
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
             this.InitializeComponent();
+            LayoutRoot.Background = myStyle.pbackgroundBrush;
         }
 
 

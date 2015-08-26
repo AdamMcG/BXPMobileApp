@@ -29,6 +29,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
         private NavigationHelper navigationHelper;
         Login myLogin = Login.Instance;
         HamsterViewModel ohamsterVM = new HamsterViewModel();
+        StylingViewModel myStyle = new StylingViewModel();
         public Critical()
         {
             Task t = fn_PostCall();
@@ -38,6 +39,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
             this.DataContext = ohamsterVM;
             this.InitializeComponent();
+            LayoutRoot.Background = myStyle.pbackgroundBrush;
         }
 
         private async System.Threading.Tasks.Task fn_PostCall()

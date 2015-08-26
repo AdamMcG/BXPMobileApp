@@ -14,51 +14,56 @@
         </CommandBar>
     </Page.BottomAppBar>
     <Page.Resources>
-
         <DataTemplate x:Name="template_for_Listview">
-            <Border BorderBrush="#363951"  BorderThickness="0, 1, 0, 1">
+            <Border BorderBrush="#363951" BorderThickness="1" >
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom" Background="#0C0B15"  Width="400" Margin="0,0,0,0" 
-                        IsHoldingEnabled="True" >
+                        VerticalAlignment="Bottom"   Width="400" Margin="0,0,0,0" 
+                        IsHoldingEnabled="True" Background="White" >
 
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding strListerTitle, UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="SemiBold" 
-        			Margin="23,10,30,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding strListerTitle, UpdateSourceTrigger=PropertyChanged}" 
+                                   Foreground="{Binding propMyStyling.pbuttonForeground}" FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
+        			 HorizontalAlignment="Left" VerticalAlignment="Center"
+        			TextTrimming="WordEllipsis" TextWrapping="Wrap" Margin="0,10,0,10"/>
+                        <TextBlock Text="{Binding dteListerDate, UpdateSourceTrigger=PropertyChanged}"
+                               Foreground="{Binding propMyStyling.pbuttonForeground}"
+                           FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
+        			 HorizontalAlignment="Left" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                     </StackPanel>
-                    <TextBlock Text="{Binding dteListerDate, UpdateSourceTrigger=PropertyChanged}"
-                           FontSize="15" FontWeight="SemiBold" 
-        			Margin="26,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
-        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                 </StackPanel>
             </Border>
         </DataTemplate>
 
 
         <DataTemplate x:Name="template_for_Listview2">
-            <Border BorderBrush="#363951"  BorderThickness="0, 1, 0, 1">
+            <Border BorderBrush="#363951" BorderThickness="1">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom" Background="#0C0B15"  Width="400" Margin="0,0,0,0" 
+                        VerticalAlignment="Bottom" Background="White"  Width="400" Margin="0,0,0,0" 
                         IsHoldingEnabled="True" >
 
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding pintAppointmentID, UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="SemiBold" 
-        			Margin="23,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Foreground="{Binding propMyStyling.pbuttonForeground}" Text="{Binding pintAppointmentID, UpdateSourceTrigger=PropertyChanged}" FontSize="{Binding propMyStyling.pmediumFontSize}"
+                                   FontWeight="SemiBold"  Margin="0,0,1,1"
+        			 HorizontalAlignment="Left" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+                        <TextBlock Foreground="{Binding propMyStyling.pbuttonForeground}" Text="{Binding pstrAppointmentName, UpdateSourceTrigger=PropertyChanged}"
+                           FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
+        			 HorizontalAlignment="Left" VerticalAlignment="Center"
+        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+
                         <TextBlock Text="{Binding pdteStart, UpdateSourceTrigger=PropertyChanged}"
-                           FontSize="16" FontWeight="SemiBold" 
-        			Margin="26,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                          Foreground="{Binding propMyStyling.pbuttonForeground}"
+                          FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
+        			Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                     </StackPanel>
- 
-                    <TextBlock Text="{Binding pstrAppointmentName, UpdateSourceTrigger=PropertyChanged}"
-                           FontSize="15" FontWeight="SemiBold" 
-        			Margin="26,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
-        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                 </StackPanel>
             </Border>
         </DataTemplate>
     </Page.Resources>
+    
+    
     <Grid x:Name="LayoutRoot">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -75,27 +80,22 @@
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
             <TextBlock Text="Tomorrow" Margin="0,-6.5,0,2.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
-        </StackPanel>
 
-        <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
             <StackPanel >
                 <StackPanel>
                    
-                    <ScrollViewer x:Name="AppointmentScrollerTomorrow"  Height="210" Margin="0,0,-0.333,0">
-                        <ListView ItemTemplate="{ThemeResource template_for_Listview2}" ItemsSource="{Binding pColAppointment}" FontSize="19"  BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Header="Appointment"  x:Name="Appointment_Listview_tomorrow" Height="200" >
-
-
+                    <ScrollViewer x:Name="AppointmentScrollerTomorrow"  Height="210">
+                        <ListView ItemTemplate="{ThemeResource template_for_Listview2}" ItemsSource="{Binding pColAppointment}" FontSize="19"  BorderThickness="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Header="Appointment"  x:Name="Appointment_Listview_tomorrow" Height="200"  BorderBrush="White" >
                         </ListView>
                     </ScrollViewer>
 
-                    <ScrollViewer x:Name="ListeeScrollerTomorrow" Margin="0,20,-0.333,10" Height="210">
-                        <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding propMyLister.pColTodolist}" 
-                                  FontSize="19" VerticalAlignment="Top" BorderThickness="1" HorizontalAlignment="Stretch" Header="Lister" x:Name="Listee_Listview_Tomorrow" Height="200" >
+                    <ScrollViewer x:Name="ListeeScrollerTomorrow"  Height="210">
+                        <ListView ItemTemplate="{ThemeResource template_for_Listview}" BorderBrush="White" ItemsSource="{Binding propMyLister.pColTodolist}" 
+                                  FontSize="19" VerticalAlignment="Bottom" BorderThickness="1" HorizontalAlignment="Stretch" Header="Lister" x:Name="Listee_Listview_Tomorrow" Height="200" >
                         </ListView>
                     </ScrollViewer>
                 </StackPanel>
             </StackPanel>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Page>

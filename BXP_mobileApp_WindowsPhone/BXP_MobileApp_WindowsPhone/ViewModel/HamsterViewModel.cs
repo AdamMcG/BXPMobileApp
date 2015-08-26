@@ -19,6 +19,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             set { HamsterList = value; }
         }
 
+        //POST to API URL for retieval of Hamsters
         public async Task fn_PostCallForHamsterXMLRetrieval(){
             HTTPRestViewModel oHttpClient = new HTTPRestViewModel();
             Login login = Login.Instance;
@@ -30,6 +31,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
 
         }
 
+        //Add parameters to your HTTP Request packet for Post call
         private static void addingParamsToList(Login login, List<KeyValuePair<string, string>> colKVParams)
         {
             KeyValuePair<string, string> kvParameters = new KeyValuePair<string, string>("strFunction", "list_hamsters");
@@ -42,6 +44,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             colKVParams.Add(kvParameters);
         }
 
+        //Parse through Post Call response XML
         public void fn_ParseThroughHamsterXML(string xmldocumentation)
         {
             XElement hamsterXML = XDocument.Parse(xmldocumentation).Element("data");
@@ -54,6 +57,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
 
         }
 
+        //Add Hamster items to the Hamster List.
         private void fn_assignItemsToHamsterCollection(XElement hamsterItemInXml, ref KeyValuePair<string, int> hamsterItem)
         {
             List<string> strListOfHamsters = new List<string>(new string[] { "green", "jade", "emerald", "apple", "help", "white", "olive", "lime", "suggestion", "newUser", "excellent",

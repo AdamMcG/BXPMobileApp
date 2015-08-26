@@ -31,17 +31,15 @@ namespace BXP_MobileApp_WindowsPhone.Views
         SettingsViewModel mySettings = new SettingsViewModel();
         StylingViewModel viewStyling = new StylingViewModel();
         private NavigationHelper navigationHelper;
-        public HomePage()
-        {
-            this.InitializeComponent();   
+        public HomePage(){
+            this.InitializeComponent();
+            LayoutRoot.Background = viewStyling.pbackgroundBrush;
             this.DataContext = viewStyling;
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         
         }
-
-       
 
         #region navigationMethods
         public NavigationHelper NavigationHelper
@@ -140,7 +138,6 @@ namespace BXP_MobileApp_WindowsPhone.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.Greeting_Text_Block.Text = "Hi, " +mySettings.propStrUsername;
-            
             this.navigationHelper.OnNavigatedTo(e);
         }
 
@@ -153,13 +150,11 @@ namespace BXP_MobileApp_WindowsPhone.Views
 
 
         // Launch the URI
-        async void DefaultLaunch(Uri uri)
-        {
+        async void DefaultLaunch(Uri uri){
         // Launch the URI
         var success = await Windows.System.Launcher.LaunchUriAsync(uri);
 
-        if (success)
-        {
+        if (success){
             // URI launched
         }
         else

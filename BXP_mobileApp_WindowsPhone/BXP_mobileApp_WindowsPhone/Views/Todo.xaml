@@ -19,16 +19,16 @@
         <DataTemplate x:Name="template_for_Listview">
             <Border BorderBrush="#363951"  BorderThickness="0, 1, 0, 1">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom" Background="#0C0B15"  Width="400" Margin="0,0,0,0" 
+                        VerticalAlignment="Bottom" Background="White"  Width="400" Margin="0,0,0,0" 
                         IsHoldingEnabled="True" >
 
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding strListerTitle, UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="SemiBold" 
-        			Margin="23,10,30,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                        <TextBlock Text="{Binding strListerTitle, UpdateSourceTrigger=PropertyChanged}" FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
+        			Margin="23,10,30,0" Foreground="{Binding propMyStyling.pbuttonForeground}" HorizontalAlignment="Left" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                     </StackPanel>
                     <TextBlock Text="{Binding dteListerDate, UpdateSourceTrigger=PropertyChanged}"
-                           FontSize="16" FontWeight="SemiBold" 
+                           FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" Foreground="{Binding propMyStyling.pbuttonForeground}"
         			Margin="26,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                 </StackPanel>
@@ -36,7 +36,7 @@
 
         </DataTemplate>
     </Page.Resources>
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot" Margin="1,1,1,1">
 
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -52,24 +52,24 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="To Do" Margin="0,-6.5,0,2.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
-        </StackPanel>
+            <TextBlock Text="To Do" Margin="0,0,0,2.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
+       
 
         <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.833,19,0" >
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,0,20" HorizontalAlignment="Stretch"
+       
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Margin="0,0,0,0" HorizontalAlignment="Stretch"
                            >
-                    <TextBox x:Name="Listee_Name_Here" Width="356" Margin="0,10,10,10" HorizontalAlignment="Center" PlaceholderText="Enter ToDo to add"/>
+                    <TextBox x:Name="Listee_Name_Here" VerticalAlignment="Top" HorizontalAlignment="Stretch" PlaceholderText="Enter ToDo to add" Width="400"/>
                 </StackPanel>
                 <ScrollViewer Height="433">
                     <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding propMyLister.pColTodolist}" BorderThickness="1" VerticalAlignment="Top" Header="Incomplete Listees" 
-                              FontSize="20" x:Name = "Listview_Of_Listees" Height="331"  >
+                             Foreground="{Binding propMyLister.pColTodolist[0].propMyStyling.pbuttonForeground}" FontSize="18" x:Name = "Listview_Of_Listees" Height="372"  >
 
 
                     </ListView>
                 </ScrollViewer>
             </StackPanel>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Page>

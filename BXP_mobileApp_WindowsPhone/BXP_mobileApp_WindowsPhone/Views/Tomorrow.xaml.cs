@@ -29,6 +29,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
         Login myLogin = Login.Instance;
         DiaryViewModel oDiaryViewModel = new DiaryViewModel();
         ListerViewModel oListeeViewModel = new ListerViewModel();
+        StylingViewModel myStyle = new StylingViewModel();
         public Tomorrow()
         {
             Task t = getAppointments();
@@ -38,6 +39,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
             this.InitializeComponent();
+            LayoutRoot.Background = myStyle.pbackgroundBrush;
             this.AppointmentScrollerTomorrow.DataContext = oDiaryViewModel.propObDiary;
             this.ListeeScrollerTomorrow.DataContext = oListeeViewModel;
 
