@@ -182,5 +182,26 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                     new PropertyChangedEventArgs(propertyName));
             }
         }
+
+
+
+        public void assignToStyling(Setting obSetting)
+        {
+            string[] colors = obSetting.strFontColors.Split(',');
+            string[] fontSize = obSetting.strFontFaces.Split(',');
+            string[] fontFaces = obSetting.strFontSizes.Split(',');
+            pappFont = new FontFamily(fontFaces[0]);
+            plargeFontSize = Int32.Parse(fontSize[0]);
+            pmediumFontSize = Int32.Parse(fontSize[1]);
+            psmallFontSize = Double.Parse(fontSize[2]);
+            Uri logo = new Uri(obSetting.strImageLogoUrl);
+            Uri background = new Uri(obSetting.strImageBackground);
+            BitmapImage backgroundImage = new BitmapImage(background);
+            pbackgroundSource = backgroundImage;
+            pbackgroundBrush = new ImageBrush { ImageSource = pbackgroundSource };
+            BitmapImage logoImage = new BitmapImage(logo);
+            pLogoSource = logoImage;
+            pbuttonForeground = StylingViewModel.GetColorFromHex(colors[0]);
+        }
     }
 }

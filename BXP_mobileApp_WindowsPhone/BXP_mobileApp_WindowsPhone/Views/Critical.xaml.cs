@@ -37,8 +37,9 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-            this.DataContext = ohamsterVM;
             this.InitializeComponent();
+            this.gridOfHamsters.DataContext = ohamsterVM;
+            this.hamsterBlock.DataContext = myStyle;
             LayoutRoot.Background = myStyle.pbackgroundBrush;
         }
 

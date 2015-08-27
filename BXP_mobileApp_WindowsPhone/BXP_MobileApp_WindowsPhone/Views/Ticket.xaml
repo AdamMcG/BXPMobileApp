@@ -33,7 +33,7 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Ticket" Margin="0,0,0.167,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="81"/>
+            <TextBlock x:Name="ticketNameBox" Text="Ticket" Margin="0,0,0,10" Style="{ThemeResource HeaderTextBlockStyle}" Foreground="{Binding pbuttonForeground}" FontFamily="{Binding pappFont}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <TextBox x:Name="Subject_Box" Text="{Binding propStrSubject, Mode=TwoWay}" Margin="0,0,0,30" PlaceholderText="Subject" />
                 <TextBox x:Name="Description_Field" Text="{Binding propStrDescription, Mode=TwoWay}" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="329" PlaceholderText="Description" TextWrapping="Wrap"/>

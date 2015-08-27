@@ -10,7 +10,7 @@
 
     <Page.BottomAppBar>
         <CommandBar Background="AntiqueWhite" Foreground="Black" >
-            <AppBarButton x:Name="logout" Icon="BackToWindow" Label="Logout"/>
+            <AppBarButton x:Name="logout" Icon="BackToWindow" Label="Logout" Click="LogoutClick"/>
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -30,7 +30,7 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source="bxp-homepage-banner.png"/>
-            <TextBlock x:Name="Greeting_Text_Block" Foreground="white" FontStyle="Normal" FontSize="40" />
+            <TextBlock x:Name="Greeting_Text_Block" Foreground="{Binding pbuttonForeground}" FontFamily="{Binding pappFont}" FontStyle="Normal" FontSize="40" />
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel x:Name="column1" Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,20,0">

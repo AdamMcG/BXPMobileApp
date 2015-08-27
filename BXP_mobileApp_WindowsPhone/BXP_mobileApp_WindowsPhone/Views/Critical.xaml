@@ -49,7 +49,7 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Hamster Board" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
+            <TextBlock x:Name="hamsterBlock" Text="Hamster Board" Foreground="{Binding pbuttonForeground}" FontFamily="{Binding pappFont}" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
             <GridView x:Name="gridOfHamsters" ItemTemplate="{ThemeResource GridTemplate}" ItemsSource="{Binding propHamsterList.propColListOfHamsters}"
                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch">              
             </GridView>

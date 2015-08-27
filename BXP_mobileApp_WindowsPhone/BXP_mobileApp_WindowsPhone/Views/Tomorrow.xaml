@@ -79,7 +79,7 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Tomorrow" Margin="0,-6.5,0,2.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="Tomorrow" Margin="0,0,0,10" Style="{ThemeResource HeaderTextBlockStyle}" Foreground="{Binding pbuttonForeground}" FontFamily="{Binding pappFont}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
 
             <StackPanel >
                 <StackPanel>

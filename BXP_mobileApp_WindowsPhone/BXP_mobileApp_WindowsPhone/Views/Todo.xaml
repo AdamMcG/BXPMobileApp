@@ -52,10 +52,10 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="To Do" Margin="0,0,0,2.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
-       
+            <TextBlock Text="To Do!" Margin="0,0,0,10" Style="{ThemeResource HeaderTextBlockStyle}" Foreground="{Binding pbuttonForeground}" FontFamily="{Binding pappFont}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
 
-        <!--TODO: Content should be placed within the following grid-->
+
+            <!--TODO: Content should be placed within the following grid-->
        
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Margin="0,0,0,0" HorizontalAlignment="Stretch"
@@ -64,7 +64,7 @@
                 </StackPanel>
                 <ScrollViewer Height="433">
                     <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding propMyLister.pColTodolist}" BorderThickness="1" VerticalAlignment="Top" Header="Incomplete Listees" 
-                             Foreground="{Binding propMyLister.pColTodolist[0].propMyStyling.pbuttonForeground}" FontSize="18" x:Name = "Listview_Of_Listees" Height="372"  >
+                             Foreground="{Binding propMyLister.pColTodolist[].propMyStyling.pbuttonForeground}" FontSize="18" x:Name = "Listview_Of_Listees" Height="372"  >
 
 
                     </ListView>

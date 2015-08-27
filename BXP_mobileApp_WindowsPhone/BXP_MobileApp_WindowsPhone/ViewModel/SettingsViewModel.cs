@@ -14,7 +14,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
     class SettingsViewModel : INotifyPropertyChanged
     {
         public StylingViewModel styling = new StylingViewModel();
-        private Setting obSetting;
+        private Setting obSetting = new Setting();
         public Setting propObSetting
         {
             get { return obSetting; }
@@ -180,6 +180,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 obSetting.strImageLogoUrl = xmlSettingsData.Element("strInterface_Image_LogoURL").Value;
                 obSetting.strImageBackground = xmlSettingsData.Element("strInterface_Image_Background").Value;
                 obSetting.strFontColors = xmlSettingsData.Element("strInterface_FontColours").Value;
+                obSetting.strFontSizes = xmlSettingsData.Element("strInterface_FontFaces").Value;
                 obSetting.strFontFaces = xmlSettingsData.Element("strInterface_FontSizes").Value;
                 obSetting.keywords = xmlSettingsData.Element("strInterface_SystemKeywords").Value;
 
@@ -191,23 +192,6 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 e.Message.ToString();
             }
             return count;
-        }
-
-        public void assignToStyling()
-        {
-            string[] colors = obSetting.strFontColors.Split(',');
-            string[] fonts = obSetting.strFontFaces.Split(',');
-            styling.plargeFontSize = Int32.Parse(fonts[0]);
-            styling.pmediumFontSize = Int32.Parse(fonts[1]);
-            styling.psmallFontSize = Double.Parse(fonts[2]);
-            Uri logo = new Uri(obSetting.strImageLogoUrl);
-            Uri background = new Uri(obSetting.strImageBackground);
-            BitmapImage backgroundImage = new BitmapImage(background);
-            styling.pbackgroundSource = backgroundImage;
-            styling.pbackgroundBrush = new ImageBrush { ImageSource = styling.pbackgroundSource };
-            BitmapImage logoImage = new BitmapImage(logo);
-            styling.pLogoSource = logoImage;
-            styling.pbuttonForeground = StylingViewModel.GetColorFromHex(colors[0]);
         }
 
         //Parse through XML from button configuration response

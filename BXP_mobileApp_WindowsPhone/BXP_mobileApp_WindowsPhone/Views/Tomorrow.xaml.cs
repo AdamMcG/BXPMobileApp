@@ -34,11 +34,11 @@ namespace BXP_MobileApp_WindowsPhone.Views
         {
             Task t = getAppointments();
             Task t2 = oListeeViewModel.fn_POSTToServerForAllListees("tomorrow", "list_listee_due");
-            t.Wait(250);
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
             this.InitializeComponent();
+            this.DataContext = myStyle;
             LayoutRoot.Background = myStyle.pbackgroundBrush;
             this.AppointmentScrollerTomorrow.DataContext = oDiaryViewModel.propObDiary;
             this.ListeeScrollerTomorrow.DataContext = oListeeViewModel;

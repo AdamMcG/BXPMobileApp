@@ -30,8 +30,8 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0.167">
             <Image Source= "bxp-homepage-banner.png"/>
-            <TextBlock Text="Settings" Margin="0,0,0,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="81"/>
-       
+            <TextBlock x:Name="Textbox" Text="Settings" Margin="0,0,0,10" Style="{ThemeResource HeaderTextBlockStyle}" Foreground="{Binding pbuttonForeground}" FontFamily="{Binding pappFont}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
                 <StackPanel Margin="10,10,10,10">
                     <TextBox x:Name="usernameTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="Default Username"/>

@@ -35,6 +35,7 @@ namespace BXP_MobileApp_WindowsPhone
         RSSViewModel RSS = new RSSViewModel();
         private NavigationHelper navigationHelper;
         StylingViewModel myStyle = new StylingViewModel();
+        Boolean check = false;
         SettingsViewModel viewSetting = new SettingsViewModel();
         public MainPage()
         {
@@ -42,6 +43,7 @@ namespace BXP_MobileApp_WindowsPhone
             {
                 this.DataContext = RSS;
                 this.InitializeComponent();
+                check = fn_CheckForPriorLogin();
                 this.navigationHelper = new NavigationHelper(this);
                 this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
                 this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
@@ -50,10 +52,10 @@ namespace BXP_MobileApp_WindowsPhone
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
-            
+
         }
 
         /// <summary>
@@ -100,28 +102,67 @@ namespace BXP_MobileApp_WindowsPhone
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-           
+
             this.navigationHelper.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            
-            
+
+
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
         #endregion
 
-        private async void Open_Login(object sender, RoutedEventArgs e)
+        private void Open_Login(object sender, RoutedEventArgs e)
         {
+            if (check)
+                Frame.Navigate(typeof(HomePage));
+            else
+                Frame.Navigate(typeof(LoginView));
+        }
 
+        private Boolean fn_CheckForPriorLogin()
+        {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-             int a = Int32.Parse(localSettings.Values["LoginClientID"].ToString());
-             string b = localSettings.Values["LoginClientSession"].ToString();
-             Login.Instance.propIntClient_Id = a;
-             Login.Instance.propStrClient_SessionField = b;
-            Frame.Navigate(typeof(LoginView));
+            if (localSettings.Values["loginStrfunctionURL"] != null)
+                fnRetrieveStyling(localSettings);
+
+            if (localSettings.Values["LoginClientID"] != null)
+            {
+                Login.Instance.propIntClient_Id = Int32.Parse(localSettings.Values["LoginClientID"].ToString());
+                Login.Instance.propStrClient_SessionField = localSettings.Values["LoginClientSession"].ToString();
+                return true;
+            }
+
+            return false;
+        }
+
+        private void fnRetrieveStyling(Windows.Storage.ApplicationDataContainer localSettings)
+        {
+            if (localSettings.Values["loginStrfunctionURL"].ToString() != null)
+            {
+                Login.Instance.propStrFunctionURL = localSettings.Values["LoginStrFunctionURL"].ToString();
+                Login.Instance.propStrSystemUsed = "client_" +  localSettings.Values["LoginStrSystem"].ToString().ToLower();
+                viewSetting.propStrUsername = localSettings.Values["SettingsUsername"].ToString();
+                viewSetting.propStrSystem = Login.Instance.propStrSystemUsed;
+                viewSetting.propStrUsername = localSettings.Values["SettingsUsername"].ToString();
+
+                viewSetting.propObSetting.intSystemId = Int32.Parse(localSettings.Values["SettingsSystemId"].ToString());
+                viewSetting.propObSetting.intInterfaceColumns = Int32.Parse(localSettings.Values["Settingcolumns"].ToString());
+                viewSetting.propObSetting.RSSTitle = localSettings.Values["SettingsRSSTitle"].ToString();
+                viewSetting.propObSetting.RSSFeed = localSettings.Values["SettingsRSSFeed"].ToString();
+                viewSetting.propObSetting.boolInterfaceStoreUsername = Boolean.Parse(localSettings.Values["SettingsStoreUserName"].ToString());
+
+                viewSetting.propObSetting.strImageLogoUrl = localSettings.Values["SettingsStoreLogoURL"].ToString();
+                viewSetting.propObSetting.strImageBackground = localSettings.Values["SettingsImageBackgroundStr"].ToString();
+                viewSetting.propObSetting.strFontColors = localSettings.Values["SettingsStoreFontColors"].ToString();
+                viewSetting.propObSetting.strFontFaces = localSettings.Values["SettingsStoreFontFaces"].ToString();
+                viewSetting.propObSetting.strFontSizes = localSettings.Values["SettingsStoreFontSizes"].ToString();
+                viewSetting.propObSetting.keywords = localSettings.Values["SettingsStoreKeywords"].ToString();
+                myStyle.assignToStyling(viewSetting.propObSetting);
+            }
         }
 
         private void RSSTapped(object sender, TappedRoutedEventArgs e)
@@ -153,6 +194,6 @@ namespace BXP_MobileApp_WindowsPhone
             }
         }
 
-      
+
     }
 }

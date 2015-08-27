@@ -31,11 +31,13 @@ namespace BXP_MobileApp_WindowsPhone.Views
          CampaignViewModel oContactViewModel = new CampaignViewModel();
         public Contact()
         {
-            this.DataContext = oContactViewModel;
+            this.InitializeComponent();
+            this.ListOfContacts.DataContext = oContactViewModel.propMyCampaign;
+            this.DataContext = myStyle;
+            this.stackPanForSearch.DataContext = oContactViewModel;
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-            this.InitializeComponent();
             LayoutRoot.Background = myStyle.pbackgroundBrush;
         }
 

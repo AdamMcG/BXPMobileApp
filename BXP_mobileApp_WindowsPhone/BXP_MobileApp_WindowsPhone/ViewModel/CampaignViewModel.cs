@@ -16,6 +16,14 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
     {
         Login myLogin = Login.Instance;
         public CampaignViewModel() { }
+        private Campaign myCampaign;
+        public Campaign propMyCampaign
+        {
+            get { return myCampaign; }
+            set { myCampaign = value;
+            NotifyPropertyChanged("propMyCampaign");
+            }
+        }
         private static string strRetainContact = "";
         public string propStrRetainContact
         {

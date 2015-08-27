@@ -117,7 +117,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
-    
+
 
         #endregion
 
@@ -164,7 +164,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
                 await mymessage.ShowAsync();
                 Task t = viewSetting.fn_retrieveConfigPrimaryData();
                 await viewSetting.fn_retrieveSettingsbuttonData();
-                viewSetting.assignToStyling();
+                viewStyling.assignToStyling(viewSetting.propObSetting);
                 viewStyling.strUserName = viewSetting.propStrUsername;
                 cacheLoginSettings();
                 Frame.Navigate(typeof(HomePage));
@@ -178,15 +178,29 @@ namespace BXP_MobileApp_WindowsPhone.Views
             }
         }
 
-
-
         public void cacheLoginSettings()
         {
-            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            localSettings.Values["LoginClientID"] = Login.Instance.propIntClient_Id;
-            localSettings.Values["LoginClientSession"] = Login.Instance.propStrClient_SessionField;
-
+            if (viewSetting.propObSetting.boolInterfaceStoreUsername == true)
+            {
+                Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                localSettings.Values["LoginClientID"] = Login.Instance.propIntClient_Id;
+                localSettings.Values["LoginClientSession"] = Login.Instance.propStrClient_SessionField;
+                localSettings.Values["LoginStrFunctionURL"] = Login.Instance.propStrFunctionURL;
+                localSettings.Values["LoginStrSystem"] = viewSetting.propStrSystem;
+                localSettings.Values["SettingsUsername"] = viewSetting.propStrUsername;
+                localSettings.Values["SettingsSystemId"] = viewSetting.propObSetting.intSystemId;
+                localSettings.Values["Settingcolumns"] = viewSetting.propObSetting.intInterfaceColumns;
+                localSettings.Values["SettingsRSSTitle"] = viewSetting.propObSetting.RSSTitle;
+                localSettings.Values["SettingsRSSFeed"] = viewSetting.propObSetting.RSSFeed;
+                localSettings.Values["SettingsStoreUserName"] = viewSetting.propObSetting.boolInterfaceStoreUsername;
+                localSettings.Values["SettingsStoreLogoURL"] = viewSetting.propObSetting.strImageLogoUrl;
+                localSettings.Values["SettingsImageBackgroundStr"] = viewSetting.propObSetting.strImageBackground;
+                localSettings.Values["SettingsStoreFontColors"] = viewSetting.propObSetting.strFontColors;
+                localSettings.Values["SettingsStoreFontFaces"] = viewSetting.propObSetting.strFontFaces;
+                localSettings.Values["SettingsStoreFontSizes"] = viewSetting.propObSetting.strFontSizes;
+                localSettings.Values["SettingsStoreKeywords"] = viewSetting.propObSetting.keywords;
+            }
         }
 
         private void systemTextBox_TextChanged(object sender, TextChangedEventArgs e)

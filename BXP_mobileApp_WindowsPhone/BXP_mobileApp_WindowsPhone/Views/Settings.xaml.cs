@@ -35,6 +35,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
             this.InitializeComponent();
+            Textbox.DataContext = myStyle;
             systemTextBox.Text = settingViewModel.propStrSystem;
             usernameTextBox.Text = settingViewModel.propStrUsername;
             this.GetConfigFileButton.DataContext = myStyle;

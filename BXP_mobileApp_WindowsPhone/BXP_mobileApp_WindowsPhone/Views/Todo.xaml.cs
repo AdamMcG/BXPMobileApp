@@ -34,7 +34,6 @@ namespace BXP_MobileApp_WindowsPhone.Views
         public ToDo()
         {
             Task t = oListeeViewModel.fn_POSTToServerForAllListees("n/a", "list_listee_incomplete");
-            t.Wait(150);
             this.DataContext = myStyle;
             this.InitializeComponent();
             LayoutRoot.Background = myStyle.pbackgroundBrush;

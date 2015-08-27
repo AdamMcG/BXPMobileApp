@@ -37,6 +37,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
             this.InitializeComponent();
+            this.ticketNameBox.DataContext = myStyle;
             LayoutRoot.Background = myStyle.pbackgroundBrush;
         }
 

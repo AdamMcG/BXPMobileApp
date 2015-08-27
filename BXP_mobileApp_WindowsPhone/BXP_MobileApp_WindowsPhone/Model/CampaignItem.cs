@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BXP_MobileApp_WindowsPhone.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,6 +10,17 @@ namespace BXP_MobileApp_WindowsPhone.Model
 {
     class CampaignItem: INotifyPropertyChanged
     {
+
+        private StylingViewModel myStyling = new StylingViewModel();
+        public StylingViewModel propMyStyling
+        {
+            get { return myStyling; }
+            set
+            {
+                myStyling = value;
+                NotifyPropertyChanged("propMStyling");
+            }
+        }
 
         private List<string> campaignItems;
         public List<string> propCampaignItems
