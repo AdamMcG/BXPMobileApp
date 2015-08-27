@@ -22,7 +22,7 @@ namespace BXP_MobileApp_WindowsPhone.Model
             }
         }
 
-        private List<string> campaignItems;
+        private List<string> campaignItems = new List<string>();
         public List<string> propCampaignItems
         {
             get { return campaignItems; }

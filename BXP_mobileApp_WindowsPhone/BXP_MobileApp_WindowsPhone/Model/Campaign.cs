@@ -39,7 +39,7 @@ namespace BXP_MobileApp_WindowsPhone.Model
             }
         }
 
-        private ObservableCollection<CampaignItem> campaignItems;
+        private ObservableCollection<CampaignItem> campaignItems = new ObservableCollection<CampaignItem>();
         public ObservableCollection<CampaignItem> listOfCampaignItems
         {
             get { return campaignItems; }

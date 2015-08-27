@@ -15,8 +15,12 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
     class CampaignViewModel : INotifyPropertyChanged
     {
         Login myLogin = Login.Instance;
+        string returnField;
+        string returnField2;
+        string returnField3;
+        string returnField4;
         public CampaignViewModel() { }
-        private Campaign myCampaign;
+        private Campaign myCampaign = new Campaign();
         public Campaign propMyCampaign
         {
             get { return myCampaign; }
@@ -38,6 +42,10 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         //Pull down the list of contacts under a particular search name
         public async Task fnGetContactList(string strcontactToSearchFor, int formToLookup)
         {
+                returnField = "strCDA_" + formToLookup + "_field_1_15";
+                returnField2 = "strCDA_" + formToLookup + "_field_3_15";
+                returnField3 = "strCDA_" + formToLookup + "_field_0_4";
+                returnField4 = "strCDA_" + formToLookup + "_field_0_6";
             string strSearchValue1 = strcontactToSearchFor;
             string strSearchValue2 = "";
             if (strcontactToSearchFor.Contains(" "))
@@ -64,7 +72,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             kvHttpRequestParameters.Add(parameter);
             parameter = new KeyValuePair<string, string>("strSearch_Value", strSearchValue1);
             kvHttpRequestParameters.Add(parameter);
-            parameter = new KeyValuePair<string, string>("strReturn_Fields", "strCDA_" + formToLookup + "_field_3_15");
+            parameter = new KeyValuePair<string, string>("strReturn_Fields", returnField +","+returnField2 +"," + returnField3 +","+ returnField4);
             kvHttpRequestParameters.Add(parameter);
             #endregion
 
@@ -104,11 +112,16 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         public void fnParseContactXMLDocument(string fileContactXmlDocument)
         {
             XDocument campaignXMLdocument = XDocument.Parse(fileContactXmlDocument);
-            var campaignXmlData = campaignXMLdocument.Element("data").Elements();
-            foreach (var item in campaignXmlData)
-            {
-                Campaign myCampaignItem = new Campaign();
-
+            var campaignXmlData = campaignXMLdocument.Element("data");
+            var campaignItems = campaignXmlData.Elements("item");
+            foreach (var item in campaignItems){
+                CampaignItem CampITem = new CampaignItem();
+                CampITem.propCampaignItems.Add(item.Element("intId").Value);
+                string firstname = item.Element(returnField).Value;
+                CampITem.propCampaignItems.Add(firstname + " "+ item.Element(returnField2).Value);
+                CampITem.propCampaignItems.Add("Work: " + item.Element(returnField3).Value);
+                CampITem.propCampaignItems.Add("Email: " + item.Element(returnField4).Value);
+                propMyCampaign.listOfCampaignItems.Add(CampITem);
             }
         }
 

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -118,7 +119,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
 
         private void contactSearch_Click(object sender, RoutedEventArgs e)
         {
-          oContactViewModel.fnGetContactList(contact_To_Search.Text, 469);
+         Task t =  oContactViewModel.fnGetContactList(contact_To_Search.Text, 469);
         }
 
         

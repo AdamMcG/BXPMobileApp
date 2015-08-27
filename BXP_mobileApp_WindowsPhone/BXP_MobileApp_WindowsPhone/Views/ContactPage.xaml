@@ -19,19 +19,30 @@
         <DataTemplate x:Name="template_for_Listview">
             <Border BorderBrush="#363951" >
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom"   Width="400" Margin="0,0,0,0" 
+                        VerticalAlignment="Bottom"   Width="400" Margin="0,0,0,10" 
                         IsHoldingEnabled="True" Background="White" >
 
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="" 
-                                   Foreground="" FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
+                        <TextBlock Text="{Binding propCampaignItems[0]}" 
+                                   Foreground="{Binding propMyStyling.pbuttonForeground}" FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
         			 HorizontalAlignment="Left" VerticalAlignment="Center"
-        			TextTrimming="WordEllipsis" TextWrapping="Wrap" Margin="0,10,0,10"/>
-                        <TextBlock Text=""
+        			TextTrimming="WordEllipsis" TextWrapping="Wrap" Margin="0,0,0,0"/>
+                        <TextBlock Text="{Binding propCampaignItems[1]}"
                                Foreground="{Binding propMyStyling.pbuttonForeground}"
                            FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
         			 HorizontalAlignment="Left" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding propCampaignItems[2]}"
+                               Foreground="{Binding propMyStyling.pbuttonForeground}"
+                           FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
+        			 HorizontalAlignment="Left" VerticalAlignment="Center"
+        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding propCampaignItems[3]}"
+                               Foreground="{Binding propMyStyling.pbuttonForeground}"
+                           FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
+        			 HorizontalAlignment="Left" VerticalAlignment="Center"
+        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+
                     </StackPanel>
                 </StackPanel>
             </Border>
