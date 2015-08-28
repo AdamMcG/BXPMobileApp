@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -33,13 +34,14 @@ namespace BXP_MobileApp_WindowsPhone.Views
         public Critical()
         {
             Task t = fn_PostCall();
-            t.Wait(100);
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
             this.InitializeComponent();
             this.gridOfHamsters.DataContext = ohamsterVM;
             this.hamsterBlock.DataContext = myStyle;
+            gridOfHamsters.Transitions = new TransitionCollection();
+            gridOfHamsters.Transitions.Add(new EntranceThemeTransition());
             LayoutRoot.Background = myStyle.pbackgroundBrush;
         }
 
@@ -62,6 +64,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
                     item.gridColour = new SolidColorBrush(Windows.UI.Colors.DarkBlue);
                 }
             }
+            
         }
 
 

@@ -27,10 +27,11 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+            <ProgressRing x:Name="progressBar" IsActive="False" HorizontalAlignment="Stretch" Height=" 580" VerticalAlignment="Stretch" Foreground="Yellow"></ProgressRing>
 
         <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="0,0,0,0">
-            <Image x:Name="imageLogoURL" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source= "bxp-homepage-banner.png" Margin="0,0,-0.167,0"/>
+        <StackPanel x:Name="disableStack" Grid.Row="0" Margin="0,0,0,0">
+            <Image x:Name="imageLogoURL"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source= "bxp-homepage-banner.png" Margin="0,0,-0.167,0"/>
             <TextBlock Text="Login" Margin="0,0,0,0" 
                        FontFamily="{Binding pappFont}"
                        FontSize="{ThemeResource HubHeaderFontSize}"

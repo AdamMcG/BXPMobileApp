@@ -51,7 +51,8 @@
             <Image Source= "bxp-homepage-banner.png"/>
             <TextBlock x:Name="hamsterBlock" Text="Hamster Board" Foreground="{Binding pbuttonForeground}" FontFamily="{Binding pappFont}" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
             <GridView x:Name="gridOfHamsters" ItemTemplate="{ThemeResource GridTemplate}" ItemsSource="{Binding propHamsterList.propColListOfHamsters}"
-                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch">              
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+               
             </GridView>
          
 </StackPanel>

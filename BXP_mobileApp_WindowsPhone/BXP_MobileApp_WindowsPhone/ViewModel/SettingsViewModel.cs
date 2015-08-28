@@ -13,6 +13,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
 {
     class SettingsViewModel : INotifyPropertyChanged
     {
+        public bool settingCheck = false;
         public StylingViewModel styling = new StylingViewModel();
         private Setting obSetting = new Setting();
         public Setting propObSetting
@@ -48,7 +49,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         }
 
         //Prepare and send POST Request to Specified URL
-        public async Task<Boolean> fn_retrieveLoginSession(string strPassword)
+        public async Task fn_retrieveLoginSession(string strPassword)
         {
             Boolean check = false;
             try
@@ -60,7 +61,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 List<KeyValuePair<string, string>> listKVmyParameter = fnAddParamsToLoginPOST(strPassword, pstrSystem);
                 strForOutput = await oHttpRestVm.RESTcalls_POST_BXPAPI(function, listKVmyParameter);
                 if (strForOutput == "N/A")
-                    return check;
+                    return;
 
                 check = fn_ParseLoginXMLDocument(strForOutput, function, pstrSystem);
 
@@ -70,7 +71,8 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 e.Message.ToString();
 
             }
-            return check;
+            settingCheck = true;
+            return;
         }
 
         //Prepare Parameters for Login Post

@@ -31,10 +31,10 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 postRequest.Content = a;
                 HttpResponseMessage response = await myClient.SendRequestAsync(postRequest, HttpCompletionOption.ResponseContentRead);
                 if (response.IsSuccessStatusCode)
-                aString = "Success";
+                    aString = "Success";
                 else
-                aString = "fail";
-                
+                    aString = "fail";
+
                 output = await response.Content.ReadAsStringAsync();
 
             }
@@ -43,33 +43,6 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 return output = "N/A";
             }
             return output;
-        }
-
-        public async Task RESTcalls_PUT_BXPAPI(string output, string strmyFunction, List<KeyValuePair<string, string>> myParameters)
-        {
-            try
-            {
-                HttpClient myClient = new HttpClient();
-                var Uri = new Uri(strmyFunction);
-                //Send a get request to pull down information in format.
-                var content = new HttpFormUrlEncodedContent(myParameters);
-                HttpRequestMessage putRequest = new HttpRequestMessage(new HttpMethod("PUT"), Uri);
-                putRequest.Content = content;
-
-                HttpResponseMessage putResponse = await myClient.SendRequestAsync(putRequest, HttpCompletionOption.ResponseContentRead);
-                if (putResponse.IsSuccessStatusCode)
-                    aString = "Success";
-                else
-                    aString = "Fail";
-                output = await putResponse.Content.ReadAsStringAsync();
-                return;
-            }
-            catch (Exception e)
-            {
-                e.Message.ToString();
-                e.Source.ToString();
-                e.HelpLink.ToString();
-            }
         }
 
         public async Task RESTcalls_GET_BXPAPI(string output, string strmyFunction)

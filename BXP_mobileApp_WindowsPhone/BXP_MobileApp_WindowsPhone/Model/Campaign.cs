@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace BXP_MobileApp_WindowsPhone.Model
 {
-    class Campaign : INotifyPropertyChanged
-    {
+    class Campaign : INotifyPropertyChanged{
         public Campaign() { }
 
         private int intErrorId;

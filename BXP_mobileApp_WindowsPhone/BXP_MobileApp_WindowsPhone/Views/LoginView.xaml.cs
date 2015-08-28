@@ -126,24 +126,37 @@ namespace BXP_MobileApp_WindowsPhone.Views
             MessageDialog mymessage = null;
             if ((viewSetting.propStrSystem == "") && (viewSetting.propStrUsername == ""))
             {
+                
                 mymessage = new MessageDialog("No parameters were filled");
                 await mymessage.ShowAsync();
+                imageLogoURL.Opacity = .10;
+                systemTextBox.Opacity = .10;
+                UsernameTextBox.Opacity = .10;
+                PasswordBox.Opacity = .10;
                 loginclickbutton.IsEnabled = true;
+                
             }
             else
             {
+                progressBar.IsActive = true;
                 try
                 {
                     string password = PasswordBox.Password;
                     string strSystem = "client_" + viewSetting.propStrSystem.ToLower();
-                    Boolean boolCheck = await viewSetting.fn_retrieveLoginSession(password);
-                    if (boolCheck == true)
+                   await Task.Run(() => viewSetting.fn_retrieveLoginSession(password));
+                    if (viewSetting.settingCheck == true)
                         navigateToMain();
                     else
                     {
+                        progressBar.IsActive = false;
                         string strErrorString = "Error: No valid Network Connection ";
                         mymessage = new MessageDialog(strErrorString);
                         await mymessage.ShowAsync();
+                        imageLogoURL.Opacity = 10;
+                        systemTextBox.Opacity = 10;
+                        UsernameTextBox.Opacity = 10;
+                        PasswordBox.Opacity = 10;
+                        progressBar.IsActive = false;
                     }
                 }
                 catch (Exception reached)
@@ -159,18 +172,17 @@ namespace BXP_MobileApp_WindowsPhone.Views
             Login myLogin = Login.Instance;
             if (myLogin.propIntErrorId == 0)
             {
-                string strSessionId = "Your session id for this session is:" + myLogin.propStrClient_SessionField;
-                mymessage = new MessageDialog(strSessionId);
-                await mymessage.ShowAsync();
                 Task t = viewSetting.fn_retrieveConfigPrimaryData();
                 await viewSetting.fn_retrieveSettingsbuttonData();
                 viewStyling.assignToStyling(viewSetting.propObSetting);
                 viewStyling.strUserName = viewSetting.propStrUsername;
                 cacheLoginSettings();
+                progressBar.IsActive = false;
                 Frame.Navigate(typeof(HomePage));
             }
             else
             {
+                progressBar.IsActive = false;
                 string strErrorString = "Error \n" + myLogin.propIntErrorId + " : " + myLogin.propStrError;
                 mymessage = new MessageDialog(strErrorString);
                 await mymessage.ShowAsync();

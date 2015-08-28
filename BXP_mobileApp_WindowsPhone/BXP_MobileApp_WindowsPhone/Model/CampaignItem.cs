@@ -1,6 +1,7 @@
 ﻿using BXP_MobileApp_WindowsPhone.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,8 @@ namespace BXP_MobileApp_WindowsPhone.Model
             }
         }
 
-        private List<string> campaignItems = new List<string>();
-        public List<string> propCampaignItems
+        private ObservableCollection<string> campaignItems = new ObservableCollection<string>();
+        public ObservableCollection<string> propCampaignItems
         {
             get { return campaignItems; }
             set

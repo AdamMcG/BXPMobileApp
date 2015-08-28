@@ -25,8 +25,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class HomePage : Page
-    {
+    public sealed partial class HomePage : Page{
         Login myLogin = Login.Instance;
         SettingsViewModel mySettings = new SettingsViewModel();
         StylingViewModel viewStyling = new StylingViewModel();
@@ -149,7 +148,6 @@ namespace BXP_MobileApp_WindowsPhone.Views
         }
 
         #endregion
-
 
         // Launch the URI
         async void DefaultLaunch(Uri uri)

@@ -35,7 +35,6 @@ namespace BXP_MobileApp_WindowsPhone.Model
             set { colListOfHamsters = value; }
         }
 
-
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propertyName)
         {

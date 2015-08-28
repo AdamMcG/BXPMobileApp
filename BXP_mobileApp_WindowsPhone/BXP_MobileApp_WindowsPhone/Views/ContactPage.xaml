@@ -69,7 +69,7 @@
         
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
                 <StackPanel x:Name="stackPanForSearch">
-                    <TextBox  x:Name="contact_To_Search" Text="{Binding propStrRetainContact, Mode=TwoWay}" Foreground="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    <TextBox  x:Name="contact_To_Search" Text="" Foreground="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                              PlaceholderText="Enter Contact Here" Margin="0,0,0,10"/>
                 </StackPanel>
 
