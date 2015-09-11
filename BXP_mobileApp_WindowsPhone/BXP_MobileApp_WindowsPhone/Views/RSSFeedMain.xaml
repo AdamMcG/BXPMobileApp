@@ -11,12 +11,12 @@
 
     <Page.Resources>
         <DataTemplate x:Name="RSS_Feed_Item_Template">
-            <Border Background="" BorderBrush="black" BorderThickness="3, 3, 3, 3">
+            <Border Background="" BorderBrush="black" HorizontalAlignment="Stretch" BorderThickness="0, 0, 0, 0">
                 <StackPanel x:Name="RSSItemPanel" DataContext="{Binding Title}" Tapped="RSSTapped" 
-                        Orientation="Vertical" HorizontalAlignment="Stretch" Background="#0C0B15"
-                        VerticalAlignment="Bottom" Height="50" Width="400" Margin="0,0,0,10" >
+                        Orientation="Vertical" HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Bottom" Height="50" Margin="0,0,0,10" >
                     <TextBlock HorizontalAlignment="Stretch"
-                               Text="{Binding Text }" Foreground="White" FontSize="24" FontWeight="SemiBold" 
+                               Text="{Binding Text }" Foreground="black" FontSize="12" FontWeight="SemiBold" 
         			Margin="10,10,0,0" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                 </StackPanel>
@@ -26,7 +26,7 @@
     </Page.Resources>
 
     <Page.BottomAppBar>
-        <CommandBar Background="AntiqueWhite" Foreground="Black" ClosedDisplayMode="Compact">
+        <CommandBar Background="AntiqueWhite" Foreground="Black" >
             <AppBarButton x:Name="loginButton" Icon="Forward" Click="Open_Login" Label="Login"></AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
@@ -52,7 +52,11 @@
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <ListView ItemsSource="{Binding propSynCollection}" 
                           BorderBrush="AntiqueWhite" BorderThickness="1" Header="List of RSS items" Name="RSS_Feed_ListView" FontSize="19" Margin="10" ItemTemplate="{ThemeResource RSS_Feed_Item_Template}"   Height="417">
-
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
                 </ListView>
             </StackPanel>
         </StackPanel>
