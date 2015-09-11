@@ -54,12 +54,10 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             fn_addingParametersForInsert(login, strtitle, kvListOfParameters);
             string check = await oHttpViewModel.RESTcalls_POST_BXPAPI(login.propStrFunctionURL, kvListOfParameters);
             if (check.Equals("N/A"))
-            {
                 return false;
-            }
+            
            return true;
         }
-
         #region addingParametersForPOST
         private static void fn_addingParametersForInsert(Login login, string strTitle, List<KeyValuePair<string, string>> kvListOfParameters)
         {
@@ -110,7 +108,6 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             propMyLister.strError = recordElement.Element("strError").Value;
             fn_parseForEachListeeItem(recordElement);
         }
-
         //Parse through the Lister XML and add Listees to your 
         private void fn_parseForEachListeeItem(XElement recordElement)
         {
@@ -124,7 +121,6 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
                 propMyLister.pColTodolist.Add(ListeetoAdd);
             }
         }
-
         #region AddingPropertiesToListees
 
         private void fn_parsingToListeeItemSection3(XElement item, Listee ListeetoAdd)
@@ -159,8 +155,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
             ListeetoAdd.strListerDescription = item.Element(elementsList[6]).Value;
         }
 
-        #endregion
-        
+        #endregion 
         public void NotifyPropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

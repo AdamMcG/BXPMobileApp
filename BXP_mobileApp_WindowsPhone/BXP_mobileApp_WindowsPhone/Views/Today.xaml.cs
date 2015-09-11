@@ -36,12 +36,13 @@ namespace BXP_MobileApp_WindowsPhone.Views
         ListerViewModel oListeeViewModel = new ListerViewModel();
         public Today()
         {
+            this.InitializeComponent();
+            progress.IsActive = true;
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-           Task t = getAppointments();
            Task t2 = oListeeViewModel.fn_POSTToServerForAllListees("today", "list_listee_due");
-            this.InitializeComponent();
+           Task t = getAppointments();
             this.DataContext = myStyling;
             this.AppointmentScroller.DataContext = oDiaryViewModel.propObDiary;
             this.ListeeScroller.DataContext = oListeeViewModel;
@@ -52,6 +53,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
         public async Task getAppointments()
         {
             await oDiaryViewModel.fn_PostingToServerForDiary("diary_today");
+            progress.IsActive = false;
 
         }
 

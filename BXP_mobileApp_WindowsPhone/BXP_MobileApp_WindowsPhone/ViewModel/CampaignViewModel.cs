@@ -128,8 +128,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         }
 
         //Searches through Campaign DB based on Lastname
-        private async Task SearchByLastName(int formToLookup, string searchValues, HTTPRestViewModel oHttpRestViewModel)
-        {
+        private async Task SearchByLastName(int formToLookup, string searchValues, HTTPRestViewModel oHttpRestViewModel) {
             #region Parameters
             List<KeyValuePair<string, string>> kvHttpRequestParameters = new List<KeyValuePair<string, string>>();
             KeyValuePair<string, string> parameter = new KeyValuePair<string, string>("strFunction", "formlookup");
@@ -157,9 +156,6 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         //Parse through the list of contacts in the xml document
         public void fnParseContactXMLDocument(string fileContactXmlDocument)
         {
-            if (propMyCampaign.listOfCampaignItems.Count > 0)
-                propMyCampaign.listOfCampaignItems.Clear();
-
             XDocument campaignXMLdocument = XDocument.Parse(fileContactXmlDocument);
             var campaignXmlData = campaignXMLdocument.Element("data");
             var campaignItems = campaignXmlData.Elements("item");

@@ -3,7 +3,7 @@
   <Identity Name="b2791f67-9856-4f78-ae0f-8f6f7a9097df" Publisher="CN=AllnOneInt4" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="b2791f67-9856-4f78-ae0f-8f6f7a9097df" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>BXP_MobileApp_WindowsPhone</DisplayName>
+    <DisplayName>BXP Software</DisplayName>
     <PublisherDisplayName>AllnOneInt4</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -16,7 +16,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="BXP_MobileApp_WindowsPhone.App">
-      <m3:VisualElements DisplayName="BXP_MobileApp_WindowsPhone" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="BXP_MobileApp_WindowsPhone" ForegroundText="light" BackgroundColor="transparent">
+      <m3:VisualElements DisplayName="BXP Software" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="BXP_MobileApp_WindowsPhone" ForegroundText="light" BackgroundColor="transparent">
         <m3:LockScreen Notification="badge" BadgeLogo="Assets\BadgeLogo.png" />
         <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\ic_launcher.png">
         </m3:DefaultTile>

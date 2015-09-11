@@ -24,11 +24,9 @@ namespace BXP_MobileApp_WindowsPhone.Model
         }
 
         private ObservableCollection<string> campaignItems = new ObservableCollection<string>();
-        public ObservableCollection<string> propCampaignItems
-        {
+        public ObservableCollection<string> propCampaignItems {
             get { return campaignItems; }
-            set
-            {
+            set{
                 campaignItems = value;
                 NotifyPropertyChanged("propCampaignItems");
             }

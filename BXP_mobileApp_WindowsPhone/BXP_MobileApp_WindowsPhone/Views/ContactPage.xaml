@@ -17,12 +17,12 @@
     </Page.BottomAppBar>
     <Page.Resources>
         <DataTemplate x:Name="template_for_Listview">
-            <Border BorderBrush="#363951" >
+            <Border BorderBrush="Red" BorderThickness="0,0,0,4" >
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom"   Width="400" Margin="0,0,0,10" 
-                        IsHoldingEnabled="True" Background="White" >
+                        VerticalAlignment="Bottom"   Width="400" Margin="0,0,0,2" 
+                        IsHoldingEnabled="True">
 
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical"  Margin="23,0,0,0">
                         <TextBlock Text="{Binding propCampaignItems[0]}" 
                                    Foreground="{Binding propMyStyling.pbuttonForeground}" FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
         			 HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -61,12 +61,11 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <!-- Title Panel -->
+        <ProgressRing x:Name="progress" Background="Black" Foreground="Yellow" Opacity="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
             <TextBlock FontFamily="{Binding pappFont}" Foreground="{Binding pbuttonForeground}" Text="Contacts" Margin="0,0,0,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
-        
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
                 <StackPanel x:Name="stackPanForSearch">
                     <TextBox  x:Name="contact_To_Search" Text="" Foreground="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
@@ -74,10 +73,12 @@
                 </StackPanel>
 
                 <ScrollViewer Height="379" Margin="0,0,0,0">
-                    <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding listOfCampaignItems}" FontSize="19" x:Name="ListOfContacts" VerticalAlignment="Top" HorizontalAlignment="Stretch"
-             
-                              Header="List Of Contacts" Height="375" >
-
+                    <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding listOfCampaignItems}" FontSize="19" x:Name="ListOfContacts" VerticalAlignment="Top" HorizontalAlignment="Stretch"   Header="List Of Contacts" Height="375" >
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
                     </ListView>
                 </ScrollViewer>
             </StackPanel>

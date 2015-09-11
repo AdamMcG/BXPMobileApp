@@ -33,14 +33,22 @@ namespace BXP_MobileApp_WindowsPhone.Views
          ListerViewModel oListeeViewModel = new ListerViewModel();
         public ToDo()
         {
-            Task t = oListeeViewModel.fn_POSTToServerForAllListees("n/a", "list_listee_incomplete");
-            this.DataContext = myStyle;
             this.InitializeComponent();
+            progress.IsActive = true;
+            getListees();
+            this.DataContext = myStyle;
             LayoutRoot.Background = myStyle.pbackgroundBrush;
             this.Listview_Of_Listees.DataContext = oListeeViewModel;
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+        }
+
+        private async void getListees()
+        {
+            Task t = oListeeViewModel.fn_POSTToServerForAllListees("n/a", "list_listee_incomplete");
+            await t;
+            progress.IsActive = false;
         }
 
         /// <summary>

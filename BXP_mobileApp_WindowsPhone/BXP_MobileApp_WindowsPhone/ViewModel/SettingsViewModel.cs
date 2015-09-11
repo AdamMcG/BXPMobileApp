@@ -94,8 +94,7 @@ namespace BXP_MobileApp_WindowsPhone.ViewModel
         public Boolean fn_ParseLoginXMLDocument(string output, string function, string strSystem)
         {
             Boolean count = false;
-            try
-            {
+            try{
                 var xmlDocument = XDocument.Parse(output);
                 var xmlDataElement = xmlDocument.Element("data");
                 Login myLogin = Login.Instance;

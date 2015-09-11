@@ -18,16 +18,20 @@
     <Page.Resources>
         
         <DataTemplate x:Name="template_for_Listview">
-            <Border BorderBrush="#363951" >
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom"   Width="400" Margin="0,0,0,0" 
-                        IsHoldingEnabled="True" Background="White" >
+            <Border BorderBrush="#363951" BorderThickness="0,0,0,4" HorizontalAlignment="Stretch"  Margin="0,0,0,10">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Bottom" Margin="0,0,0,0" 
+                        IsHoldingEnabled="True" >
 
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Margin="23,0,0,0">
+                        <TextBlock Text="{Binding intLister_id, UpdateSourceTrigger=PropertyChanged}" 
+                                   Foreground="{Binding propMyStyling.pbuttonForeground}" FontSize="{Binding propMyStyling.pmediumFontSize}" FontWeight="SemiBold" 
+        			 HorizontalAlignment="Left" VerticalAlignment="Center"
+        			TextTrimming="WordEllipsis" TextWrapping="Wrap" />
                         <TextBlock Text="{Binding strListerTitle, UpdateSourceTrigger=PropertyChanged}" 
                                    Foreground="{Binding propMyStyling.pbuttonForeground}" FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
         			 HorizontalAlignment="Left" VerticalAlignment="Center"
-        			TextTrimming="WordEllipsis" TextWrapping="Wrap" Margin="0,10,0,10"/>
+        			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                     <TextBlock Text="{Binding dteListerDate, UpdateSourceTrigger=PropertyChanged}"
                                Foreground="{Binding propMyStyling.pbuttonForeground}"
                            FontSize="{Binding propMyStyling.psmallFontSize}" FontWeight="SemiBold" 
@@ -40,14 +44,15 @@
         
         
         <DataTemplate x:Name="template_for_Listview2">
-            <Border BorderBrush="#363951" >
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom" Background="White"  Width="400" Margin="0,0,0,0" 
+            <Border BorderBrush="#363951" BorderThickness="0,0,0,4" HorizontalAlignment="Stretch"  Margin="0,0,0,5">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Bottom" Margin="0,0,0,0" 
                         IsHoldingEnabled="True" >
 
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Foreground="{Binding propMyStyling.pbuttonForeground}" Text="{Binding pintAppointmentID, UpdateSourceTrigger=PropertyChanged}" FontSize="{Binding propMyStyling.pmediumFontSize}"
-                                   FontWeight="SemiBold"  Margin="0,0,1,1"
+                    <StackPanel Orientation="Vertical"  Margin="23,0,0,0">
+                        <TextBlock Foreground="{Binding propMyStyling.pbuttonForeground}" Text="{Binding pintAppointmentID, UpdateSourceTrigger=PropertyChanged}" 
+                                   FontSize="{Binding propMyStyling.pmediumFontSize}"
+                                   FontWeight="SemiBold" 
         			 HorizontalAlignment="Left" VerticalAlignment="Center"
         			TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
                         <TextBlock Foreground="{Binding propMyStyling.pbuttonForeground}" Text="{Binding pstrAppointmentName, UpdateSourceTrigger=PropertyChanged}"
@@ -78,7 +83,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        <ProgressRing x:Name="progress" Background="Black" Opacity="1" Foreground="Yellow" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png" />
@@ -91,15 +96,24 @@
 
                 <StackPanel Orientation="Vertical">
                     
-                    <ScrollViewer x:Name="AppointmentScroller" Height="200" Margin="0,0,-0.333,0" HorizontalAlignment="Stretch">
+                    <ScrollViewer x:Name="AppointmentScroller" Height="200" Margin="0,0,0,0" HorizontalAlignment="Stretch">
                         <ListView ItemTemplate="{ThemeResource template_for_Listview2}" ItemsSource="{Binding pColAppointment}" VerticalAlignment="Stretch"
-                                  FontSize="19" BorderThickness="1" BorderBrush="White" HorizontalAlignment="Stretch" Header="Appointments" x:Name="Appointment_Listview_today" Height="200" >
-
+                                  FontSize="19" BorderThickness="1" BorderBrush="White" HorizontalAlignment="Stretch" Header="Diary" x:Name="Appointment_Listview_today" Height="200" >
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
                         </ListView>
                     </ScrollViewer>
-                    <ScrollViewer x:Name="ListeeScroller" Margin="0,20,-0.333,0" Height="200" HorizontalAlignment="Stretch" >
+                    <ScrollViewer x:Name="ListeeScroller" Margin="0,20,0,0" Height="200" HorizontalAlignment="Stretch" >
                         <ListView  ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding propMyLister.pColTodolist}" VerticalAlignment="Stretch" FontSize="19" 
                           BorderThickness="1"  BorderBrush="White" HorizontalAlignment="Stretch" Header="Lister" x:Name="Listee_Listview_Today" Height="200">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
                         </ListView>
                     </ScrollViewer>
                 </StackPanel>

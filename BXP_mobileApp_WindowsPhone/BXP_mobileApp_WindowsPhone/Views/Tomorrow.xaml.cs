@@ -32,12 +32,13 @@ namespace BXP_MobileApp_WindowsPhone.Views
         StylingViewModel myStyle = new StylingViewModel();
         public Tomorrow()
         {
-            Task t = getAppointments();
+            this.InitializeComponent();
+            progress.IsActive = true;
             Task t2 = oListeeViewModel.fn_POSTToServerForAllListees("tomorrow", "list_listee_due");
+            Task t = getAppointments();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-            this.InitializeComponent();
             this.DataContext = myStyle;
             LayoutRoot.Background = myStyle.pbackgroundBrush;
             this.AppointmentScrollerTomorrow.DataContext = oDiaryViewModel.propObDiary;
@@ -48,7 +49,7 @@ namespace BXP_MobileApp_WindowsPhone.Views
         public async Task getAppointments()
         {
             await oDiaryViewModel.fn_PostingToServerForDiary("diary_tomorrow");
-
+            progress.IsActive = false;
         }
 
         /// <summary>

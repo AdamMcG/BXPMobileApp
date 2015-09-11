@@ -117,9 +117,15 @@ namespace BXP_MobileApp_WindowsPhone.Views
         #endregion
 
 
-        private void contactSearch_Click(object sender, RoutedEventArgs e)
+        private async void contactSearch_Click(object sender, RoutedEventArgs e)
         {
+            if (oContactViewModel.propMyCampaign.listOfCampaignItems.Count != 0)
+                oContactViewModel.propMyCampaign.listOfCampaignItems.Clear();
          Task t =  oContactViewModel.fnGetContactList(contact_To_Search.Text, 469);
+         progress.IsActive = true;
+         await t;
+         if (t.IsCompleted == true)
+             progress.IsActive = false;
         }
 
         

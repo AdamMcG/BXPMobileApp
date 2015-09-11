@@ -17,9 +17,9 @@
 
     <Page.Resources>
         <DataTemplate x:Name="template_for_Listview">
-            <Border BorderBrush="#363951"  BorderThickness="0, 1, 0, 1">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom" Background="White"  Width="400" Margin="0,0,0,0" 
+            <Border BorderBrush="#363951"  BorderThickness="0, 0, 0, 4">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Bottom" Margin="0,0,0,0" 
                         IsHoldingEnabled="True" >
 
                     <StackPanel Orientation="Horizontal">
@@ -48,7 +48,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        <ProgressRing x:Name="progress" Background="Black" Opacity="1" Foreground="Yellow" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Image Source= "bxp-homepage-banner.png"/>
@@ -65,8 +65,11 @@
                 <ScrollViewer Height="433">
                     <ListView ItemTemplate="{ThemeResource template_for_Listview}" ItemsSource="{Binding propMyLister.pColTodolist}" BorderThickness="1" VerticalAlignment="Top" Header="Incomplete Listees" 
                              Foreground="{Binding propMyLister.pColTodolist[].propMyStyling.pbuttonForeground}" FontSize="18" x:Name = "Listview_Of_Listees" Height="372"  >
-
-
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
                     </ListView>
                 </ScrollViewer>
             </StackPanel>
